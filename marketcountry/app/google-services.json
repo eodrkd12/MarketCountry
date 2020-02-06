@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "174800406156",
+    "firebase_url": "https://marketcountry-dddb8.firebaseio.com",
+    "project_id": "marketcountry-dddb8",
+    "storage_bucket": "marketcountry-dddb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174800406156:android:d8023acb127004ccf4dda9",
+        "android_client_info": {
+          "package_name": "com.marketcountry.psbuyandsell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "174800406156-o6r5hf616itj6la1kj4uq37b9t2t82vb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAriGPmlajGEzUeCz7fN8BBSewWFEXK6sE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "174800406156-o6r5hf616itj6la1kj4uq37b9t2t82vb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
