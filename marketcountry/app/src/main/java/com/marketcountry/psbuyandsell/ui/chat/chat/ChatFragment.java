@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -283,6 +284,8 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 TextView itemBackCurrencyTextView = dialog.findViewById(R.id.backCurrencyTextView);
                 itemOfferPriceEditText = dialog.findViewById(R.id.offerPriceEditText);
                 TextView makeOfferButton = dialog.findViewById(R.id.offerButton);
+                Button makePlusButton = dialog.findViewById(R.id.plusButton);
+                Button makeMinusButton = dialog.findViewById(R.id.minusButton);
 
                 itemName.setText(chatViewModel.itemName);
                 String currencySymbol = chatViewModel.itemCurrency;
@@ -310,7 +313,29 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 itemOfferPriceEditText.setText(chatViewModel.itemPrice);
 
                 dataBindingComponent.getFragmentBindingAdapters().bindFullImage(itemImagePath, chatViewModel.itemImagePath);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+                makePlusButton.setOnClickListener(new View.OnClickListener() {
+                    int itemCount;
+                    @Override
+                    public void onClick(View v) {
+                        itemCount = Integer.parseInt(itemOfferPriceEditText.getText().toString());
+                        itemCount += 1;
+                        itemOfferPriceEditText.setText(itemCount);
+                    }
+                });
+
+                makeMinusButton.setOnClickListener(new View.OnClickListener() {
+                    int itemCount;
+                    @Override
+                    public void onClick(View v) {
+                        itemCount = Integer.parseInt(itemOfferPriceEditText.getText().toString());
+                        itemCount -= 1;
+                        itemOfferPriceEditText.setText(itemCount);
+                    }
+                });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 makeOfferButton.setOnClickListener(v -> {
 
                     if (itemOfferPriceEditText.getText().toString().trim().equals(Constants.ZERO)) {

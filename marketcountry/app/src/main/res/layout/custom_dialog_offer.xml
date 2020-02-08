@@ -157,11 +157,11 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/offerPriceEditText"
             app:layout_constraintTop_toTopOf="@+id/offerPriceEditText"
-            tools:text=" $ " />
+            tools:text= " $ " />
 
         <EditText
             android:id="@+id/offerPriceEditText"
-            android:layout_width="160dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_corner_shape_for_login"
@@ -176,6 +176,25 @@
             app:layout_constraintStart_toEndOf="@+id/currencyTextView"
             app:layout_constraintTop_toBottomOf="@+id/itemCardView"
             tools:text="100" />
+
+        <Button
+            android:id="@+id/plusButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="+"
+            app:layout_constraintStart_toEndOf="@+id/offerPriceEditText"
+            app:layout_constraintTop_toBottomOf="@+id/itemCardView" />
+
+        <Button
+            android:id="@+id/minusButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:text="-"
+            app:layout_constraintStart_toEndOf="@+id/plusButton"
+            app:layout_constraintTop_toBottomOf="@+id/itemCardView" />
 
         <Button
             android:id="@+id/offerButton"
