@@ -2,6 +2,7 @@ package com.marketcountry.psbuyandsell.ui.user;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInstaller;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,6 +54,11 @@ import java.util.Arrays;
 
 import static androidx.constraintlayout.motion.widget.MotionScene.TAG;
 
+import com.kakao.auth.ISessionCallback;
+import com.kakao.auth.KakaoSDK;
+import com.kakao.auth.Session;
+import com.kakao.util.exception.KakaoException;
+import com.kakao.util.helper.log.Logger;
 
 /**
  * UserLoginFragment
@@ -96,6 +102,11 @@ public class UserLoginFragment extends PSFragment {
 
     //region Override Methods
 
+    //kakao
+    private ISessionCallback callback;
+
+    private final int KAKAO_SIGN=124;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -110,7 +121,29 @@ public class UserLoginFragment extends PSFragment {
 
         binding = new AutoClearedValue<>(this, dataBinding);
 
+        callback=new ISessionCallback() {
+            @Override
+            public void onSessionOpened() {
+                redirectSignupActivity();  // 세션 연결성공 시 redirectSignupActivity() 호출
+            }
+
+            @Override
+            public void onSessionOpenFailed(KakaoException exception) {
+                if(exception != null) {
+                    Logger.e(exception);
+                }
+            }
+        };
+
+        Session.getCurrentSession().addCallback(callback);
+
         return binding.get().getRoot();
+    }
+
+    protected void redirectSignupActivity() {       //세션 연결 성공 시 SignupActivity로 넘김
+        final Intent intent = new Intent(this.getActivity(), KakaoSignupActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivityForResult(intent,KAKAO_SIGN);
     }
 
     private void signIn() {
@@ -206,7 +239,6 @@ public class UserLoginFragment extends PSFragment {
 
         }
 
-
         //for check privacy and policy
         binding.get().privacyPolicyCheckbox.setOnClickListener(v -> {
             if (binding.get().privacyPolicyCheckbox.isChecked()) {
@@ -216,18 +248,22 @@ public class UserLoginFragment extends PSFragment {
                 binding.get().googleSignInView.setVisibility(View.GONE);
                 binding.get().facebookSignInView.setVisibility(View.GONE);
                 binding.get().phoneSignInView.setVisibility(View.GONE);
+                binding.get().kakaoSinginView.setVisibility(View.GONE);
                 binding.get().fbLoginButton.setEnabled(true);
                 binding.get().googleLoginButton.setEnabled(true);
                 binding.get().phoneLoginButton.setEnabled(true);
+                binding.get().comKakaoLogin.setEnabled(true);
             } else {
 
                 checkFlag = false;
                 binding.get().googleSignInView.setVisibility(View.VISIBLE);
                 binding.get().facebookSignInView.setVisibility(View.VISIBLE);
                 binding.get().phoneSignInView.setVisibility(View.VISIBLE);
+                binding.get().kakaoSinginView.setVisibility(View.VISIBLE);
                 binding.get().fbLoginButton.setEnabled(false);
                 binding.get().googleLoginButton.setEnabled(false);
                 binding.get().phoneLoginButton.setEnabled(false);
+                binding.get().comKakaoLogin.setEnabled(false);
             }
         });
 
@@ -236,16 +272,20 @@ public class UserLoginFragment extends PSFragment {
             binding.get().googleSignInView.setVisibility(View.VISIBLE);
             binding.get().facebookSignInView.setVisibility(View.VISIBLE);
             binding.get().phoneSignInView.setVisibility(View.VISIBLE);
+            binding.get().kakaoSinginView.setVisibility(View.VISIBLE);
             binding.get().fbLoginButton.setEnabled(false);
             binding.get().googleLoginButton.setEnabled(false);
             binding.get().phoneLoginButton.setEnabled(false);
+            binding.get().comKakaoLogin.setEnabled(false);
         } else {
             binding.get().googleSignInView.setVisibility(View.GONE);
             binding.get().facebookSignInView.setVisibility(View.GONE);
             binding.get().phoneSignInView.setVisibility(View.GONE);
+            binding.get().kakaoSinginView.setVisibility(View.GONE);
             binding.get().fbLoginButton.setEnabled(true);
             binding.get().googleLoginButton.setEnabled(true);
             binding.get().phoneLoginButton.setEnabled(true);
+            binding.get().comKakaoLogin.setEnabled(true);
         }
 
         psDialogMsg = new PSDialogMsg(getActivity(), false);
@@ -324,9 +364,14 @@ public class UserLoginFragment extends PSFragment {
         } else {
             binding.get().phoneLoginButton.setVisibility(View.GONE);
         }
+        if (Config.ENABLE_KAKAO_LOGIN) {
+            binding.get().comKakaoLogin.setVisibility(View.VISIBLE);
+        } else {
+            binding.get().comKakaoLogin.setVisibility(View.GONE);
+        }
 
 
-        if (Config.ENABLE_FACEBOOK_LOGIN || Config.ENABLE_GOOGLE_LOGIN || Config.ENABLE_PHONE_LOGIN) {
+        if (Config.ENABLE_FACEBOOK_LOGIN || Config.ENABLE_GOOGLE_LOGIN || Config.ENABLE_PHONE_LOGIN || Config.ENABLE_KAKAO_LOGIN) {
             binding.get().privacyPolicyCheckbox.setVisibility(View.VISIBLE);
         } else {
             binding.get().privacyPolicyCheckbox.setVisibility(View.GONE);
@@ -437,6 +482,67 @@ public class UserLoginFragment extends PSFragment {
         });
 
         userViewModel.getGoogleLoginData().observe(this, listResource -> {
+
+            if (listResource != null) {
+
+                Utils.psLog("Got Data" + listResource.message + listResource.toString());
+
+                switch (listResource.status) {
+                    case LOADING:
+                        // Loading State
+                        // Data are from Local DB
+
+                        prgDialog.get().show();
+
+                        break;
+                    case SUCCESS:
+                        // Success State
+                        // Data are from Server
+
+                        if (listResource.data != null) {
+                            try {
+
+                                Utils.updateUserLoginData(pref,listResource.data.user);
+                                Utils.navigateAfterUserLogin(getActivity(),navigationController);
+
+                            } catch (NullPointerException ne) {
+                                Utils.psErrorLog("Null Pointer Exception.", ne);
+                            } catch (Exception e) {
+                                Utils.psErrorLog("Error in getting notification flag data.", e);
+                            }
+
+                            userViewModel.isLoading = false;
+                            prgDialog.get().cancel();
+
+                        }
+
+                        break;
+                    case ERROR:
+                        // Error State
+
+                        userViewModel.isLoading = false;
+                        prgDialog.get().cancel();
+
+                        psDialogMsg.showErrorDialog(listResource.message, getString(R.string.app__ok));
+                        psDialogMsg.show();
+
+                        break;
+                    default:
+                        // Default
+
+                        break;
+                }
+
+            } else {
+
+                // Init Object or Empty Data
+                Utils.psLog("Empty Data");
+
+            }
+
+        });
+
+        userViewModel.getKakaoLoginData().observe(this, listResource -> {
 
             if (listResource != null) {
 
@@ -705,9 +811,19 @@ public class UserLoginFragment extends PSFragment {
 
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Session.getCurrentSession().removeCallback(callback);
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        if(Session.getCurrentSession().handleActivityResult(requestCode,resultCode,data)){
+            return;
+        }
 
         if (requestCode == GOOGLE_SIGN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -722,6 +838,12 @@ public class UserLoginFragment extends PSFragment {
                 Log.w(TAG, "Google sign in failed", e);
                 // ...
             }
+        }else if(requestCode==KAKAO_SIGN) {
+            String name=data.getStringExtra("name");
+            String imageUrl=data.getStringExtra("url");
+            String kakaoId=data.getStringExtra("kakaoId");
+
+            userViewModel.setKakaoLoginUser(kakaoId,name,imageUrl,token);
         }
     }
 

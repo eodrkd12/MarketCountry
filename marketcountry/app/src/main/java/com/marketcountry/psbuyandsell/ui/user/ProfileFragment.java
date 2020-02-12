@@ -333,8 +333,8 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
     private void replaceUserData(User user) {
 
         binding.get().editTextView.setText(binding.get().editTextView.getText().toString());
-//        binding.get().userNotificatinTextView.setText(binding.get().userNotificatinTextView.getText().toString());
-//        binding.get().userHistoryTextView.setText(binding.get().userHistoryTextView.getText().toString());
+//      binding.get().userNotificatinTextView.setText(binding.get().userNotificatinTextView.getText().toString());
+//      binding.get().userHistoryTextView.setText(binding.get().userHistoryTextView.getText().toString());
         binding.get().favouriteTextView.setText(binding.get().favouriteTextView.getText().toString());
         binding.get().settingTextView.setText(binding.get().settingTextView.getText().toString());
         binding.get().historyTextView.setText(binding.get().historyTextView.getText().toString());

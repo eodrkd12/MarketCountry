@@ -3,18 +3,35 @@ package com.marketcountry.psbuyandsell.ui.user;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageInstaller;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Base64;
+import android.util.Log;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.kakao.auth.ApprovalType;
+import com.kakao.auth.AuthType;
+import com.kakao.auth.IApplicationConfig;
+import com.kakao.auth.ISessionConfig;
+import com.kakao.auth.KakaoAdapter;
 import com.marketcountry.psbuyandsell.Config;
 import com.marketcountry.psbuyandsell.R;
+import com.marketcountry.psbuyandsell.databinding.ActivityAboutUsBinding;
 import com.marketcountry.psbuyandsell.databinding.ActivityUserLoginBinding;
 import com.marketcountry.psbuyandsell.ui.common.PSAppCompactActivity;
 import com.marketcountry.psbuyandsell.utils.Constants;
 import com.marketcountry.psbuyandsell.utils.MyContextWrapper;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class UserLoginActivity extends PSAppCompactActivity {
 
@@ -30,6 +47,7 @@ public class UserLoginActivity extends PSAppCompactActivity {
         // Init all UI
         initUI(binding);
 
+        getKeyHash(this);
     }
 
     @Override
@@ -70,5 +88,22 @@ public class UserLoginActivity extends PSAppCompactActivity {
 
     //endregion
 
+    public static String getKeyHash(final Context context) {
+        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
+        if (packageInfo == null)
+            return null;
+
+        for (Signature signature : packageInfo.signatures) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("kakao",md.toString());
+                return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
+            } catch (NoSuchAlgorithmException e) {
+                Log.d("kakao", "Unable to get MessageDigest. signature=" + signature, e);
+            }
+        }
+        return null;
+    }
 
 }

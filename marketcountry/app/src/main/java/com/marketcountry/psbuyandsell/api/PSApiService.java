@@ -656,6 +656,17 @@ public interface PSApiService {
     );
 
     @FormUrlEncoded
+    @POST("rest/users/kakao_register/api_key/{API_KEY}")
+    Call<User> postKakaoLogin(
+            @Path("API_KEY") String API_KEY,
+            @Field("kakao_id") String kakaoId,
+            @Field("user_name") String userName,
+            @Field("user_email") String userEmail,
+            @Field("profile_photo_url") String profilePhotoUrl,
+            @Field("device_token") String deviceToken
+    );
+
+    @FormUrlEncoded
     @POST("rest/chat_items/get_buyer_seller_list/api_key/{API_KEY}/limit/{limit}/offset/{offset}")
     LiveData<ApiResponse<List<ChatHistory>>> getChatHistoryList(
             @Path("API_KEY") String API_KEY,

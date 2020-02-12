@@ -3,8 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.marketcountry.psbuyandsell">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- for card.io card scanning -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
-        android:name="com.marketcountry.psbuyandsell.PsApp"
+        android:name=".PsApp"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:hardwareAccelerated="true"
@@ -14,14 +35,15 @@
         android:theme="@style/Base.PSTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name="com.marketcountry.psbuyandsell.ui.user.phonelogin.PhoneLoginActivity"></activity>
-        <activity android:name="com.marketcountry.psbuyandsell.ui.safetytip.SafetyTipsActivity" />
-        <activity android:name="com.marketcountry.psbuyandsell.ui.user.verifyphone.VerifyMobileActivity" />
-        <activity android:name="com.marketcountry.psbuyandsell.ui.item.itemfromfollower.ItemFromFollowerListActivity" />
-        <activity android:name="com.marketcountry.psbuyandsell.ui.location.LocationActivity" />
-        <activity android:name="com.marketcountry.psbuyandsell.ui.customcamera.setting.CameraSettingActivity" />
-        <activity android:name="com.marketcountry.psbuyandsell.ui.customcamera.CameraActivity" />
-        <activity android:name="com.marketcountry.psbuyandsell.ui.item.itemtype.SearchViewActivity" /> <!-- <provider -->
+        <activity android:name=".ui.user.KakaoSignupActivity"></activity>
+        <activity android:name=".ui.user.phonelogin.PhoneLoginActivity" />
+        <activity android:name=".ui.safetytip.SafetyTipsActivity" />
+        <activity android:name=".ui.user.verifyphone.VerifyMobileActivity" />
+        <activity android:name=".ui.item.itemfromfollower.ItemFromFollowerListActivity" />
+        <activity android:name=".ui.location.LocationActivity" />
+        <activity android:name=".ui.customcamera.setting.CameraSettingActivity" />
+        <activity android:name=".ui.customcamera.CameraActivity" />
+        <activity android:name=".ui.item.itemtype.SearchViewActivity" /> <!-- <provider -->
         <!-- android:name="androidx.core.content.FileProvider" -->
         <!-- android:authorities="com.panaceasoft.psbuyandsell" -->
         <!-- android:exported="false" -->
@@ -32,11 +54,11 @@
         <!-- </meta-data> -->
         <!-- </provider> -->
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.entry.ItemEntryActivity"
+            android:name=".ui.item.entry.ItemEntryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.apploading.AppLoadingActivity"
+            android:name=".ui.apploading.AppLoadingActivity"
             android:label="@string/app__app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -63,26 +85,26 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name="com.marketcountry.psbuyandsell.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app__app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.rating.RatingListActivity"
+            android:name=".ui.item.rating.RatingListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.city.selectedcity.SelectedCityActivity"
+            android:name=".ui.city.selectedcity.SelectedCityActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.subcategory.SubCategoryActivity"
+            android:name=".ui.subcategory.SubCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.map.MapActivity"
+            android:name=".ui.item.map.MapActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" /> <!-- <provider -->
         <!-- android:name="androidx.core.content.FileProvider" -->
@@ -95,60 +117,60 @@
         <!-- </meta-data> -->
         <!-- </provider> -->
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.detail.ItemActivity"
+            android:name=".ui.item.detail.ItemActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.category.list.CategoryListActivity"
+            android:name=".ui.category.list.CategoryListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.ProfileEditActivity"
+            android:name=".ui.user.ProfileEditActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.UserRegisterActivity"
+            android:name=".ui.user.UserRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.UserFBRegisterActivity"
+            android:name=".ui.user.UserFBRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.UserLoginActivity"
+            android:name=".ui.user.UserLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.UserForgotPasswordActivity"
+            android:name=".ui.user.UserForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.PasswordChangeActivity"
+            android:name=".ui.user.PasswordChangeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.search.specialfilterbyattributes.FilteringActivity"
+            android:name=".ui.item.search.specialfilterbyattributes.FilteringActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.notification.detail.NotificationActivity"
+            android:name=".ui.notification.detail.NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.setting.SettingActivity"
+            android:name=".ui.setting.SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.notification.setting.NotificationSettingActivity"
+            android:name=".ui.notification.setting.NotificationSettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.setting.appinfo.AppInfoActivity"
+            android:name=".ui.setting.appinfo.AppInfoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.favourite.FavouriteListActivity"
+            android:name=".ui.item.favourite.FavouriteListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
@@ -156,76 +178,76 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.notification.list.NotificationListActivity"
+            android:name=".ui.notification.list.NotificationListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.search.searchlist.SearchListActivity"
+            android:name=".ui.item.search.searchlist.SearchListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.gallery.GalleryActivity"
+            android:name=".ui.gallery.GalleryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.readmore.ReadMoreActivity"
+            android:name=".ui.item.readmore.ReadMoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.gallery.detail.GalleryDetailActivity"
+            android:name=".ui.gallery.detail.GalleryDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.dashboard.DashboardSearchByCategoryActivity"
+            android:name=".ui.dashboard.DashboardSearchByCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.history.UserHistoryListActivity"
+            android:name=".ui.item.history.UserHistoryListActivity"
             android:label="@string/title__activity_user_history_list"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.loginUserItem.LoginUserItemListActivity"
+            android:name=".ui.item.loginUserItem.LoginUserItemListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.userlist.UserListActivity"
+            android:name=".ui.user.userlist.UserListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.verifyemail.VerifyEmailActivity"
+            android:name=".ui.user.verifyemail.VerifyEmailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.user.userlist.detail.UserDetailActivity"
+            android:name=".ui.user.userlist.detail.UserDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.blog.list.BlogListActivity"
+            android:name=".ui.blog.list.BlogListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.blog.detail.BlogDetailActivity"
+            android:name=".ui.blog.detail.BlogDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.forceupdate.ForceUpdateActivity"
+            android:name=".ui.forceupdate.ForceUpdateActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.item.map.mapFilter.MapFilteringActivity"
+            android:name=".ui.item.map.mapFilter.MapFilteringActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.chat.chat.ChatActivity"
+            android:name=".ui.chat.chat.ChatActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.chat.chatimage.ChatImageFullScreenActivity"
+            android:name=".ui.chat.chatimage.ChatImageFullScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
         <activity
-            android:name="com.marketcountry.psbuyandsell.ui.privacypolicy.PrivacyPolicyActivity"
+            android:name=".ui.privacypolicy.PrivacyPolicyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme" />
 
@@ -259,6 +281,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -270,7 +295,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <service android:name="com.marketcountry.psbuyandsell.utils.FirebaseMessagingService">
+        <service android:name=".utils.FirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -283,26 +308,5 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
     </application>
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-
-    <uses-feature
-        android:name="android.hardware.camera.autofocus"
-        android:required="false" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- for card.io card scanning -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission android:name="android.permission.VIBRATE" />
 
 </manifest>

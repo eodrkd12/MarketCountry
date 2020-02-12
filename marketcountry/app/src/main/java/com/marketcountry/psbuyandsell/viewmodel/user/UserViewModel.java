@@ -68,6 +68,10 @@ public class UserViewModel extends PSViewModel {
     private final LiveData<Resource<UserLogin>> googleLoginData;
     private MutableLiveData<TmpDataHolder> googleLoginObj = new MutableLiveData<>();
 
+    // for kakao login
+    private final LiveData<Resource<UserLogin>> kakaoLoginData;
+    private MutableLiveData<TmpDataHolder> kakaoLoginObj = new MutableLiveData<>();
+
     // for getting login user from db
     private final LiveData<List<UserLogin>> userLoginData;
     private MutableLiveData<String> userLoginObj = new MutableLiveData<>();
@@ -177,6 +181,15 @@ public class UserViewModel extends PSViewModel {
             }
             Utils.psLog("UserViewModel : googleLoginData");
             return repository.postGoogleLogin(Config.API_KEY, obj.googleId, obj.name, obj.email, obj.imageUrl, obj.deviceToken);
+        });
+
+        // kakao login User
+        kakaoLoginData=Transformations.switchMap(kakaoLoginObj, obj ->{
+           if(obj==null){
+               return AbsentLiveData.create();
+           }
+           Utils.psLog("UserViewModel : kakaoLoginData");
+           return repository.postKakaoLogin(Config.API_KEY,obj.kakaoId,obj.name,obj.email,obj.imageUrl,obj.deviceToken);
         });
 
         // Get User Data
@@ -486,7 +499,7 @@ public class UserViewModel extends PSViewModel {
         return phoneLoginData;
     }
 
-    // phone login User
+    // google login User
     public void setGoogleLoginUser(String googleId, String name, String email,String imageUrl, String deviceToken) {
         TmpDataHolder tmpDataHolder = new TmpDataHolder();
         tmpDataHolder.googleId = googleId;
@@ -500,6 +513,21 @@ public class UserViewModel extends PSViewModel {
 
     public LiveData<Resource<UserLogin>> getGoogleLoginData() {
         return googleLoginData;
+    }
+
+    // kakao login User
+    public void setKakaoLoginUser(String kakaoId, String name,String imageUrl, String deviceToken) {
+        TmpDataHolder tmpDataHolder = new TmpDataHolder();
+        tmpDataHolder.kakaoId = kakaoId;
+        tmpDataHolder.name = name;
+        tmpDataHolder.imageUrl = imageUrl;
+        tmpDataHolder.deviceToken = deviceToken;
+        kakaoLoginObj.setValue(tmpDataHolder);
+
+    }
+
+    public LiveData<Resource<UserLogin>> getKakaoLoginData() {
+        return kakaoLoginData;
     }
 
     // Forgot password
@@ -576,6 +604,7 @@ public class UserViewModel extends PSViewModel {
         public String password = "";
         public String fbId = "";
         public String googleId = "";
+        public String kakaoId="";
         public String name = "";
         public String email = "";
         public String imageUrl = "";
