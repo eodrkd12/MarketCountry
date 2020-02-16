@@ -3,6 +3,7 @@ package com.marketcountry.psbuyandsell.ui.user;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ import com.marketcountry.psbuyandsell.viewobject.User;
 import com.marketcountry.psbuyandsell.viewobject.common.Resource;
 import com.marketcountry.psbuyandsell.viewobject.holder.UserParameterHolder;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,7 +58,6 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
     @VisibleForTesting
     private AutoClearedValue<FragmentProfileBinding> binding;
     private AutoClearedValue<ItemVerticalListAdapter> adapter;
-
 
     //endregion
 
@@ -340,7 +342,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         binding.get().historyTextView.setText(binding.get().historyTextView.getText().toString());
         binding.get().seeAllTextView.setText(binding.get().seeAllTextView.getText().toString());
         binding.get().joinedDateTitleTextView.setText(binding.get().joinedDateTitleTextView.getText().toString());
-        binding.get().joinedDateTextView.setText(user.addedDate);
+        binding.get().joinedDateTextView.setText(user.addedDate.substring(0,10));
         binding.get().nameTextView.setText(user.userName);
         binding.get().overAllRatingTextView.setText(user.overallRating);
         binding.get().ratingBarInformation.setRating(user.ratingDetails.totalRatingValue);
