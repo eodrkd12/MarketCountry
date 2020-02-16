@@ -123,12 +123,12 @@ public class ItemFragment extends PSFragment {
                 navigationController.navigateToMapActivity(getActivity(),itemViewModel.itemContainer.lng,itemViewModel.itemContainer.lat,Constants.MAP);
             }
         });
-
-        binding.get().safetyTipButton.setOnClickListener(v -> navigationController.navigateToSafetyTipsActivity(getActivity()));
+        //백업시
+        //binding.get().safetyTipButton.setOnClickListener(v -> navigationController.navigateToSafetyTipsActivity(getActivity()));
 
         binding.get().userCardView.setOnClickListener(v -> navigationController.navigateToUserDetail(getActivity(), itemViewModel.otherUserId, itemViewModel.otherUserName));
-
-        binding.get().userNameActiveHourTextView.setOnClickListener(v -> navigationController.navigateToUserDetail(getActivity(), itemViewModel.otherUserId, itemViewModel.otherUserName));
+        //백업시
+        //binding.get().userNameActiveHourTextView.setOnClickListener(v -> navigationController.navigateToUserDetail(getActivity(), itemViewModel.otherUserId, itemViewModel.otherUserName));
 
         binding.get().menuImageView.setOnClickListener(v -> {
 
@@ -200,8 +200,8 @@ public class ItemFragment extends PSFragment {
                 getActivity().finish();
             }
         });
-
-        binding.get().statisticDownImageView.setOnClickListener(v -> {
+        //백업시
+        /*binding.get().statisticDownImageView.setOnClickListener(v -> {
             boolean show = Utils.toggleUpDownWithAnimation(v);
             if (show) {
                 ViewAnimationUtil.expand(binding.get().viewConstraintLayout);
@@ -221,7 +221,7 @@ public class ItemFragment extends PSFragment {
                 ViewAnimationUtil.collapse(binding.get().viewConstraintLayout);
                 ViewAnimationUtil.collapse(binding.get().reviewConstraintLayout);
             }
-        });
+        });*/
 
         binding.get().locationTitleDownImageView.setOnClickListener(v -> {
             boolean show = Utils.toggleUpDownWithAnimation(v);
@@ -260,8 +260,8 @@ public class ItemFragment extends PSFragment {
                 ViewAnimationUtil.collapse(binding.get().meetTheSellerConstraintLayout);
             }
         });
-
-        binding.get().gettingThisDownImageView.setOnClickListener(v -> {
+        //백업시
+        /*binding.get().gettingThisDownImageView.setOnClickListener(v -> {
             boolean show = Utils.toggleUpDownWithAnimation(v);
             if (show) {
                 ViewAnimationUtil.expand(binding.get().meetTextView);
@@ -311,7 +311,7 @@ public class ItemFragment extends PSFragment {
                 ViewAnimationUtil.collapse(binding.get().safetyTextView);
 
             }
-        });
+        });*/
 
         binding.get().favouriteImageView.setOnLikeListener(new OnLikeListener() {
             @Override
@@ -461,11 +461,11 @@ public class ItemFragment extends PSFragment {
                     case SUCCESS:
                         // Success State
                         // Data are from Server
-
-                        if (resource.data != null) {
+                        //백업시
+                        /*if (resource.data != null) {
 
                             binding.get().safetyTextView.setText(resource.data.safetyTips);
-                        }
+                        }*/
 
                         break;
                     case ERROR:
@@ -889,9 +889,9 @@ public class ItemFragment extends PSFragment {
         binding.get().setItem(item);
 
     }
-
+    //백업시
     private void bindingCountData(Item item) {
-        binding.get().favouriteCountTextView.setText(getString(R.string.item_detail__fav_count, item.favouriteCount));
+        //binding.get().favouriteCountTextView.setText(getString(R.string.item_detail__fav_count, item.favouriteCount));
         binding.get().viewCountTextView.setText(getString(R.string.item_detail__view_count, item.touchCount));
     }
 
@@ -994,13 +994,13 @@ public class ItemFragment extends PSFragment {
             binding.get().favouriteImageView.setLiked(false);
         }
     }
-
+    //백업시
     private void bindingItemDialOption(Item item){
-        if(item.dealOptionId.equals("1")){
+        /*if(item.dealOptionId.equals("1")){
             binding.get().meetTextView.setText(getString(R.string.item_detail__meetup));
         }else{
             binding.get().meetTextView.setText(getString(R.string.item_detail__mailing_on_delivery));
-        }
+        }*/
     }
     private void bindingSoldData(Item item) {
         if (item.isSoldOut.equals(Constants.ONE)) {
@@ -1023,19 +1023,19 @@ public class ItemFragment extends PSFragment {
             binding.get().photoCountTextView.setText(photoCount);
         }
     }
-
+    //백업시
     private void bindingBusinessMode(Item item) {
-        if (item.businessMode.equals("0")) {
+        /*if (item.businessMode.equals("0")) {
             binding.get().orderTextView.setText(getString(R.string.item_detail__order_not_more_than_one));
         }
         if (item.businessMode.equals("1")) {
             binding.get().orderTextView.setText(getString(R.string.item_detail__order_more_than_one));
-        }
+        }*/
     }
-
+    //백업시
     private void bindindAddedDateUserName(Item item) {
         binding.get().activeHourTextView.setText(item.addedDateStr);
-        binding.get().userNameActiveHourTextView.setText(item.user.userName);
+        //binding.get().userNameActiveHourTextView.setText(item.user.userName);
     }
 
     private void bindingBottomConstraintLayout(Item item) {
@@ -1083,13 +1083,14 @@ public class ItemFragment extends PSFragment {
             binding.get().activeHourTextView.setVisibility(View.VISIBLE);
             binding.get().imageView16.setVisibility(View.VISIBLE);
         }
-        if (item != null && item.price != null && item.price.equals("")) {
+        //백업시
+        /*if (item != null && item.price != null && item.price.equals("")) {
             binding.get().priceTextView.setVisibility(View.GONE);
             binding.get().imageView17.setVisibility(View.GONE);
         } else {
             binding.get().priceTextView.setVisibility(View.VISIBLE);
             binding.get().imageView17.setVisibility(View.VISIBLE);
-        }
+        }*/
         if (item != null && item.favouriteCount != null && item.favouriteCount.equals("")) {
             binding.get().likesTextView.setVisibility(View.GONE);
             binding.get().imageView22.setVisibility(View.GONE);
@@ -1135,14 +1136,14 @@ public class ItemFragment extends PSFragment {
             binding.get().saleBuyTextView.setVisibility(View.VISIBLE);
             binding.get().imageView27.setVisibility(View.VISIBLE);
         }
-
-        if (item != null && item.businessMode != null && item.businessMode.equals("1") || item != null && item.businessMode != null && item.businessMode.equals("0")) {
+        //백업시
+        /*if (item != null && item.businessMode != null && item.businessMode.equals("1") || item != null && item.businessMode != null && item.businessMode.equals("0")) {
             binding.get().orderTextView.setVisibility(View.VISIBLE);
             binding.get().imageView29.setVisibility(View.VISIBLE);
         } else {
             binding.get().orderTextView.setVisibility(View.GONE);
             binding.get().imageView29.setVisibility(View.GONE);
-        }
+        }*/
 
         if (item != null && item.description != null && item.description.equals("")) {
             binding.get().informationTextView.setVisibility(View.GONE);

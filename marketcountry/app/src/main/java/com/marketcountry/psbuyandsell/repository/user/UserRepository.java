@@ -649,7 +649,7 @@ public class UserRepository extends PSRepository {
             @Override
             protected LiveData<ApiResponse<ApiStatus>> createCall() {
                 Utils.psLog("Call API Service to update user.");
-                return psApiService.putUser(apiKey, user.userId, user.userName, user.userEmail, user.userPhone, user.userAddress, user.city, user.userAboutMe, user.deviceToken);
+                return psApiService.putUser(apiKey, user.userId, user.userName, user.userEmail, user.userPhone, user.userAddress,user.userAboutMe, user.deviceToken);
             }
 
             @Override

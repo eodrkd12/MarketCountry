@@ -125,9 +125,9 @@ public class SubCategoryFragment extends PSFragment implements DataBoundListAdap
 
                 navigationController.navigateToHomeFilteringActivity(SubCategoryFragment.this.getActivity(), itemParameterHolder, subCategory.name, selectedCityLat, selectedCityLng, Constants.MAP_MILES);
 
-                if (SubCategoryFragment.this.getActivity() != null) {
+                /*if (SubCategoryFragment.this.getActivity() != null) {
                     SubCategoryFragment.this.getActivity().finish();
-                }
+                }*/
 
             }
         },this);

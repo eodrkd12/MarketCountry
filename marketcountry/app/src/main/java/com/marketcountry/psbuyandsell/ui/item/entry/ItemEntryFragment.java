@@ -76,12 +76,18 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private String thirdImageId = Constants.EMPTY_STRING;
     private String fouthImageId = Constants.EMPTY_STRING;
     private String fifthImageId = Constants.EMPTY_STRING;
+    private String sixthImageId = Constants.EMPTY_STRING;
+    private String seventhImageId = Constants.EMPTY_STRING;
+    private String eighthImageId = Constants.EMPTY_STRING;
 
     private boolean isFirstImageSelected = false;
     private boolean isSecImageSelected = false;
     private boolean isThirdImageSelected = false;
     private boolean isFouthImageSelected = false;
     private boolean isFifthImageSelected = false;
+    private boolean isSixthImageSelected = false;
+    private boolean isSeventhImageSelected = false;
+    private boolean isEighthImageSelected = false;
 
     private PSDialogMsg psDialogMsg;
     private ItemViewModel itemViewModel;
@@ -219,7 +225,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         //image  gallery upload
 
         if ((requestCode == Constants.REQUEST_CODE__FIRST_GALLERY || requestCode == Constants.REQUEST_CODE__SEC_GALLERY || requestCode == Constants.REQUEST_CODE__THIRD_GALLERY ||
-                requestCode == Constants.REQUEST_CODE__FOURTH_GALLERY || requestCode == Constants.REQUEST_CODE__FIFTH_GALLERY)
+                requestCode == Constants.REQUEST_CODE__FOURTH_GALLERY || requestCode == Constants.REQUEST_CODE__FIFTH_GALLERY || requestCode == Constants.REQUEST_CODE__SIXTH_GALLERY
+                || requestCode == Constants.REQUEST_CODE__SEVENTH_GALLERY || requestCode == Constants.REQUEST_CODE__EIGHTH_GALLERY)
                 && resultCode == Constants.RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -249,6 +256,21 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 itemViewModel.fifthImagePath = convertToImagePath(selectedImage, filePathColumn);
                 isFifthImageSelected = true;
             }
+            if (requestCode == Constants.REQUEST_CODE__SIXTH_GALLERY) {
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImageUri(binding.get().sixthImageView, selectedImage);
+                itemViewModel.sixthImagePath = convertToImagePath(selectedImage, filePathColumn);
+                isSixthImageSelected = true;
+            }
+            if (requestCode == Constants.REQUEST_CODE__SEVENTH_GALLERY) {
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImageUri(binding.get().seventhImageView, selectedImage);
+                itemViewModel.seventhImagePath = convertToImagePath(selectedImage, filePathColumn);
+                isSeventhImageSelected = true;
+            }
+            if (requestCode == Constants.REQUEST_CODE__EIGHTH_GALLERY) {
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImageUri(binding.get().eighthImageView, selectedImage);
+                itemViewModel.eighthImagePath = convertToImagePath(selectedImage, filePathColumn);
+                isEighthImageSelected = true;
+            }
 
 
         }
@@ -256,7 +278,9 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         //image camera
 
         if ((requestCode == Constants.REQUEST_CODE__FIRST_CAMERA || requestCode == Constants.REQUEST_CODE__SEC_CAMERA || requestCode == Constants.REQUEST_CODE__THIRD_CAMERA ||
-                requestCode == Constants.REQUEST_CODE__FOURTH_CAMERA || requestCode == Constants.REQUEST_CODE__FIFTH_CAMERA) && resultCode == Constants.RESULT_OK) {
+                requestCode == Constants.REQUEST_CODE__FOURTH_CAMERA || requestCode == Constants.REQUEST_CODE__FIFTH_CAMERA
+                || requestCode == Constants.REQUEST_CODE__SIXTH_CAMERA || requestCode == Constants.REQUEST_CODE__SEVENTH_CAMERA || requestCode == Constants.REQUEST_CODE__EIGHTH_CAMERA)
+                && resultCode == Constants.RESULT_OK) {
             selected = true;
 
             if (requestCode == Constants.REQUEST_CODE__FIRST_CAMERA) {
@@ -284,12 +308,29 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 itemViewModel.fifthImagePath = Utils.currentPhotoPath;
                 isFifthImageSelected = true;
             }
+            if (requestCode == Constants.REQUEST_CODE__SIXTH_CAMERA) {
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImageUri(binding.get().sixthImageView, navigationController.photoURI);
+                itemViewModel.sixthImagePath = Utils.currentPhotoPath;
+                isSixthImageSelected = true;
+            }
+            if (requestCode == Constants.REQUEST_CODE__SEVENTH_CAMERA) {
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImageUri(binding.get().seventhImageView, navigationController.photoURI);
+                itemViewModel.seventhImagePath = Utils.currentPhotoPath;
+                isSeventhImageSelected = true;
+            }
+            if (requestCode == Constants.REQUEST_CODE__EIGHTH_CAMERA) {
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImageUri(binding.get().eighthImageView, navigationController.photoURI);
+                itemViewModel.eighthImagePath = Utils.currentPhotoPath;
+                isEighthImageSelected = true;
+            }
         }
 
         //custom camera
 
         if ((requestCode == Constants.REQUEST_CODE__FIRST_CUSTOM_CAMERA || requestCode == Constants.REQUEST_CODE__SEC_CUSTOM_CAMERA || requestCode == Constants.REQUEST_CODE__THIRD_CUSTOM_CAMERA ||
-                requestCode == Constants.REQUEST_CODE__FOURTH_CUSTOM_CAMERA || requestCode == Constants.REQUEST_CODE__FIFTH_CUSTOM_CAMERA) && resultCode == Constants.RESULT_CODE__ITEM_ENTRY_WITH_CUSTOM_CAMERA) {
+                requestCode == Constants.REQUEST_CODE__FOURTH_CUSTOM_CAMERA || requestCode == Constants.REQUEST_CODE__FIFTH_CUSTOM_CAMERA
+                || requestCode == Constants.REQUEST_CODE__SIXTH_CUSTOM_CAMERA || requestCode == Constants.REQUEST_CODE__SEVENTH_CUSTOM_CAMERA || requestCode == Constants.REQUEST_CODE__EIGHTH_CUSTOM_CAMERA)
+                && resultCode == Constants.RESULT_CODE__ITEM_ENTRY_WITH_CUSTOM_CAMERA) {
 
             itemViewModel.customImageUri = data.getStringExtra(Constants.IMAGE_PATH);
             selected = true;
@@ -318,6 +359,21 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 dataBindingComponent.getFragmentBindingAdapters().bindStorageImageUri(binding.get().fifthImageView, itemViewModel.customImageUri);
                 itemViewModel.fifthImagePath = itemViewModel.customImageUri;
                 isFifthImageSelected = true;
+            }
+            if (requestCode == Constants.REQUEST_CODE__SIXTH_CUSTOM_CAMERA) {
+                dataBindingComponent.getFragmentBindingAdapters().bindStorageImageUri(binding.get().sixthImageView, itemViewModel.customImageUri);
+                itemViewModel.sixthImagePath = itemViewModel.customImageUri;
+                isSixthImageSelected = true;
+            }
+            if (requestCode == Constants.REQUEST_CODE__SEVENTH_CUSTOM_CAMERA) {
+                dataBindingComponent.getFragmentBindingAdapters().bindStorageImageUri(binding.get().seventhImageView, itemViewModel.customImageUri);
+                itemViewModel.seventhImagePath = itemViewModel.customImageUri;
+                isSeventhImageSelected = true;
+            }
+            if (requestCode == Constants.REQUEST_CODE__EIGHTH_CUSTOM_CAMERA) {
+                dataBindingComponent.getFragmentBindingAdapters().bindStorageImageUri(binding.get().eighthImageView, itemViewModel.customImageUri);
+                itemViewModel.eighthImagePath = itemViewModel.customImageUri;
+                isEighthImageSelected = true;
             }
         }
         //endregion
@@ -438,7 +494,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         binding.get().submitButton.setOnClickListener(view -> {
 
-            if (itemViewModel.firstImagePath == null && itemViewModel.secImagePath == null && itemViewModel.thirdImagePath == null && itemViewModel.fouthImagePath == null && itemViewModel.fifthImagePath == null) {
+            if (itemViewModel.firstImagePath == null && itemViewModel.secImagePath == null && itemViewModel.thirdImagePath == null && itemViewModel.fouthImagePath == null && itemViewModel.fifthImagePath == null
+                && itemViewModel.sixthImagePath == null && itemViewModel.seventhImagePath == null && itemViewModel.eighthImagePath == null) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_image), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else if (binding.get().titleEditText.getText().toString().isEmpty()) {
@@ -524,6 +581,24 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         });
 
 
+        binding.get().sixthImageView.setOnClickListener(v -> {
+            mBottomSheetDialog.get().show();
+            ButtonSheetClick(Constants.SIX);
+        });
+
+
+        binding.get().seventhImageView.setOnClickListener(v -> {
+            mBottomSheetDialog.get().show();
+            ButtonSheetClick(Constants.SEVEN);
+        });
+
+
+        binding.get().eighthImageView.setOnClickListener(v -> {
+            mBottomSheetDialog.get().show();
+            ButtonSheetClick(Constants.EIGHT);
+        });
+
+
     }
 
     private void getImagePathList() {
@@ -542,6 +617,15 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         }
         if (!itemViewModel.fifthImagePath.isEmpty()) {
             imagePathList.add(itemViewModel.fifthImagePath);
+        }
+        if (!itemViewModel.sixthImagePath.isEmpty()) {
+            imagePathList.add(itemViewModel.sixthImagePath);
+        }
+        if (!itemViewModel.seventhImagePath.isEmpty()) {
+            imagePathList.add(itemViewModel.seventhImagePath);
+        }
+        if (!itemViewModel.eighthImagePath.isEmpty()) {
+            imagePathList.add(itemViewModel.eighthImagePath);
         }
     }
 
@@ -752,6 +836,30 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                     }
                                     progressDialog.show();
                                     isFifthImageSelected = false;
+                                } else if (isSixthImageSelected) {
+                                    if (imagePathList.size() > 1) {
+                                        itemViewModel.setUploadItemImageObj(imagePathList.get(0), itemViewModel.itemId, sixthImageId);
+                                    } else {
+                                        itemViewModel.setUploadItemImageObj(imagePathList.get(imagePathList.size() - 1), itemViewModel.itemId, sixthImageId);
+                                    }
+                                    progressDialog.show();
+                                    isSixthImageSelected = false;
+                                } else if (isSeventhImageSelected) {
+                                    if (imagePathList.size() > 1) {
+                                        itemViewModel.setUploadItemImageObj(imagePathList.get(0), itemViewModel.itemId, seventhImageId);
+                                    } else {
+                                        itemViewModel.setUploadItemImageObj(imagePathList.get(imagePathList.size() - 1), itemViewModel.itemId, seventhImageId);
+                                    }
+                                    progressDialog.show();
+                                    isSeventhImageSelected = false;
+                                } else if (isEighthImageSelected) {
+                                    if (imagePathList.size() > 1) {
+                                        itemViewModel.setUploadItemImageObj(imagePathList.get(0), itemViewModel.itemId, eighthImageId);
+                                    } else {
+                                        itemViewModel.setUploadItemImageObj(imagePathList.get(imagePathList.size() - 1), itemViewModel.itemId, eighthImageId);
+                                    }
+                                    progressDialog.show();
+                                    isEighthImageSelected = false;
                                 }
 
 
@@ -895,6 +1003,54 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().fouthImageView, imageList.get(3).imgPath);
                 dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().fifthImageView, imageList.get(4).imgPath);
             }
+            if (imageList.size() == 6) {
+                firstImageId = imageList.get(0).imgId;
+                secImageId = imageList.get(1).imgId;
+                thirdImageId = imageList.get(2).imgId;
+                fouthImageId = imageList.get(3).imgId;
+                fifthImageId = imageList.get(4).imgId;
+                sixthImageId = imageList.get(5).imgId;
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().firstImageView, imageList.get(0).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().secImageView, imageList.get(1).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().thirdImageView, imageList.get(2).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().fouthImageView, imageList.get(3).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().fifthImageView, imageList.get(4).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().sixthImageView, imageList.get(5).imgPath);
+            }
+            if (imageList.size() == 7) {
+                firstImageId = imageList.get(0).imgId;
+                secImageId = imageList.get(1).imgId;
+                thirdImageId = imageList.get(2).imgId;
+                fouthImageId = imageList.get(3).imgId;
+                fifthImageId = imageList.get(4).imgId;
+                sixthImageId = imageList.get(5).imgId;
+                seventhImageId = imageList.get(6).imgId;
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().firstImageView, imageList.get(0).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().secImageView, imageList.get(1).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().thirdImageView, imageList.get(2).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().fouthImageView, imageList.get(3).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().fifthImageView, imageList.get(4).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().sixthImageView, imageList.get(5).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().seventhImageView, imageList.get(6).imgPath);
+            }
+            if (imageList.size() == 8) {
+                firstImageId = imageList.get(0).imgId;
+                secImageId = imageList.get(1).imgId;
+                thirdImageId = imageList.get(2).imgId;
+                fouthImageId = imageList.get(3).imgId;
+                fifthImageId = imageList.get(4).imgId;
+                sixthImageId = imageList.get(5).imgId;
+                seventhImageId = imageList.get(6).imgId;
+                eighthImageId = imageList.get(7).imgId;
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().firstImageView, imageList.get(0).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().secImageView, imageList.get(1).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().thirdImageView, imageList.get(2).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().fouthImageView, imageList.get(3).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().fifthImageView, imageList.get(4).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().sixthImageView, imageList.get(5).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().seventhImageView, imageList.get(6).imgPath);
+                dataBindingComponent.getFragmentBindingAdapters().bindFullImage(binding.get().eighthImageView, imageList.get(7).imgPath);
+            }
         }
     }
 
@@ -1000,6 +1156,15 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         } else if (isFifthImageSelected) {
             itemViewModel.setUploadItemImageObj(imagePathList.get(imageCount), itemViewModel.itemId, fifthImageId);
             isFifthImageSelected = false;
+        } else if (isSixthImageSelected) {
+            itemViewModel.setUploadItemImageObj(imagePathList.get(imageCount), itemViewModel.itemId, sixthImageId);
+            isSixthImageSelected = false;
+        } else if (isSeventhImageSelected) {
+            itemViewModel.setUploadItemImageObj(imagePathList.get(imageCount), itemViewModel.itemId, seventhImageId);
+            isSeventhImageSelected = false;
+        } else if (isEighthImageSelected) {
+            itemViewModel.setUploadItemImageObj(imagePathList.get(imageCount), itemViewModel.itemId, eighthImageId);
+            isEighthImageSelected = false;
         }
 
     }

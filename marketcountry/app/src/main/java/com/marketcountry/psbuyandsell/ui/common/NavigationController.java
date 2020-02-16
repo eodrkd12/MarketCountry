@@ -524,6 +524,15 @@ public class NavigationController {
                     case Constants.FIVE: //case Constants.FIVE:
                         activity.startActivityForResult(takePictureIntent, Constants.REQUEST_CODE__FIFTH_CAMERA);
                         break;
+                    case Constants.SIX: //case Constants.FIVE:
+                        activity.startActivityForResult(takePictureIntent, Constants.REQUEST_CODE__SIXTH_CAMERA);
+                        break;
+                    case Constants.SEVEN: //case Constants.FIVE:
+                        activity.startActivityForResult(takePictureIntent, Constants.REQUEST_CODE__SEVENTH_CAMERA);
+                        break;
+                    case Constants.EIGHT: //case Constants.FIVE:
+                        activity.startActivityForResult(takePictureIntent, Constants.REQUEST_CODE__EIGHTH_CAMERA);
+                        break;
                 }
 
             }
@@ -548,6 +557,15 @@ public class NavigationController {
             case Constants.FIVE:
                 activity.startActivityForResult(intent, Constants.REQUEST_CODE__FIFTH_CUSTOM_CAMERA);
                 break;
+            case Constants.SIX:
+                activity.startActivityForResult(intent, Constants.REQUEST_CODE__SIXTH_CUSTOM_CAMERA);
+                break;
+            case Constants.SEVEN:
+                activity.startActivityForResult(intent, Constants.REQUEST_CODE__SEVENTH_CUSTOM_CAMERA);
+                break;
+            case Constants.EIGHT:
+                activity.startActivityForResult(intent, Constants.REQUEST_CODE__EIGHTH_CUSTOM_CAMERA);
+                break;
         }
     }
 
@@ -568,6 +586,15 @@ public class NavigationController {
                 break;
             case Constants.FIVE:
                 activity.startActivityForResult(pickPhoto, Constants.REQUEST_CODE__FIFTH_GALLERY);
+                break;
+            case Constants.SIX:
+                activity.startActivityForResult(pickPhoto, Constants.REQUEST_CODE__SIXTH_GALLERY);
+                break;
+            case Constants.SEVEN:
+                activity.startActivityForResult(pickPhoto, Constants.REQUEST_CODE__SEVENTH_GALLERY);
+                break;
+            case Constants.EIGHT:
+                activity.startActivityForResult(pickPhoto, Constants.REQUEST_CODE__EIGHTH_GALLERY);
                 break;
         }
     }

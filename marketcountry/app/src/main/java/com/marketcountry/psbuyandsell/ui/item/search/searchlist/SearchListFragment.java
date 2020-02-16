@@ -84,7 +84,7 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
             typeClicked = (itemViewModel.holder.cat_id != null && !itemViewModel.holder.cat_id.equals(""))
                     || (itemViewModel.holder.sub_cat_id != null && !itemViewModel.holder.sub_cat_id.equals(""));
 
-            typeButtonClicked(typeClicked);
+            //typeButtonClicked(typeClicked);
 
             replaceData(clearRecyclerView);
 
@@ -104,7 +104,7 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
             filterClicked = !itemViewModel.holder.keyword.equals("") || !itemViewModel.holder.order_by.equals(Constants.FILTERING_FEATURE) ||
                     !itemViewModel.holder.order_type.equals(Constants.FILTERING_DESC);
 
-            tuneButtonClicked(filterClicked);
+            //tuneButtonClicked(filterClicked);
 
             replaceData(clearRecyclerView);
 
@@ -122,7 +122,7 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
             mapFilterClicked = !itemViewModel.holder.lat.equals("") || !itemViewModel.holder.lng.equals("") ||
                     !itemViewModel.holder.mapMiles.equals("");
 
-            mapFilterButtonClicked(mapFilterClicked);
+            //mapFilterButtonClicked(mapFilterClicked);
 
             replaceData(clearRecyclerView);
 
@@ -142,12 +142,12 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
             ((MainActivity) getActivity()).updateMenuIconWhite();
             ((MainActivity) getActivity()).refreshPSCount();
         }
-
-        binding.get().typeButton.setOnClickListener(this::ButtonClick);
+        //필터 버튼 바인딩
+        /*binding.get().typeButton.setOnClickListener(this::ButtonClick);
 
         binding.get().tuneButton.setOnClickListener(this::ButtonClick);
 
-        binding.get().sortButton.setOnClickListener(this::ButtonClick);
+        binding.get().sortButton.setOnClickListener(this::ButtonClick);*/
 
         binding.get().newsList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -223,7 +223,8 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
 //                    binding.get().buttonLayout.setVisibility(View.GONE);
 //                }
 //                else {
-                binding.get().buttonLayout.setVisibility(View.VISIBLE);
+                //필터 버튼 바인딩
+                /*binding.get().buttonLayout.setVisibility(View.VISIBLE);*/
 //                }
             }
 
@@ -240,11 +241,11 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
             mapFilterClicked = !itemViewModel.holder.lat.equals("") || !itemViewModel.holder.lng.equals("") ||
                     !itemViewModel.holder.mapMiles.equals("");
 
-            typeButtonClicked(typeClicked);
+            //typeButtonClicked(typeClicked);
 
-            tuneButtonClicked(filterClicked);
+            //tuneButtonClicked(filterClicked);
 
-            mapFilterButtonClicked(mapFilterClicked);
+            //mapFilterButtonClicked(mapFilterClicked);
 
         }
     }
@@ -361,8 +362,8 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
         binding.get().executePendingBindings();
     }
 
-
-    private void typeButtonClicked(Boolean b) {
+    //필터 버튼 바인딩
+    /*private void typeButtonClicked(Boolean b) {
         if (b) {
             binding.get().typeButton.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.baseline_list_with_check_orange_24), null, null);
         } else {
@@ -388,9 +389,10 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
         } else {
             binding.get().sortButton.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.baseline_sort_orange_24), null, null);
         }
-    }
+    }*/
 
-    private void ButtonClick(View view) {
+    //필터 버튼 바인딩
+    /*private void ButtonClick(View view) {
 
         switch (view.getId()) {
             case R.id.typeButton:
@@ -425,7 +427,7 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
             default:
                 Utils.psLog("No ID for Buttons");
         }
-    }
+    }*/
 
     @Override
     public void onDispatched() {

@@ -24,10 +24,4 @@
         android:title="@string/menu__message"
         />
 
-    <item
-        android:id="@+id/search_menu"
-        android:icon="@drawable/baseline_search_grey_24"
-        android:title="@string/menu__search"
-        />
-
 </menu>

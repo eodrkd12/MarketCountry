@@ -219,7 +219,6 @@ public interface PSApiService {
                                              @Field("user_email") String userEmail,
                                              @Field("user_phone") String userPhone,
                                              @Field("user_address") String user_address,
-                                             @Field("city") String city,
                                              @Field("user_about_me") String userAboutMe,
                                              @Field("device_token") String device_token
     );

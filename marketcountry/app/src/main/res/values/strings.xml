@@ -413,7 +413,7 @@
     <string name="item_detail__order_more_than_one">1개이상을 판매할 수 있는 상품입니다.</string>
     <string name="item_detail__photo">:사진</string>
     <string name="item_detail__photos">:사진</string>
-    <string name="item_detail__mark_sold">판매완료로 표시</string>
+    <string name="item_detail__mark_sold">판매완료등록</string>
     <string name="item_detail__delete">상품 삭제</string>
     <string name="item_detail__confirm_delete">이 상품을 삭제 하시겠습니까?</string>
     <string name="item_detail__confirm_sold_out">판매된 상품으로 표시 하시겠습니까?</string>

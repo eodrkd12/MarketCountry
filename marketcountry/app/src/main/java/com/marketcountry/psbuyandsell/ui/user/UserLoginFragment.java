@@ -422,7 +422,6 @@ public class UserLoginFragment extends PSFragment {
                 email,
                 email,
                 "",
-                ",",
                 "",
                 password,
                 "",

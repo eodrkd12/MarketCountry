@@ -234,7 +234,7 @@
                         android:layout_marginEnd="16dp"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
-                        android:text="Address"
+                        android:text="주소"
                         android:textColor="@color/text__primary"
                         android:textSize="12sp"
                         app:font='@{"normal"}'
@@ -242,7 +242,7 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/userPhoneEditText"
-                        tools:text="Address" />
+                        tools:text="주소" />
 
                     <EditText
                         android:id="@+id/userAddressEditText"
@@ -266,48 +266,6 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
-
-                    <TextView
-                        android:id="@+id/cityTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="City"
-                        android:textColor="@color/text__primary"
-                        android:textSize="12sp"
-                        app:font='@{"normal"}'
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/userAddressEditText"
-                        tools:text="City" />
-
-                    <EditText
-                        android:id="@+id/userCityEditText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@drawable/layout_border"
-                        android:hint="City"
-                        android:inputType="textEmailAddress"
-                        android:paddingStart="10dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="10dp"
-                        android:paddingBottom="8dp"
-                        android:text="@{user.city}"
-                        android:textColor="@color/text__primary"
-                        android:textSize="@dimen/font_body_size"
-                        app:font='@{"normal"}'
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cityTextView" />
 
                     <EditText
                         android:id="@+id/userAboutMeEditText"
@@ -358,7 +316,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
@@ -369,7 +326,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/userCityEditText" />
+                        app:layout_constraintTop_toBottomOf="@+id/userAddressEditText" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

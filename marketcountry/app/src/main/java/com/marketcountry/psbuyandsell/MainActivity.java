@@ -300,13 +300,13 @@ public class MainActivity extends PSAppCompactActivity {
 
                     break;
 
-                case R.id.search_menu:
+                /*case R.id.search_menu:
                     Utils.addToolbarScrollFlag(binding.toolbar);
                     binding.addItemButton.setVisibility(View.GONE);
                     navigationController.navigateToFilter(MainActivity.this);
                     setToolbarText(binding.toolbar, getString(R.string.menu__search));
 
-                    break;
+                    break;*/
 
                 case R.id.me_menu:
                     Utils.addToolbarScrollFlag(binding.toolbar);
