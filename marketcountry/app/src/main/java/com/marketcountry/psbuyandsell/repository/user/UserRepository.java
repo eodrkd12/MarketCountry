@@ -521,6 +521,68 @@ public class UserRepository extends PSRepository {
 
     }
 
+    public LiveData<Resource<UserLogin>> postKakaoLogin(String apiKey, String kakaoId, String userName, String userEmail, String profilePhotoUrl, String deviceToken) {
+
+        final MutableLiveData<Resource<UserLogin>> statusLiveData = new MutableLiveData<>(); // To update the status to the listener
+
+        appExecutors.networkIO().execute(() -> {
+
+            try {
+
+                // Call the API Service
+                Response<User> response = psApiService
+                        .postGoogleLogin(apiKey, kakaoId, userName, userEmail, profilePhotoUrl, deviceToken).execute();
+
+
+                // Wrap with APIResponse Class
+                ApiResponse<User> apiResponse = new ApiResponse<>(response);
+
+                // If response is successful
+                if (apiResponse.isSuccessful()) {
+
+                    try {
+                        db.beginTransaction();
+
+                        if (apiResponse.body != null) {
+                            // set User id
+                            String userId = apiResponse.body.userId;
+
+                            // clear user login data
+                            userDao.deleteUserLogin();
+
+                            // insert user data
+                            userDao.insert(apiResponse.body);
+
+                            // insert user login
+                            UserLogin userLogin = new UserLogin(userId, true, apiResponse.body);
+                            userDao.insert(userLogin);
+
+                            db.setTransactionSuccessful();
+
+                            statusLiveData.postValue(Resource.success(userLogin));
+                        }
+
+                    } catch (NullPointerException ne) {
+                        Utils.psErrorLog("Null Pointer Exception : ", ne);
+                    } catch (Exception e) {
+                        Utils.psErrorLog("Exception : ", e);
+                    } finally {
+                        db.endTransaction();
+                    }
+
+                } else {
+                    statusLiveData.postValue(Resource.error(apiResponse.errorMessage, null));
+                }
+
+            } catch (IOException e) {
+                statusLiveData.postValue(Resource.error(e.getMessage(), null));
+            }
+
+        });
+        return statusLiveData;
+
+    }
+
     /**
      * Function to update user.
      *
@@ -587,7 +649,7 @@ public class UserRepository extends PSRepository {
             @Override
             protected LiveData<ApiResponse<ApiStatus>> createCall() {
                 Utils.psLog("Call API Service to update user.");
-                return psApiService.putUser(apiKey, user.userId, user.userName, user.userEmail, user.userPhone, user.userAddress, user.city, user.userAboutMe, user.deviceToken);
+                return psApiService.putUser(apiKey, user.userId, user.userName, user.userEmail, user.userPhone, user.userAddress,user.userAboutMe, user.deviceToken);
             }
 
             @Override

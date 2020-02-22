@@ -322,9 +322,7 @@ public class ProfileEditFragment extends PSFragment {
                 binding.get().userEmailEditText.getText().toString().equals(userViewModel.user.userEmail) &&
                 binding.get().userPhoneEditText.getText().toString().equals(userViewModel.user.userPhone) &&
                 binding.get().userAboutMeEditText.getText().toString().equals(userViewModel.user.userAboutMe) &&
-                binding.get().userAddressEditText.getText().toString().equals(userViewModel.user.userAddress) &&
-                binding.get().userCityEditText.getText().toString().equals(userViewModel.user.city
-                );
+                binding.get().userAddressEditText.getText().toString().equals(userViewModel.user.userAddress);
     }
 
     private void updateUserProfile() {
@@ -338,7 +336,6 @@ public class ProfileEditFragment extends PSFragment {
                 binding.get().userEmailEditText.getText().toString(),
                 binding.get().userPhoneEditText.getText().toString(),
                 binding.get().userAddressEditText.getText().toString(),
-                binding.get().userCityEditText.getText().toString(),
                 userViewModel.user.userPassword,
                 binding.get().userAboutMeEditText.getText().toString(),
                 userViewModel.user.userCoverPhoto,

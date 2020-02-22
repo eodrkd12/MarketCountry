@@ -12,7 +12,7 @@ public class FragmentDataBindingComponent implements androidx.databinding.DataBi
         this.adapter = new FragmentBindingAdapters(fragment);
     }
 
-    @Override
+    //@Override
     public FragmentBindingAdapters getFragmentBindingAdapters() {
         return adapter;
     }

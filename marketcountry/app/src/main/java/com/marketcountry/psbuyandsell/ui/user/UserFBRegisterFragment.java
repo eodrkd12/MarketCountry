@@ -113,7 +113,6 @@ public class UserFBRegisterFragment extends PSFragment {
                 "admin@mokets.com",
                 "",
                 "",
-                "",
                 "admin",
                 "",
                 "",

@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.multidex.MultiDexApplication;
 
+import com.kakao.auth.KakaoSDK;
 import com.marketcountry.psbuyandsell.di.AppInjector;
 
 import javax.inject.Inject;
@@ -21,6 +22,9 @@ import dagger.android.HasActivityInjector;
 
 public class PsApp extends MultiDexApplication implements HasActivityInjector {
 
+    private static volatile PsApp instance = null;
+    private static volatile Activity currentActivity = null;
+
     @Inject
     DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
@@ -34,6 +38,9 @@ public class PsApp extends MultiDexApplication implements HasActivityInjector {
     public void onCreate() {
         super.onCreate();
 
+        instance = this;
+
+        KakaoSDK.init(new KakaoSDKAdapter());
 
 //        if (LeakCanary.isInAnalyzerProcess(this)) {
 //            // This process is dedicated to LeakCanary for heap analysis.
@@ -43,6 +50,31 @@ public class PsApp extends MultiDexApplication implements HasActivityInjector {
 //        LeakCanary.install(this);
 //        setupLeakCanary();
 
+    }
+
+    public static Activity getCurrentActivity() {
+        return currentActivity;
+    }
+    public static void setCurrentActivity(Activity currentActivity) {
+        PsApp.currentActivity = currentActivity;
+    }
+
+    /**
+     * singleton 애플리케이션 객체를 얻는다.
+     * @return singleton 애플리케이션 객체
+     */
+    public static PsApp getGlobalApplicationContext() {
+        if(instance == null)
+            throw new IllegalStateException("this application does not inherit com.kakao.GlobalApplication");
+        return instance;
+    }
+    /**
+     * 애플리케이션 종료시 singleton 어플리케이션 객체 초기화한다.
+     */
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        instance = null;
     }
 
     @Override

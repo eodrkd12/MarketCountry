@@ -48,9 +48,6 @@ public class User {
     @SerializedName("user_address")
     public String userAddress;
 
-    @SerializedName("city")
-    public String city;
-
     @SerializedName("user_password")
     public String userPassword;
 
@@ -128,7 +125,7 @@ public class User {
     @SerializedName("item")
     public List<Item> itemList;
 
-    public User(@NonNull String userId, String userIsSysAdmin, String isCityAdmin, String facebookId, String phoneId, String googleId, String userName, String userEmail, String userPhone, String userAddress, String city, String userPassword, String userAboutMe, String userCoverPhoto, String userProfilePhoto, String roleId, String status, String isBanned, String addedDate, String deviceToken, String code, String overallRating, String whatsapp, String messenger, String followerCount, String followingCount, String isFollowed, String added_date_str, String verifyTypes, String emailVerify, String facebookVerify, String googleVerify, String phoneVerify, String ratingCount, RatingDetail ratingDetails) {
+    public User(@NonNull String userId, String userIsSysAdmin, String isCityAdmin, String facebookId, String phoneId, String googleId, String userName, String userEmail, String userPhone, String userAddress, String userPassword, String userAboutMe, String userCoverPhoto, String userProfilePhoto, String roleId, String status, String isBanned, String addedDate, String deviceToken, String code, String overallRating, String whatsapp, String messenger, String followerCount, String followingCount, String isFollowed, String added_date_str, String verifyTypes, String emailVerify, String facebookVerify, String googleVerify, String phoneVerify, String ratingCount, RatingDetail ratingDetails) {
         this.userId = userId;
         this.userIsSysAdmin = userIsSysAdmin;
         this.isCityAdmin = isCityAdmin;
@@ -139,7 +136,6 @@ public class User {
         this.userEmail = userEmail;
         this.userPhone = userPhone;
         this.userAddress = userAddress;
-        this.city = city;
         this.userPassword = userPassword;
         this.userAboutMe = userAboutMe;
         this.userCoverPhoto = userCoverPhoto;

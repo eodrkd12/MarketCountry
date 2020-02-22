@@ -219,7 +219,6 @@ public interface PSApiService {
                                              @Field("user_email") String userEmail,
                                              @Field("user_phone") String userPhone,
                                              @Field("user_address") String user_address,
-                                             @Field("city") String city,
                                              @Field("user_about_me") String userAboutMe,
                                              @Field("device_token") String device_token
     );
@@ -649,6 +648,17 @@ public interface PSApiService {
     Call<User> postGoogleLogin(
             @Path("API_KEY") String API_KEY,
             @Field("google_id") String googleId,
+            @Field("user_name") String userName,
+            @Field("user_email") String userEmail,
+            @Field("profile_photo_url") String profilePhotoUrl,
+            @Field("device_token") String deviceToken
+    );
+
+    @FormUrlEncoded
+    @POST("rest/users/kakao_register/api_key/{API_KEY}")
+    Call<User> postKakaoLogin(
+            @Path("API_KEY") String API_KEY,
+            @Field("kakao_id") String kakaoId,
             @Field("user_name") String userName,
             @Field("user_email") String userEmail,
             @Field("profile_photo_url") String profilePhotoUrl,

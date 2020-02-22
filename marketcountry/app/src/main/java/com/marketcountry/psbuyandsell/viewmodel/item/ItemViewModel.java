@@ -71,7 +71,8 @@ public class ItemViewModel extends PSViewModel {
     public Item currentItem;
 
     public String firstImagePath = Constants.EMPTY_STRING, secImagePath = Constants.EMPTY_STRING,
-            thirdImagePath = Constants.EMPTY_STRING, fouthImagePath = Constants.EMPTY_STRING, fifthImagePath = Constants.EMPTY_STRING;
+            thirdImagePath = Constants.EMPTY_STRING, fouthImagePath = Constants.EMPTY_STRING, fifthImagePath = Constants.EMPTY_STRING,
+            sixthImagePath=Constants.EMPTY_STRING,seventhImagePath=Constants.EMPTY_STRING,eighthImagePath=Constants.EMPTY_STRING;
 
     public String userId = "";
 

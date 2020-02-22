@@ -276,7 +276,6 @@ public class UserRegisterFragment extends PSFragment {
                 userEmail,
                 "",
                 "",
-                "",
                 userPassword,
                 "",
                 "",

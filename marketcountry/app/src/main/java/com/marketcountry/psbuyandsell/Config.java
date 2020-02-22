@@ -173,6 +173,11 @@ public class Config {
     public static boolean ENABLE_GOOGLE_LOGIN = true;
 
     /**
+     * Kakao login Config
+     */
+    public static boolean ENABLE_KAKAO_LOGIN = true;
+
+    /**
      * Phone login Config
      */
     public static boolean ENABLE_PHONE_LOGIN = true;
