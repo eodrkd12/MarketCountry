@@ -103,7 +103,7 @@ public class NavigationController {
     private final int containerId;
     private RegFragments currentFragment;
     public Uri photoURI;
-    FragmentActivity fragmentActivity; // added
+
     //endregion
 
 
@@ -862,7 +862,7 @@ public class NavigationController {
     public void navigateToSearchActivityCategoryFragment(FragmentActivity fragmentActivity, String fragName, String catId, String subCatId) {
         Intent intent = new Intent(fragmentActivity, DashboardSearchByCategoryActivity.class);
         intent.putExtra(Constants.CATEGORY_FLAG, fragName);
-        this.fragmentActivity = fragmentActivity; // added
+
         if (!catId.equals(Constants.NO_DATA)) {
             intent.putExtra(Constants.CATEGORY_ID, catId);
         }
@@ -896,7 +896,6 @@ public class NavigationController {
         intent.putExtra(Constants.CATEGORY_ID, catId);
 
         fragmentActivity.setResult(Constants.RESULT_CODE__SEARCH_WITH_CATEGORY, intent);
-        navigateToSearchActivityCategoryFragment(fragmentActivity, Constants.SUBCATEGORY, catId, ""); // added
     }
 
     public void navigateBackToSearchFragmentFromSubCategory(FragmentActivity fragmentActivity, String sub_id, String sub_Name) {
