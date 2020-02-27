@@ -166,7 +166,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.catId = data.getStringExtra(Constants.CATEGORY_ID);
             binding.get().categoryTextView.setText(data.getStringExtra(Constants.CATEGORY_NAME));
             itemViewModel.holder.cat_id = this.catId;
-            navigationController.navigateToSearchActivityCategoryFragment(this.getActivity(), Constants.SUBCATEGORY, catId, subCatId); // added
+            this.subCatId = "";
+            itemViewModel.holder.sub_cat_id = this.subCatId;
+            binding.get().subCategoryTextView.setText("");
+
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_SUBCATEGORY) {
 
             this.subCatId = data.getStringExtra(Constants.SUBCATEGORY_ID);
