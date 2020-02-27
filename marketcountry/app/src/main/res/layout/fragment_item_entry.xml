@@ -488,7 +488,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <RadioGroup
+                    <!--<RadioGroup
 
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -545,9 +545,9 @@
                             android:text="교환신청"
                             android:textSize="12sp" />
                     </RadioGroup>
+-->
 
-
-                    <!--<TextView
+                    <TextView
                         android:id="@+id/typeTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -579,7 +579,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/down" />-->
+                        app:srcCompat="@drawable/down" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
