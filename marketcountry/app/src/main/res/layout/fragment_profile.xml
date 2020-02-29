@@ -167,20 +167,6 @@
                         app:layout_constraintTop_toTopOf="@+id/view8" />
 
                     <TextView
-                        android:id="@+id/followingUserTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="3"
-                        android:gravity="center"
-                        android:textColor="@color/text__primary"
-                        app:font='@{"normal"}'
-                        app:layout_constraintBottom_toTopOf="@+id/view13"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/view7"
-                        app:layout_constraintTop_toTopOf="@+id/view8" />
-
-                    <TextView
                         android:id="@+id/joinedDateTitleTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -299,7 +285,7 @@
                             android:layout_marginBottom="8dp"
                             android:layout_marginTop="8dp"
                             android:contentDescription="@string/image_default__image"
-                            android:tint="@color/md_grey_700"
+                            android:tint="@color/global__primary"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -456,6 +442,21 @@
                         app:layout_constraintStart_toEndOf="@+id/phoneImage"
                         app:layout_constraintTop_toTopOf="@+id/phoneImage"
                         app:srcCompat="@drawable/googleg_standard_color_18" />
+
+                    <TextView
+                        android:id="@+id/followingUserTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:textColor="@color/text__primary"
+                        app:font='@{"normal"}'
+                        app:layout_constraintBottom_toTopOf="@+id/view13"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/view7"
+                        app:layout_constraintTop_toTopOf="@+id/view8"
+                        app:layout_constraintVertical_bias="1.0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

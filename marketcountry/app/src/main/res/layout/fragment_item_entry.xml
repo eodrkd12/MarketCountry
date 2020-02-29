@@ -488,11 +488,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <!--<RadioGroup
-
+                    <RadioGroup
+                        android:id="@+id/typeRadioGroup"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@color/text__white"
+                        android:background="@color/browser_actions_bg_grey"
                         android:gravity="center_vertical"
                         android:hint="@string/sf__notSet"
                         android:inputType="none"
@@ -501,52 +501,52 @@
                         android:paddingTop="2dp"
                         android:paddingEnd="5dp"
                         android:paddingBottom="2dp"
-                        android:textColor="@color/text__primary"
-                        android:textSize="@dimen/font_body_size"
-                        app:font='@{"normal"}'
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <RadioButton
-                            android:id="@+id/option1"
+                            android:id="@+id/typeOption1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
                             android:text="산지 직송"
                             android:textSize="12sp" />
 
                         <RadioButton
-                            android:id="@+id/option2"
+                            android:id="@+id/typeOption2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
                             android:text="팝니다"
                             android:textSize="12sp" />
 
                         <RadioButton
-                            android:id="@+id/option3"
+                            android:id="@+id/typeOption3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
                             android:text="삽니다"
                             android:textSize="12sp" />
 
                         <RadioButton
-                            android:id="@+id/option4"
+                            android:id="@+id/typeOption4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
                             android:text="무료 나눔"
                             android:textSize="12sp" />
 
                         <RadioButton
-                            android:id="@+id/option5"
+                            android:id="@+id/typeOption5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:checked="false"
+                            android:buttonTint="@color/global__primary"
                             android:text="교환신청"
                             android:textSize="12sp" />
                     </RadioGroup>
--->
-
+<!--
                     <TextView
                         android:id="@+id/typeTextView"
                         android:layout_width="0dp"
@@ -579,7 +579,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/down" />
+                        app:srcCompat="@drawable/down" />-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

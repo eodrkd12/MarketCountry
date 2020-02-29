@@ -340,7 +340,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         binding.get().historyTextView.setText(binding.get().historyTextView.getText().toString());
         binding.get().seeAllTextView.setText(binding.get().seeAllTextView.getText().toString());
         binding.get().joinedDateTitleTextView.setText(binding.get().joinedDateTitleTextView.getText().toString());
-        binding.get().joinedDateTextView.setText(user.addedDate);
+        binding.get().joinedDateTextView.setText(user.addedDate.substring(0,10));
         binding.get().nameTextView.setText(user.userName);
         binding.get().overAllRatingTextView.setText(user.overallRating);
         binding.get().ratingBarInformation.setRating(user.ratingDetails.totalRatingValue);
