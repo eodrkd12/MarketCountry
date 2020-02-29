@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,6 +104,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private boolean isUploadSuccess = false;
 
     private String typeTemp;
+    private String conditionTemp;
 
     @VisibleForTesting
     private AutoClearedValue<FragmentItemEntryBinding> binding;
@@ -200,12 +202,12 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.dealOptionId = data.getStringExtra(Constants.ITEM_OPTION_TYPE_ID);
             binding.get().dealOptionTextView.setText(data.getStringExtra(Constants.ITEM_OPTION_TYPE_NAME));
             itemViewModel.holder.deal_option_id = this.dealOptionId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CONDITION_TYPE) {
+        } /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CONDITION_TYPE) {
 
             this.conditionId = data.getStringExtra(Constants.ITEM_CONDITION_TYPE_ID);
             binding.get().itemConditionTextView.setText(data.getStringExtra(Constants.ITEM_CONDITION_TYPE_NAME));
             itemViewModel.holder.condition_id = this.conditionId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_LOCATION_TYPE) {
+        }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_LOCATION_TYPE) {
 
             this.locationId = data.getStringExtra(Constants.ITEM_LOCATION_TYPE_ID);
             itemViewModel.latValue = data.getStringExtra(Constants.LAT);
@@ -499,7 +501,30 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         });
 
-        binding.get().itemConditionCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CONDITION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+        //binding.get().itemConditionCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CONDITION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+
+        binding.get().conditionRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int id) {
+                switch (id){
+                    case R.id.conditionOption1 :
+                        conditionTemp = binding.get().conditionOption1.getText().toString();
+                        break;
+                    case R.id.conditionOption2 :
+                        conditionTemp = binding.get().conditionOption2.getText().toString();
+                        break;
+                    case R.id.conditionOption3 :
+                        conditionTemp = binding.get().conditionOption3.getText().toString();
+                        break;
+                    case R.id.conditionOption4 :
+                        conditionTemp = binding.get().conditionOption4.getText().toString();
+                        break;
+
+                }
+                Log.d("상품상태",conditionTemp);
+            }
+
+        });
 
         binding.get().priceTypeCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_PRICE_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
@@ -540,7 +565,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if (binding.get().typeRadioGroup.isSelected()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_type), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().itemConditionTextView.getText().toString().isEmpty()) {
+            } else if (binding.get().conditionRadioGroup.isSelected()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_item_condition), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else if (binding.get().dealOptionTextView.getText().toString().isEmpty()) {
@@ -565,13 +590,13 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
                 if (itemViewModel.itemId != null) {
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
-                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionId, this.locationId,
+                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
                     } else {//add new item
-                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionId, this.locationId,
+                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, "", binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
@@ -1103,7 +1128,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         itemViewModel.holder.cat_id = item.catId;
         itemViewModel.holder.sub_cat_id = item.subCatId;
         //itemViewModel.holder.type_id = item.itemTypeId;
-        itemViewModel.holder.condition_id = item.conditionOfItem;
+        //itemViewModel.holder.condition_id = item.conditionOfItem;
         itemViewModel.holder.price_type_id = item.itemPriceTypeId;
         itemViewModel.holder.currency_id = item.itemCurrencyId;
         itemViewModel.holder.location_id = item.itemLocation.id;
@@ -1112,7 +1137,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         this.catId = item.catId;
         this.subCatId = item.subCatId;
         //this.typeId = item.itemTypeId;
-        this.conditionId = item.conditionOfItem;
+        //this.conditionId = item.conditionOfItem;
         this.priceTypeId = item.itemPriceTypeId;
         this.currencyId = item.itemCurrencyId;
         this.locationId = item.itemLocation.id;
@@ -1121,7 +1146,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         binding.get().categoryTextView.setText(item.category.name);
         binding.get().subCategoryTextView.setText(item.subCategory.name);
         //binding.get().typeTextView.setText(item.itemType.name);
-        binding.get().itemConditionTextView.setText(item.itemCondition.name);
+        //binding.get().itemConditionTextView.setText(item.itemCondition.name);
         binding.get().priceTypeTextView.setText(item.itemPriceType.name);
         binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);
         binding.get().locationTextView.setText(item.itemLocation.name);

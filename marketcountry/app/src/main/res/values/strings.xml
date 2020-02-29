@@ -462,7 +462,7 @@
     <string name="item_entry_need_price">가격을 입력해주세요</string>
     <string name="item_entry_need_currency_symbol">통화 기호를 선택하십시오</string>
     <string name="item_entry_offer_not_zero">제공 가격은 0이 될 수 없습니다</string>
-    <string name="item_entry_accept_confirm">이 가격을 정말로 수락 하시겠습니까?</string>
+    <string name="item_entry_accept_confirm">판매를 수락 하시겠습니까?</string>
     <string name="item_entry_reject_confirm">이 가격을 정말로 거절 하시겠습니까?</string>
     <string name="item_entry_user_not_exit">이 사용자는 종료하지 않았습니다</string>
     <string name="item_from_follower_toolbar">팔로워의 상품목록</string>
@@ -611,10 +611,10 @@
     <string name="chat__mark_as_sold">판매완료로 표시</string>
     <string name="chat__accept">수락</string>
     <string name="chat__reject">거절</string>
-    <string name="chat__make_offer_title">상품에 대한 가격을 흥정하십시오</string>
-    <string name="chat__offer">\ 흥정하기</string>
-    <string name="chat__make_offer_sender">해당가격에 흥정중</string>
-    <string name="chat__make_offer_receiver">가격 흥정을 받았습니다</string>
+    <string name="chat__make_offer_title">상품구매신청</string>
+    <string name="chat__offer">\ 구매신청</string>
+    <string name="chat__make_offer_sender">구매하기</string>
+    <string name="chat__make_offer_receiver">구매신청을 받았습니다</string>
     <string name="chat__accept_text">흥정 수락</string>
     <string name="chat__reject_text">흥정 거절</string>
     <string name="chat__sold">판매</string>
