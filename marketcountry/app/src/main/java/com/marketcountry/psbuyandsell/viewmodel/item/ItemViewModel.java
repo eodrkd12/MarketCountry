@@ -194,7 +194,7 @@ public class ItemViewModel extends PSViewModel {
 
     //item upload
 
-    public void setUploadItemObj(String catId, String subCatId, String itemTypeId, String itemPriceTypeId, String itemCurrencyId, String conditionId, String locationId,
+    public void  setUploadItemObj(String catId, String subCatId, String itemTypeId, String itemPriceTypeId, String itemCurrencyId, String conditionId, String locationId,
                                  String remark, String description, String highlightInfo, String price, String dealOptionId, String brand, String businessMode,
                                  String isSoldOut, String title, String address, String lat, String lng, String itemId, String userId) {
         UploadItemTmpDataHolder tmpDataHolder = new UploadItemTmpDataHolder(catId, subCatId, itemTypeId, itemPriceTypeId, itemCurrencyId, conditionId,locationId,remark,

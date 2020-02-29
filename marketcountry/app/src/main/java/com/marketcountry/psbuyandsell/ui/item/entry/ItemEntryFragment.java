@@ -12,17 +12,21 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -101,6 +105,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private ProgressDialog progressDialog;
     private boolean isUploadSuccess = false;
 
+    String typeTemp;
 
     @VisibleForTesting
     private AutoClearedValue<FragmentItemEntryBinding> binding;
@@ -161,6 +166,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //dataTempForType = data;
+
         if (requestCode == Constants.REQUEST_CODE__SEARCH_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_CATEGORY) {
 
             this.catId = data.getStringExtra(Constants.CATEGORY_ID);
@@ -174,16 +181,15 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             binding.get().subCategoryTextView.setText("");*/
 
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_SUBCATEGORY) {
-
             this.subCatId = data.getStringExtra(Constants.SUBCATEGORY_ID);
             binding.get().subCategoryTextView.setText(data.getStringExtra(Constants.SUBCATEGORY_NAME));
             itemViewModel.holder.sub_cat_id = this.subCatId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_TYPE) {
+        } /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_TYPE) {
 
             this.typeId = data.getStringExtra(Constants.ITEM_TYPE_ID);
             binding.get().typeTextView.setText(data.getStringExtra(Constants.ITEM_TYPE_NAME));
             itemViewModel.holder.type_id = this.typeId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_PRICE_TYPE) {
+        }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_PRICE_TYPE) {
 
             this.priceTypeId = data.getStringExtra(Constants.ITEM_PRICE_TYPE_ID);
             binding.get().priceTypeTextView.setText(data.getStringExtra(Constants.ITEM_PRICE_TYPE_NAME));
@@ -470,7 +476,32 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             }
         });
 
-        binding.get().typeCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+        //binding.get().typeCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+
+        binding.get().typeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int id) {
+                switch (id){
+                    case R.id.typeOption1 :
+                        typeTemp = binding.get().typeOption1.getText().toString();
+                        break;
+                    case R.id.typeOption2 :
+                        typeTemp = binding.get().typeOption2.getText().toString();
+                        break;
+                    case R.id.typeOption3 :
+                        typeTemp = binding.get().typeOption3.getText().toString();
+                        break;
+                    case R.id.typeOption4 :
+                        typeTemp = binding.get().typeOption4.getText().toString();
+                        break;
+                    case R.id.typeOption5 :
+                        typeTemp = binding.get().typeOption5.getText().toString();
+                        break;
+                }
+
+            }
+
+        });
 
         binding.get().itemConditionCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CONDITION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
@@ -510,7 +541,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if (binding.get().subCategoryTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_subcategory), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().typeTextView.getText().toString().isEmpty()) {
+            } else if (binding.get().typeRadioGroup.isSelected()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_type), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else if (binding.get().itemConditionTextView.getText().toString().isEmpty()) {
@@ -538,17 +569,21 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
                 if (itemViewModel.itemId != null) {
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
-                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeId, this.priceTypeId, this.currencyId, this.conditionId, this.locationId,
+                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionId, this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
+                        Log.d("서밋1",this.typeTemp);
+                        Log.d("서밋1 / test ",binding.get().brandEditText.getText().toString());
                     } else {//add new item
-                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeId, this.priceTypeId, this.currencyId, this.conditionId, this.locationId,
+                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionId, this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, "", binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, "", loginUserId);
+                        Log.d("서밋2",this.typeTemp);
+                        Log.d("서밋2 / test ",binding.get().brandEditText.getText().toString());
                     }
 
                 }
@@ -1075,7 +1110,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         binding.get().titleEditText.setText(item.title);
         itemViewModel.holder.cat_id = item.catId;
         itemViewModel.holder.sub_cat_id = item.subCatId;
-        itemViewModel.holder.type_id = item.itemTypeId;
+        //itemViewModel.holder.type_id = item.itemTypeId;
         itemViewModel.holder.condition_id = item.conditionOfItem;
         itemViewModel.holder.price_type_id = item.itemPriceTypeId;
         itemViewModel.holder.currency_id = item.itemCurrencyId;
@@ -1084,7 +1119,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         itemViewModel.is_sold_out = item.isSoldOut;
         this.catId = item.catId;
         this.subCatId = item.subCatId;
-        this.typeId = item.itemTypeId;
+        //this.typeId = item.itemTypeId;
         this.conditionId = item.conditionOfItem;
         this.priceTypeId = item.itemPriceTypeId;
         this.currencyId = item.itemCurrencyId;
@@ -1093,7 +1128,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         binding.get().dealOptionTextView.setText(item.itemDealOption.name);
         binding.get().categoryTextView.setText(item.category.name);
         binding.get().subCategoryTextView.setText(item.subCategory.name);
-        binding.get().typeTextView.setText(item.itemType.name);
+        //binding.get().typeTextView.setText(item.itemType.name);
         binding.get().itemConditionTextView.setText(item.itemCondition.name);
         binding.get().priceTypeTextView.setText(item.itemPriceType.name);
         binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);

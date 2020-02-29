@@ -299,7 +299,7 @@
                             android:layout_marginBottom="8dp"
                             android:layout_marginTop="8dp"
                             android:contentDescription="@string/image_default__image"
-                            android:tint="@color/md_grey_700"
+                            android:tint="@color/global__primary"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"

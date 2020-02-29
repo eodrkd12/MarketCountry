@@ -13,7 +13,7 @@ public class ItemType {
     public String id;
 
     @SerializedName("name")
-    public final String name;
+    public String name;
 
     @SerializedName("status")
     public final String status;
