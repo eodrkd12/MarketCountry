@@ -1129,7 +1129,7 @@ public class ItemFragment extends PSFragment {
             binding.get().imageView24.setVisibility(View.VISIBLE);
         }
 
-        if (item != null && item.itemTypeId != null && item.itemTypeId.equals("")) {
+        if (item != null && item.itemType.name != null && item.itemType.name.equals("")) {
             binding.get().saleBuyTextView.setVisibility(View.GONE);
             binding.get().imageView27.setVisibility(View.GONE);
         } else {

@@ -502,7 +502,7 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="16dp"
-                                android:text="@{item.itemTypeId}"
+                                android:text="@{item.itemType.name}"
                                 android:textColor="@color/text__primary"
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'

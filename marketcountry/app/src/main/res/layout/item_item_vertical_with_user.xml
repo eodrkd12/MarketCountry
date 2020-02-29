@@ -184,7 +184,7 @@
                     android:layout_marginEnd="8dp"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="@{item.itemTypeId}"
+                    android:text="@{item.itemType.name}"
                     android:textColor="@color/md_grey_500"
                     android:textSize="@dimen/font_body_s_size"
                     app:font='@{"normal"}'
