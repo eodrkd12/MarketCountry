@@ -521,7 +521,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                         break;
 
                 }
-                Log.d("상품상태",conditionTemp);
             }
 
         });

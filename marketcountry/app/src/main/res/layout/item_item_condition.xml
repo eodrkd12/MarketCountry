@@ -9,6 +9,9 @@
         <variable
             name="itemCondition"
             type="com.marketcountry.psbuyandsell.viewobject.ItemCondition" />
+        <variable
+            name="item"
+            type="com.marketcountry.psbuyandsell.viewobject.Item" />
 
     </data>
 
@@ -23,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="@{itemCondition.name}"
+            android:text="@{item.conditionOfItem}"
             android:textAlignment="viewStart"
             app:font='@{"normal"}'
             app:layout_constraintStart_toStartOf="parent"
