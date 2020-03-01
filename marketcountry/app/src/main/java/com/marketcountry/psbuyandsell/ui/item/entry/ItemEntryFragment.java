@@ -187,17 +187,17 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.typeId = data.getStringExtra(Constants.ITEM_TYPE_ID);
             binding.get().typeTextView.setText(data.getStringExtra(Constants.ITEM_TYPE_NAME));
             itemViewModel.holder.type_id = this.typeId;
-        }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_PRICE_TYPE) {
+        }*/ /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_PRICE_TYPE) {
 
             this.priceTypeId = data.getStringExtra(Constants.ITEM_PRICE_TYPE_ID);
             binding.get().priceTypeTextView.setText(data.getStringExtra(Constants.ITEM_PRICE_TYPE_NAME));
             itemViewModel.holder.price_type_id = this.priceTypeId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CURRENCY_TYPE) {
+        } *//*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CURRENCY_TYPE) {
 
             this.currencyId = data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_ID);
             binding.get().priceTextView.setText(data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_NAME));
             itemViewModel.holder.currency_id = this.currencyId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
+        }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
 
             this.dealOptionId = data.getStringExtra(Constants.ITEM_OPTION_TYPE_ID);
             binding.get().dealOptionTextView.setText(data.getStringExtra(Constants.ITEM_OPTION_TYPE_NAME));
@@ -576,10 +576,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if (binding.get().priceEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_price), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().priceTextView.getText().toString().isEmpty()) {
+            } /*else if (binding.get().priceTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_currency_symbol), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else {
+            }*/ else {
 
                 isUploadSuccess = false;
 
@@ -591,13 +591,13 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
                         itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
-                                binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), this.dealOptionId,
+                                /*binding.get().highlightInfoEditText.getText().toString()*/"", binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
                     } else {//add new item
                         itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
-                                binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), this.dealOptionId,
+                                /*binding.get().highlightInfoEditText.getText().toString()*/"", binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, "", binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, "", loginUserId);
                     }
@@ -1146,8 +1146,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         binding.get().subCategoryTextView.setText(item.subCategory.name);
         //binding.get().typeTextView.setText(item.itemType.name);
         //binding.get().itemConditionTextView.setText(item.itemCondition.name);
-        binding.get().priceTypeTextView.setText(item.itemPriceType.name);
-        binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);
+        //binding.get().priceTypeTextView.setText(item.itemPriceType.name);
+        //binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);
         binding.get().locationTextView.setText(item.itemLocation.name);
         bindMap(item.lat, item.lng);
         itemViewModel.mapLat = item.lat;
@@ -1155,7 +1155,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         bindingLatLng(item.lat, item.lng);
         binding.get().brandEditText.setText(item.brand);
         binding.get().priceEditText.setText(item.price);
-        binding.get().highlightInfoEditText.setText(item.highlightInfo);
+        //binding.get().highlightInfoEditText.setText(item.highlightInfo);
         binding.get().descEditText.setText(item.description);
         binding.get().remarkEditText.setText(item.dealOptionRemark);
         bindingIsShop(item.businessMode);

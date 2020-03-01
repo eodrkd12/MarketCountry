@@ -756,7 +756,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/priceTypeTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -772,7 +772,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/brandEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/brandEditText" />-->
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/priceTypeCardView"
@@ -789,7 +789,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceTypeTitleTextView">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -826,7 +826,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/down" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -842,9 +842,10 @@
                 android:textColor="@color/text__primary"
                 android:textSize="@dimen/font_title_size"
                 app:font='@{"normal"}'
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/priceTypeCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/brandEditText" />
 
             <TextView
                 android:id="@+id/starTextView8"
@@ -874,7 +875,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceTitleTextView">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
@@ -913,7 +914,7 @@
                         app:layout_constraintStart_toEndOf="@+id/priceTextView"
                         app:layout_constraintTop_toTopOf="@+id/priceTextView"
                         app:srcCompat="@drawable/down" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
             </androidx.cardview.widget.CardView>
 
             <EditText
@@ -921,6 +922,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/space_16"
                 android:background="@drawable/custom_progress_bar_horizontal"
                 android:inputType="numberDecimal"
                 android:paddingStart="@dimen/space_12"
@@ -930,14 +932,12 @@
                 android:paddingRight="@dimen/space_12"
                 android:paddingBottom="8dp"
                 android:textAlignment="viewStart"
-                android:layout_marginStart="@dimen/space_16"
-                android:layout_marginEnd="@dimen/space_16"
                 android:textColor="@color/text__primary"
                 android:textSize="14sp"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/priceCardView"
+                app:layout_constraintStart_toStartOf="@+id/priceTitleTextView"
                 app:layout_constraintTop_toBottomOf="@+id/priceTitleTextView" />
 
             <TextView
@@ -956,7 +956,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/priceCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/priceEditText" />
 
             <CheckBox
                 android:id="@+id/isShopCheckBox"
@@ -997,7 +997,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/isShopTextView" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/highlightInfoTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -1039,7 +1039,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/highlightInfoTitleTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />-->
 
             <TextView
                 android:id="@+id/descTextView"
@@ -1053,10 +1053,11 @@
                 android:textColor="@color/text__primary"
                 android:textSize="@dimen/font_title_size"
                 app:font='@{"normal"}'
+                android:text="@string/item_entry_detail__description"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/item_entry_detail__description"
-                app:layout_constraintTop_toBottomOf="@+id/highlightInfoEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/isShopTextView1"/>
 
             <TextView
                 android:id="@+id/starTextView5"
