@@ -1,15 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--===============-->
+    <!-- Key to update -->
+    <!--===============-->
 
+    <string name="facebook_app_id" translatable="false">20278067320201</string>
+    <!--<string name="facebook_app_id" translatable="false">0000000000000000</string>-->
 
+    <string name="fb_login_protocol_scheme" translatable="false">fb20272067320201</string>
+    <!--<string name="fb_login_protocol_scheme" translatable="false">fb0000000000000000</string>-->
 
+    <string name="admob_ads_api_key" translatable="false">ca-app-pub-1007967075190551~7998882479</string>
+    aaaa
+    <!--<string name="admob_ads_api_key" translatable="false">ca-app-pub-0000000000000000~0000000000</string>-->
 
+    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-1007967075190551/6494229118</string>
+    <!--<string name="admob_banner_ads_key" translatable="false">ca-app-pub-0000000000000000/0000000000</string>-->
+    AIzaSyAriGPmlajGEzUeCz7fN8BBSewWFEXK6sE
+    <string name="google_map_api_key" translatable="false">AIzaSyAriGPmlajGEzUeCz7fN8BBSewWFEXK6sE</string>
+    <!--<string name="google_map_api_key" translatable="false">AI000000000000000000_000000000000000000</string>-->
 
+    <string name="adview_publisher_key" translatable="false">pub-1007967075190551</string>
+    <!--<string name="adview_publisher_key" translatable="false">pub-0000000000000000</string>-->
+    <!--GDPR-->
 
+    <!--===============-->
+    <!-- Key to update -->
+    <!--===============-->
 
-
-
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="item_detail__meetup" translatable="false">직거래</string>
+    <string name="item_detail__mailing_on_delivery" translatable="false">배송거래</string>
+    <string name="phone_login_phone_hint" translatable="false">+8201022224444 (국가번호+휴대폰번호)</string>
 
 
     <!--History -->
@@ -81,7 +103,7 @@
     <string name="contact_us__email">Email</string>
     <string name="contact_us__message">메세지쓰기..</string>
     <string name="contact_us__phone">연락처</string>
-    <string name="contact_us__submit">제출</string>
+    <string name="contact_us__submit">등록</string>
 
     <!-- Notification Setting -->
     <string name="notification_setting__on_off">알림 설정 ( On/Off )</string>
@@ -269,7 +291,7 @@
     <string name="profile__status">상태</string>
     <string name="profile__notification">알림</string>
     <string name="profile__followers">팔로워</string>
-    <string name="profile__following">팔로잉</string>
+    <string name="profile__following">상품후기</string>
     <string name="profile__listing">판매목록</string>
     <string name="profile__follow">팔로우</string>
     <string name="profile__unfollow">언팔로우</string>
@@ -392,7 +414,7 @@
     <string name="item_detail__order_more_than_one">1개이상을 판매할 수 있는 상품입니다.</string>
     <string name="item_detail__photo">:사진</string>
     <string name="item_detail__photos">:사진</string>
-    <string name="item_detail__mark_sold">판매완료로 표시</string>
+    <string name="item_detail__mark_sold">판매완료등록</string>
     <string name="item_detail__delete">상품 삭제</string>
     <string name="item_detail__confirm_delete">이 상품을 삭제 하시겠습니까?</string>
     <string name="item_detail__confirm_sold_out">판매된 상품으로 표시 하시겠습니까?</string>
@@ -441,7 +463,7 @@
     <string name="item_entry_need_price">가격을 입력해주세요</string>
     <string name="item_entry_need_currency_symbol">통화 기호를 선택하십시오</string>
     <string name="item_entry_offer_not_zero">제공 가격은 0이 될 수 없습니다</string>
-    <string name="item_entry_accept_confirm">이 가격을 정말로 수락 하시겠습니까?</string>
+    <string name="item_entry_accept_confirm">판매를 수락 하시겠습니까?</string>
     <string name="item_entry_reject_confirm">이 가격을 정말로 거절 하시겠습니까?</string>
     <string name="item_entry_user_not_exit">이 사용자는 종료하지 않았습니다</string>
     <string name="item_from_follower_toolbar">팔로워의 상품목록</string>
@@ -574,7 +596,6 @@
     <string name="country_select">국가를 선택해주세요.</string>
 
 
-
     <!--Setting -->
     <string name="setting__clear_cache_confirm">이미지 캐시를 지우시겠습니까?</string>
     <string name="setting__clear_image_cache">이미지 캐시 지우기</string>
@@ -588,17 +609,18 @@
     <string name="chat__retry_message">채팅에 로그인하지 못했습니다. 다시 시도 하시겠습니까?</string>
     <string name="chat__retry_retry">재시도</string>
     <string name="chat__retry_no">No</string>
-    <string name="chat__mark_as_sold">판매완료로 표시</string>
+    <string name="chat__mark_as_sold">배송시작</string>
     <string name="chat__accept">수락</string>
     <string name="chat__reject">거절</string>
-    <string name="chat__make_offer_title">상품에 대한 가격을 흥정하십시오</string>
-    <string name="chat__offer">\ 흥정하기</string>
-    <string name="chat__make_offer_sender">해당가격에 흥정중</string>
-    <string name="chat__make_offer_receiver">가격 흥정을 받았습니다</string>
-    <string name="chat__accept_text">흥정 수락</string>
-    <string name="chat__reject_text">흥정 거절</string>
+    <string name="chat__make_offer_title">상품구매신청</string>
+    <string name="chat__offer">\ 구매신청</string>
+    <string name="chat__make_offer_sender_send">구매하기</string>
+    <string name="chat__make_offer_sender">해당가격에 구매신청중</string>
+    <string name="chat__make_offer_receiver">구매신청을 받았습니다</string>
+    <string name="chat__accept_text">거래를 시작하세요</string>
+    <string name="chat__reject_text">거절</string>
     <string name="chat__sold">판매</string>
-    <string name="chat__give_review">평가하기</string>
+    <string name="chat__give_review">리뷰작성</string>
     <string name="chat__item_is_sold">판매 된 상품</string>
     <string name="chat__item_space_error">가격은 비워 둘 수 없습니다</string>
 
@@ -623,6 +645,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="kakao_app_key" translatable="false">9a2b72ebb8d428913ecc87ef9db21283</string>
+
 </resources>
+
+
 
 
