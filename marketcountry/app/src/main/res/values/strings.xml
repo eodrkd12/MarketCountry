@@ -613,12 +613,12 @@
     <string name="chat__reject">거절</string>
     <string name="chat__make_offer_title">상품구매신청</string>
     <string name="chat__offer">\ 구매신청</string>
-    <string name="chat__make_offer_sender">구매하기</string>
+    <string name="chat__make_offer_sender">해당가격에 구매신청중</string>
     <string name="chat__make_offer_receiver">구매신청을 받았습니다</string>
-    <string name="chat__accept_text">수락</string>
+    <string name="chat__accept_text">거래를 시작하세요</string>
     <string name="chat__reject_text">거절</string>
     <string name="chat__sold">판매</string>
-    <string name="chat__give_review">평가하기</string>
+    <string name="chat__give_review">판매후기</string>
     <string name="chat__item_is_sold">판매 된 상품</string>
     <string name="chat__item_space_error">가격은 비워 둘 수 없습니다</string>
 
