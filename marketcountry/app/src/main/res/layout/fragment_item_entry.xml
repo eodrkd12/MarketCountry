@@ -1149,42 +1149,52 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/dealOptionTextView"
+
+                    <RadioGroup
+                        android:id="@+id/conditionRadioGroup"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@color/text__white"
+                        android:background="@color/browser_actions_bg_grey"
                         android:gravity="center_vertical"
-                        android:hint="@string/sf__notSet"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:textColor="@color/text__primary"
-                        android:textSize="@dimen/font_body_size"
-                        app:font='@{"normal"}'
+                        android:inputType="none"
+                        android:orientation="horizontal"
+                        android:paddingStart="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/idealOptionImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:tint="@color/md_grey_400"
-                        android:contentDescription="@string/image_default__image"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/down" />
+                        <CheckBox
+                            android:id="@+id/dealOption1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="신선식품"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/dealOption2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="신선식품"
+                            android:textSize="12sp" />
+                        <CheckBox
+                            android:id="@+id/dealOption3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="신선식품"
+                            android:textSize="12sp" />
+
+                    </RadioGroup>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <EditText
+<!--            <EditText
                 android:id="@+id/remarkEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -1226,7 +1236,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/locationCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/locationCardView" />-->
 
             <!--<com.google.android.gms.maps.MapView-->
             <!--android:id="@+id/mapView"-->
@@ -1240,7 +1250,7 @@
 
             <!--</com.google.android.gms.maps.MapView>-->
 
-            <com.google.android.gms.maps.MapView
+            <!--<com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
@@ -1344,7 +1354,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/lngTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />-->
 
             <TextView
                 android:id="@+id/locationTitleTextView"
@@ -1363,7 +1373,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/remarkEditText"
+                app:layout_constraintTop_toBottomOf="@+id/dealOptionCardView"
                 tools:layout_editor_absoluteY="1141dp" />
 
             <androidx.cardview.widget.CardView
@@ -1434,7 +1444,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/item_entry_detail__address"
-                app:layout_constraintTop_toBottomOf="@+id/lngEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/locationCardView" />
 
             <EditText
                 android:id="@+id/addressEditText"

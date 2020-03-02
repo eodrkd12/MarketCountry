@@ -103,7 +103,7 @@
     <string name="contact_us__email">Email</string>
     <string name="contact_us__message">메세지쓰기..</string>
     <string name="contact_us__phone">연락처</string>
-    <string name="contact_us__submit">제출</string>
+    <string name="contact_us__submit">등록</string>
 
     <!-- Notification Setting -->
     <string name="notification_setting__on_off">알림 설정 ( On/Off )</string>
@@ -618,7 +618,7 @@
     <string name="chat__accept_text">거래를 시작하세요</string>
     <string name="chat__reject_text">거절</string>
     <string name="chat__sold">판매</string>
-    <string name="chat__give_review">판매후기</string>
+    <string name="chat__give_review">리뷰작성</string>
     <string name="chat__item_is_sold">판매 된 상품</string>
     <string name="chat__item_space_error">가격은 비워 둘 수 없습니다</string>
 
