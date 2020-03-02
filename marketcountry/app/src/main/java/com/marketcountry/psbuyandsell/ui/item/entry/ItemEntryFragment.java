@@ -132,12 +132,12 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             e.printStackTrace();
         }
 
-        binding.get().mapView.onCreate(savedInstanceState);
-        bindMap(selectedLat, selectedLng);
+        /*binding.get().mapView.onCreate(savedInstanceState);
+        bindMap(selectedLat, selectedLng);*/
 
     }
 
-    private void bindMap(String latValue, String lngValue) {
+    /*private void bindMap(String latValue, String lngValue) {
         binding.get().mapView.onResume();
 
         binding.get().mapView.getMapAsync(googleMap -> {
@@ -159,7 +159,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             }
 
         });
-    }
+    }*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -200,7 +200,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
 
             this.dealOptionId = data.getStringExtra(Constants.ITEM_OPTION_TYPE_ID);
-            binding.get().dealOptionTextView.setText(data.getStringExtra(Constants.ITEM_OPTION_TYPE_NAME));
+//            binding.get().dealOptionTextView.setText(data.getStringExtra(Constants.ITEM_OPTION_TYPE_NAME));
             itemViewModel.holder.deal_option_id = this.dealOptionId;
         } /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CONDITION_TYPE) {
 
@@ -218,7 +218,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             itemViewModel.mapLat = itemViewModel.latValue;
             itemViewModel.mapLng = itemViewModel.lngValue;
 
-            bindMap(itemViewModel.latValue, itemViewModel.lngValue);
+//            bindMap(itemViewModel.latValue, itemViewModel.lngValue);
         } else if (requestCode == Constants.RESULT_CODE__TO_MAP_VIEW && resultCode == Constants.RESULT_CODE__FROM_MAP_VIEW) {
 
             itemViewModel.latValue = data.getStringExtra(Constants.LAT);
@@ -226,7 +226,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
             changeCamera();
 
-            bindingLatLng(itemViewModel.latValue, itemViewModel.lngValue);
+            //bindingLatLng(itemViewModel.latValue, itemViewModel.lngValue);
         }
 
         //image  gallery upload
@@ -533,7 +533,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         binding.get().priceCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CURRENCY_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
-        binding.get().mapViewButton.setOnClickListener(v -> {
+        /*binding.get().mapViewButton.setOnClickListener(v -> {
 
             map.clear();
 
@@ -544,7 +544,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             }
 
 
-        });
+        });*/
 
         binding.get().submitButton.setOnClickListener(view -> {
 
@@ -567,10 +567,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if (binding.get().conditionRadioGroup.isSelected()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_item_condition), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().dealOptionTextView.getText().toString().isEmpty()) {
+            } /*else if (binding.get().dealOptionTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_deal_option), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().descEditText.getText().toString().isEmpty()) {
+            }*/ else if (binding.get().descEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_description), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else if (binding.get().priceEditText.getText().toString().isEmpty()) {
@@ -590,13 +590,13 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 if (itemViewModel.itemId != null) {
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
                         itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
-                                binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
+                                "", binding.get().descEditText.getText().toString(),
                                 /*binding.get().highlightInfoEditText.getText().toString()*/"", binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
                     } else {//add new item
                         itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
-                                binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
+                                "", binding.get().descEditText.getText().toString(),
                                 /*binding.get().highlightInfoEditText.getText().toString()*/"", binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, "", binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, "", loginUserId);
@@ -831,7 +831,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         getIntentData();
 
-        bindingLatLng(itemViewModel.latValue, itemViewModel.lngValue);
+        //bindingLatLng(itemViewModel.latValue, itemViewModel.lngValue);
 
         getItemDetail();
 
@@ -1141,7 +1141,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         this.currencyId = item.itemCurrencyId;
         this.locationId = item.itemLocation.id;
         this.dealOptionId = item.dealOptionId;
-        binding.get().dealOptionTextView.setText(item.itemDealOption.name);
+//        binding.get().dealOptionTextView.setText(item.itemDealOption.name);
         binding.get().categoryTextView.setText(item.category.name);
         binding.get().subCategoryTextView.setText(item.subCategory.name);
         //binding.get().typeTextView.setText(item.itemType.name);
@@ -1149,15 +1149,15 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         //binding.get().priceTypeTextView.setText(item.itemPriceType.name);
         //binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);
         binding.get().locationTextView.setText(item.itemLocation.name);
-        bindMap(item.lat, item.lng);
+//        bindMap(item.lat, item.lng);
         itemViewModel.mapLat = item.lat;
         itemViewModel.mapLng = item.lng;
-        bindingLatLng(item.lat, item.lng);
+        //bindingLatLng(item.lat, item.lng);
         binding.get().brandEditText.setText(item.brand);
         binding.get().priceEditText.setText(item.price);
         //binding.get().highlightInfoEditText.setText(item.highlightInfo);
         binding.get().descEditText.setText(item.description);
-        binding.get().remarkEditText.setText(item.dealOptionRemark);
+//        binding.get().remarkEditText.setText(item.dealOptionRemark);
         bindingIsShop(item.businessMode);
         binding.get().addressEditText.setText(item.address);
 
@@ -1223,10 +1223,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
     }
 
-    private void bindingLatLng(String latValue, String lngValue) {
+    /*private void bindingLatLng(String latValue, String lngValue) {
         binding.get().latitudeEditText.setText(latValue);
         binding.get().lngEditText.setText(lngValue);
-    }
+    }*/
 
     private void changeCamera() {
 

@@ -1151,7 +1151,7 @@
 
 
                     <RadioGroup
-                        android:id="@+id/conditionRadioGroup"
+                        android:id="@+id/dealOptionRadioGroup"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@color/browser_actions_bg_grey"
@@ -1172,7 +1172,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/global__primary"
-                            android:text="신선식품"
+                            android:text="택배"
                             android:textSize="12sp" />
 
                         <CheckBox
@@ -1180,14 +1180,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/global__primary"
-                            android:text="신선식품"
+                            android:text="무료배송"
                             android:textSize="12sp" />
                         <CheckBox
                             android:id="@+id/dealOption3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/global__primary"
-                            android:text="신선식품"
+                            android:text="직거래"
                             android:textSize="12sp" />
 
                     </RadioGroup>
@@ -1446,12 +1446,12 @@
                 android:text="@string/item_entry_detail__address"
                 app:layout_constraintTop_toBottomOf="@+id/locationCardView" />
 
+
             <EditText
                 android:id="@+id/addressEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/custom_progress_bar_horizontal"
                 android:inputType="textPersonName"
@@ -1462,14 +1462,14 @@
                 android:paddingRight="@dimen/space_12"
                 android:paddingBottom="8dp"
                 android:textAlignment="viewStart"
+                android:enabled="false"
                 android:textColor="@color/text__primary"
                 android:textSize="14sp"
                 app:font='@{"normal"}'
-                app:layout_constraintTop_toBottomOf="@+id/addressTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/dealOptionsConstraintLayout"

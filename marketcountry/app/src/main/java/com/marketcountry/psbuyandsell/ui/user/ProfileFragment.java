@@ -96,7 +96,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         binding.get().settingTextView.setOnClickListener(view -> navigationController.navigateToSettingActivity(getActivity()));
         binding.get().followingUserTextView.setOnClickListener(view -> navigationController.navigateToUserListActivity(ProfileFragment.this.getActivity(), new UserParameterHolder().getFollowingUsers()));
         binding.get().followUserTextView.setOnClickListener(view -> navigationController.navigateToUserListActivity(ProfileFragment.this.getActivity(), new UserParameterHolder().getFollowerUsers()));
-        binding.get().deactivateTextView.setOnClickListener(new View.OnClickListener() {
+        /*binding.get().deactivateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 psDialogMsg.showConfirmDialog(getString(R.string.profile__confirm_deactivate), getString(R.string.app__ok), getString(R.string.message__cancel_close));
@@ -111,7 +111,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
                 psDialogMsg.cancelButton.setOnClickListener(v1 -> psDialogMsg.cancel());
 
             }
-        });
+        });*/
     }
 
     @Override

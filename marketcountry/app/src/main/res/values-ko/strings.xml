@@ -149,6 +149,7 @@
     <string name="edit_setting__notification_setting">알림 설정</string>
     <string name="edit_setting__edit_profile">프로필 편집</string>
     <string name="edit_setting__logout">로그아웃</string>
+    <string name="edit_setting__removeAccount">계정삭제</string>
     <string name="edit_setting__logout_question">로그아웃 하시겠습니까?</string>
     <string name="edit_setting__terms_and_conditions">이용약관 및 개인정보보호정책</string>
     <string name="edit_setting__app_info">앱 정보</string>
