@@ -1,6 +1,5 @@
 package com.marketcountry.psbuyandsell.ui.chathistory.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +65,7 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
     protected void bind(ItemSellerChatHistoryListAdapterBinding binding, ChatHistory chatHistory) {
         binding.setChatHistory(chatHistory);
 
-        if (!chatHistory.item.price.equals("")) {
+        if (!chatHistory.item.itemCurrency.currencySymbol.equals("") && !chatHistory.item.price.equals("")) {
             String currencySymbol = chatHistory.item.itemCurrency.currencySymbol;
             String price;
             try {
@@ -81,10 +80,9 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
             } else {
                 currencyPrice = price + " " + currencySymbol;
             }
-            Log.d("가격",price);
-            binding.priceTextView.setText(price);
+            binding.priceTextView.setText(currencyPrice);
         }
-            binding.itemConditionTextView.setText(binding.getRoot().getResources().getString(R.string.item_condition__type, chatHistory.item.conditionOfItem));
+            binding.itemConditionTextView.setText(binding.getRoot().getResources().getString(R.string.item_condition__type, chatHistory.item.itemCondition.name));
 
             if (chatHistory.buyerUnreadCount.equals(Constants.ZERO)) {
                 binding.countTextView.setVisibility(View.GONE);

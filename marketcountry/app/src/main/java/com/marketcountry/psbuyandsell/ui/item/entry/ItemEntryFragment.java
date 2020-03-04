@@ -589,13 +589,13 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
                 if (itemViewModel.itemId != null) {
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
-                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, "", this.conditionTemp, this.locationId,
+                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
                                 "", binding.get().descEditText.getText().toString(),
                                 /*binding.get().highlightInfoEditText.getText().toString()*/"", binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
                     } else {//add new item
-                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, "", this.conditionTemp, this.locationId,
+                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
                                 "", binding.get().descEditText.getText().toString(),
                                 /*binding.get().highlightInfoEditText.getText().toString()*/"", binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, "", binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),

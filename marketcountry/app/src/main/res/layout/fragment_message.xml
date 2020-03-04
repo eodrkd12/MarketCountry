@@ -17,9 +17,8 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="wrap_content"
             android:background="@color/md_grey_200"
-            app:tabIndicatorColor="@color/layout__primary_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,11 +29,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/message__seller" />
 
-            <!--<com.google.android.material.tabs.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabBuyer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/message__buyer" />-->
+                android:text="@string/message__buyer" />
 
         </com.google.android.material.tabs.TabLayout>
 
