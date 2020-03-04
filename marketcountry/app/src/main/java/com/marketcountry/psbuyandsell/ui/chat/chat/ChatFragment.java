@@ -376,9 +376,10 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                         if (chatViewModel.chatFlag.equals(Constants.CHAT_FROM_BUYER)) {
 
                             chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_BUYER);
+                            chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, loginUserId, chatViewModel.receiverId, chatViewModel.offerItemPrice, Constants.CHAT_TO_BUYER);
 
                         } else {
-
+                            chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_SELLER);
                             chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, loginUserId, chatViewModel.receiverId, chatViewModel.offerItemPrice, Constants.CHAT_TO_SELLER);
 
                         }

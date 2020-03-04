@@ -431,6 +431,8 @@ public class ItemViewModel extends PSViewModel {
             this.lng = lng;
             this.itemId = itemId;
             this.userId = userId;
+
+
         }
     }
 }
