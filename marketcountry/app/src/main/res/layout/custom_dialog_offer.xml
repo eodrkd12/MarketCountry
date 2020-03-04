@@ -161,16 +161,14 @@
 
         <EditText
             android:id="@+id/offerPriceEditText"
-            android:layout_width="140dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="70dp"
             android:background="@drawable/rounded_corner_shape_for_login"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textColor="@color/text__primary"
             android:textSize="@dimen/font_h6_size"
-            android:enabled="false"
             app:font='@{"normal"}'
             app:layout_constraintEnd_toStartOf="@+id/backCurrencyTextView"
             app:layout_constraintHorizontal_bias="0.5"
@@ -178,60 +176,6 @@
             app:layout_constraintStart_toEndOf="@+id/currencyTextView"
             app:layout_constraintTop_toBottomOf="@+id/itemCardView"
             tools:text="100" />
-        <TextView
-            android:id="@+id/countTextView"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/rounded_corner_shape_for_login"
-            android:inputType="numberDecimal"
-            android:textAlignment="center"
-            android:textColor="@color/text__primary"
-            android:textSize="@dimen/font_h7_size"
-            app:font='@{"bold"}'
-            app:layout_constraintEnd_toStartOf="@+id/backCurrencyTextView"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/offerPriceEditText"
-            app:layout_constraintTop_toBottomOf="@+id/itemCardView"
-            tools:text="1" />
-
-        <Button
-            android:id="@+id/countBtnPlus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/global__primary"
-            android:inputType="numberDecimal"
-            android:textAlignment="center"
-            android:textColor="@color/text__white"
-            android:textSize="@dimen/font_h6_size"
-            app:font='@{"bold"}'
-            app:layout_constraintEnd_toStartOf="@+id/backCurrencyTextView"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/countTextView"
-            app:layout_constraintTop_toBottomOf="@+id/itemCardView"
-            tools:text="+" />
-
-        <Button
-            android:id="@+id/countBtnMinus"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="3dp"
-            android:background="@color/global__primary"
-            android:inputType="numberDecimal"
-            android:textAlignment="center"
-            android:textColor="@color/text__white"
-            android:textSize="@dimen/font_h6_size"
-            app:font='@{"bold"}'
-            app:layout_constraintEnd_toStartOf="@+id/backCurrencyTextView"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/countBtnPlus"
-            app:layout_constraintTop_toBottomOf="@+id/itemCardView"
-            tools:text="-" />
 
         <Button
             android:id="@+id/offerButton"
@@ -241,7 +185,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/chat__make_offer_sender_send"
+            android:text="@string/chat__make_offer_sender"
             android:textColor="@color/text__white"
             android:textSize="@dimen/font_title_size"
             app:font='@{"bold"}'
