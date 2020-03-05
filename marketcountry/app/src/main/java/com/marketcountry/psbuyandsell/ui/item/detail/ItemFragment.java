@@ -738,6 +738,8 @@ public class ItemFragment extends PSFragment {
                                 bindingPhotoCount(listResource.data);
                                 bindingVerifiedData(listResource.data);
                                 bindingItemDialOption(listResource.data);
+                                binding.get().joinedTextView.setText(binding.get().getItem().user.addedDate.substring(0,10));
+
                             }
 
                             break;
@@ -778,7 +780,7 @@ public class ItemFragment extends PSFragment {
                                 itemViewModel.otherUserId = listResource.data.user.userId;
                                 itemViewModel.otherUserName = listResource.data.user.userName;
 //                                checkText(listResource.data);
-
+                                binding.get().joinedTextView.setText(binding.get().getItem().user.addedDate.substring(0,10));
                             }
 
                             itemViewModel.setLoadingState(false);
