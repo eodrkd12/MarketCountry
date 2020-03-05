@@ -64,29 +64,7 @@ import java.util.List;
 import java.util.Locale;
 
 //
-import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Address;
-import android.location.Geocoder;
-import android.location.LocationManager;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 //
 
 /**
@@ -138,8 +116,9 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private String typeTemp;
     private String conditionTemp;
     private GpsTracker gpsTracker;
-
-
+    private String address;
+    private double latitude;
+    private double longitude;
     @VisibleForTesting
     private AutoClearedValue<FragmentItemEntryBinding> binding;
     private AutoClearedValue<BottomSheetDialog> mBottomSheetDialog;
@@ -157,24 +136,23 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         //
         gpsTracker = new GpsTracker(this.getActivity());
 
-        double latitude = gpsTracker.getLatitude();
-        double longitude = gpsTracker.getLongitude();
+        latitude = gpsTracker.getLatitude();
+        longitude = gpsTracker.getLongitude();
 
-        String address = getCurrentAddress(latitude, longitude);
+        address = getCurrentAddress(latitude, longitude);
         binding.get().addressEditText.setText(address);
 
-        Toast.makeText(this.getActivity(), "현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this.getActivity(), "현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
 
         //
 
         return binding.get().getRoot();
     }
 
-
     public String getCurrentAddress( double latitude, double longitude) {
 
         //지오코더... GPS를 주소로 변환
-        Geocoder geocoder = new Geocoder(this.getActivity(), Locale.getDefault());
+        Geocoder geocoder = new Geocoder(this.getActivity(), Locale.KOREA);
 
         List<Address> addresses;
 
@@ -183,7 +161,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             addresses = geocoder.getFromLocation(
                     latitude,
                     longitude,
-                    7);
+                    10);
+
         } catch (IOException ioException) {
             //네트워크 문제
             Toast.makeText(this.getActivity(), "지오코더 서비스 사용불가", Toast.LENGTH_LONG).show();
@@ -194,17 +173,27 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         }
 
-
-
         if (addresses == null || addresses.size() == 0) {
             Toast.makeText(this.getActivity(), "주소 미발견", Toast.LENGTH_LONG).show();
             return "주소 미발견";
-
         }
 
         Address address = addresses.get(0);
-        return address.getAddressLine(0).toString()+"\n";
 
+        String cut[] = addresses.get(0).toString().split(" ");
+        for(int i=0; i<cut.length; i++){
+            System.out.println("cut["+i+"] : " + cut[i]);
+        }
+
+        for (int i=0;i <= address.getMaxAddressLineIndex();i++) {
+
+            //여기서 변환된 주소 확인할  수 있음
+
+            Log.v("알림", "AddressLine(" + i + ")" + address.getAddressLine(i) + "\n");
+            Log.v("알림", cut[1] + " " + cut[2] + " " + cut[3]);
+        }
+        String convertAddr = cut[1] + " " + cut[2] + " " + cut[3];
+        return convertAddr;
     }
 
     private void initializeMap(Bundle savedInstanceState) {
@@ -1235,7 +1224,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         //binding.get().priceTypeTextView.setText(item.itemPriceType.name);
         //binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);
         binding.get().locationTextView.setText(item.itemLocation.name);
-//        bindMap(item.lat, item.lng);
+        //bindMap(item.lat, item.lng);
         itemViewModel.mapLat = item.lat;
         itemViewModel.mapLng = item.lng;
         //bindingLatLng(item.lat, item.lng);
