@@ -196,7 +196,6 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
             showDialogForLocationServiceSetting();
         }else {
             checkRunTimePermission();
-            //pref.edit().putString("isFirstEntryLocation","0").apply();
         }
 
         gpsTracker = new GpsTracker(this.getActivity());
@@ -206,17 +205,13 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         address = getCurrentAddress(latitude, longitude);
         isFirstEntryLocation = pref.getString("isFirstEntryLocation","0");
-        Log.v("알림 pref 1 ", isFirstEntryLocation);
+
         if(isFirstEntryLocation.equals("0") && !address.equals("주소 미발견"))
         {
-            Log.v("알림 gps ", address);
             pref.edit().putString("isFirstEntryLocation","1").apply();
-            Log.v("알림 pref 2 ", pref.getString("isFirstEntryLocation","0"));
             pref.edit().putString(Constants.SELECTED_LOCATION_NAME,address).apply();
-
         }
 //
-
         return binding.get().getRoot();
     }
     public String getCurrentAddress( double latitude, double longitude) {
