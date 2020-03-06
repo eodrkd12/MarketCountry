@@ -1,9 +1,16 @@
 package com.marketcountry.psbuyandsell.ui.city.selectedcity;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Geocoder;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +22,15 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.ads.AdRequest;
 import com.marketcountry.psbuyandsell.Config;
+import com.marketcountry.psbuyandsell.GpsTracker;
 import com.marketcountry.psbuyandsell.MainActivity;
 import com.marketcountry.psbuyandsell.R;
 import com.marketcountry.psbuyandsell.binding.FragmentDataBindingComponent;
@@ -44,10 +54,13 @@ import com.marketcountry.psbuyandsell.viewobject.Item;
 import com.marketcountry.psbuyandsell.viewobject.ItemCategory;
 import com.marketcountry.psbuyandsell.viewobject.holder.ItemParameterHolder;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import android.location.Address;
+import android.widget.Toast;
 //import com.panaceasoft.psbuyandsell.viewmodel.clearalldata.ClearAllDataViewModel;
 
 public class SelectedCityFragment extends PSFragment implements DataBoundListAdapter.DiffUtilDispatchedInterface {
@@ -76,6 +89,15 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
     private Handler handler = new Handler();
     private boolean searchKeywordOnFocus = false;
 
+    private GpsTracker gpsTracker;
+    private String address;
+    private double latitude;
+    private double longitude;
+    private static final int GPS_ENABLE_REQUEST_CODE = 2001;
+    private static final int PERMISSIONS_REQUEST_CODE = 100;
+    String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+    String isFirstEntryLocation;
+
     @VisibleForTesting
     private AutoClearedValue<FragmentSelectedCityBinding> binding;
     private AutoClearedValue<ItemHorizontalListAdapter> popularItemListAdapter;
@@ -86,6 +108,79 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
     private AutoClearedValue<ViewPager> viewPager;
     private AutoClearedValue<LinearLayout> pageIndicatorLayout;
 
+    void checkRunTimePermission(){
+
+        //런타임 퍼미션 처리
+        // 1. 위치 퍼미션을 가지고 있는지 체크합니다.
+        int hasFineLocationPermission = ContextCompat.checkSelfPermission(this.getActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(this.getActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION);
+
+
+        if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
+                hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
+
+            // 2. 이미 퍼미션을 가지고 있다면
+            // ( 안드로이드 6.0 이하 버전은 런타임 퍼미션이 필요없기 때문에 이미 허용된 걸로 인식합니다.)
+
+
+            // 3.  위치 값을 가져올 수 있음
+
+
+        } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
+
+            // 3-1. 사용자가 퍼미션 거부를 한 적이 있는 경우에는
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this.getActivity(), REQUIRED_PERMISSIONS[0])) {
+                pref.edit().putString("isFirstEntryLocation","0").apply();
+                // 3-2. 요청을 진행하기 전에 사용자가에게 퍼미션이 필요한 이유를 설명해줄 필요가 있습니다.
+                Toast.makeText(this.getActivity(), "이 앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_LONG).show();
+                // 3-3. 사용자게에 퍼미션 요청을 합니다. 요청 결과는 onRequestPermissionResult에서 수신됩니다.
+                ActivityCompat.requestPermissions(this.getActivity(), REQUIRED_PERMISSIONS,
+                        PERMISSIONS_REQUEST_CODE);
+
+            } else {
+                // 4-1. 사용자가 퍼미션 거부를 한 적이 없는 경우에는 퍼미션 요청을 바로 합니다.
+                // 요청 결과는 onRequestPermissionResult에서 수신됩니다.
+                pref.edit().putString("isFirstEntryLocation","0").apply();
+                ActivityCompat.requestPermissions(this.getActivity(), REQUIRED_PERMISSIONS,
+                        PERMISSIONS_REQUEST_CODE);
+            }
+
+        }
+
+    }
+
+    private void showDialogForLocationServiceSetting() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+        builder.setTitle("위치 서비스 비활성화");
+        builder.setMessage("앱을 사용하기 위해서는 위치 서비스가 필요합니다.\n"
+                + "위치 설정을 수정하실래요?");
+        builder.setCancelable(true);
+        builder.setPositiveButton("설정", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                Intent callGPSSettingIntent
+                        = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivityForResult(callGPSSettingIntent, GPS_ENABLE_REQUEST_CODE);
+            }
+        });
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        builder.create().show();
+    }
+
+    public boolean checkLocationServicesStatus() {
+        LocationManager locationManager = (LocationManager) this.getActivity().getSystemService(getContext().LOCATION_SERVICE);
+
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,10 +191,81 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
         binding = new AutoClearedValue<>(this, dataBinding);
 
         binding.get().setLoadingMore(connectivity.isConnected());
+//
+        if (!checkLocationServicesStatus()) {
+            showDialogForLocationServiceSetting();
+        }else {
+            checkRunTimePermission();
+            //pref.edit().putString("isFirstEntryLocation","0").apply();
+        }
+
+        gpsTracker = new GpsTracker(this.getActivity());
+
+        latitude = gpsTracker.getLatitude();
+        longitude = gpsTracker.getLongitude();
+
+        address = getCurrentAddress(latitude, longitude);
+        isFirstEntryLocation = pref.getString("isFirstEntryLocation","0");
+        Log.v("알림 pref 1 ", isFirstEntryLocation);
+        if(isFirstEntryLocation.equals("0") && !address.equals("주소 미발견"))
+        {
+            Log.v("알림 gps ", address);
+            pref.edit().putString("isFirstEntryLocation","1").apply();
+            Log.v("알림 pref 2 ", pref.getString("isFirstEntryLocation","0"));
+            pref.edit().putString(Constants.SELECTED_LOCATION_NAME,address).apply();
+
+        }
+//
 
         return binding.get().getRoot();
     }
+    public String getCurrentAddress( double latitude, double longitude) {
 
+        //지오코더... GPS를 주소로 변환
+        Geocoder geocoder = new Geocoder(this.getActivity(), Locale.KOREA);
+
+        List<Address> addresses;
+
+        try {
+
+            addresses = geocoder.getFromLocation(
+                    latitude,
+                    longitude,
+                    10);
+
+        } catch (IOException ioException) {
+            //네트워크 문제
+            Toast.makeText(this.getActivity(), "지오코더 서비스 사용불가", Toast.LENGTH_LONG).show();
+            return "지오코더 서비스 사용불가";
+        } catch (IllegalArgumentException illegalArgumentException) {
+            Toast.makeText(this.getActivity(), "잘못된 GPS 좌표", Toast.LENGTH_LONG).show();
+            return "잘못된 GPS 좌표";
+
+        }
+
+        if (addresses == null || addresses.size() == 0) {
+            Toast.makeText(this.getActivity(), "주소 미발견", Toast.LENGTH_LONG).show();
+            return "주소 미발견";
+        }
+
+        Address address = addresses.get(0);
+
+        String cut[] = addresses.get(0).toString().split(" ");
+        for(int i=0; i<cut.length; i++){
+            System.out.println("cut["+i+"] : " + cut[i]);
+        }
+
+        /*for (int i=0;i <= address.getMaxAddressLineIndex();i++) {
+
+            //여기서 변환된 주소 확인할  수 있음
+
+            Log.v("알림", "AddressLine(" + i + ")" + address.getAddressLine(i) + "\n");
+            Log.v("알림", cut[1] + " " + cut[2] + " " + cut[3]);
+        }*/
+
+        String convertAddr = cut[1].substring(0,2);
+        return convertAddr;
+    }
     @Override
     protected void initUIAndActions() {
 
@@ -738,6 +904,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
                 pref.edit().putString(Constants.SELECTED_LOCATION_ID, recentItemViewModel.locationId).apply();
                 pref.edit().putString(Constants.SELECTED_LOCATION_NAME, recentItemViewModel.locationName).apply();
+                Log.v("알림 : locationName", recentItemViewModel.locationName);
                 pref.edit().putString(Constants.LAT, recentItemViewModel.locationLat).apply();
                 pref.edit().putString(Constants.LNG, recentItemViewModel.locationLng).apply();
 

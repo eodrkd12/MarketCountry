@@ -129,8 +129,8 @@ public abstract class PSFragment extends Fragment implements Injectable {
                 versionNo = pref.getString(Constants.APPINFO_PREF_VERSION_NO, Constants.EMPTY_STRING);
                 force_update = pref.getBoolean(Constants.APPINFO_PREF_FORCE_UPDATE, false);
                 force_update_msg = pref.getString(Constants.APPINFO_FORCE_UPDATE_MSG, Constants.EMPTY_STRING);
-                selectedLat = pref.getString(Constants.LAT, Constants.EMPTY_STRING);
                 selectedLng = pref.getString(Constants.LNG, Constants.EMPTY_STRING);
+                selectedLat = pref.getString(Constants.LAT, Constants.EMPTY_STRING);
                 cameraType = pref.getString(Constants.CAMERA_TYPE, Config.CAMERA_CONFIG);
                 force_update_title = pref.getString(Constants.APPINFO_FORCE_UPDATE_TITLE, Constants.EMPTY_STRING);
                 selected_location_id = pref.getString(Constants.SELECTED_LOCATION_ID, Constants.EMPTY_STRING);

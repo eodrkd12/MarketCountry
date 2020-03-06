@@ -132,7 +132,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                         chatHistoryFromBuyer.item.title,
                         chatHistoryFromBuyer.item.itemCurrency.currencySymbol,
                         chatHistoryFromBuyer.item.price,
-                        chatHistoryFromBuyer.item.itemCondition.name,
+                        chatHistoryFromBuyer.item.conditionOfItem,
                         Constants.CHAT_FROM_BUYER,
                         chatHistoryFromBuyer.buyerUser.userProfilePhoto,
                         Constants.REQUEST_CODE__BUYER_CHAT_FRAGMENT

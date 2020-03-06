@@ -67,6 +67,7 @@ public class SellerFragment extends PSFragment implements DataBoundListAdapter.D
         return binding.get().getRoot();
     }
 
+
     @Override
     protected void initUIAndActions() {
         binding.get().sellerList.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -136,7 +137,7 @@ public class SellerFragment extends PSFragment implements DataBoundListAdapter.D
                         chatHistoryFromSeller.item.title,
                         chatHistoryFromSeller.item.itemCurrency.currencySymbol,
                         chatHistoryFromSeller.item.price,
-                        chatHistoryFromSeller.item.itemCondition.name,
+                        chatHistoryFromSeller.item.conditionOfItem,
                         Constants.CHAT_FROM_SELLER,
                         chatHistoryFromSeller.sellerUser.userProfilePhoto,
                         Constants.REQUEST_CODE__SELLER_CHAT_FRAGMENT), this);

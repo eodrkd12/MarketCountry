@@ -76,7 +76,8 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
     private String countString;
     private String priceString;
     private int priceCount;
-    private int priceByCount; // added
+    private int priceByCount;
+    private String finalPrice;// added
 
     @VisibleForTesting
     private AutoClearedValue<FragmentChatBinding> binding;
@@ -388,6 +389,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                             //chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_SELLER);
 
                         }
+                        binding.get().priceTextView.setText(itemOfferPriceEditText.getText().toString());
                     }
 
 
@@ -1185,7 +1187,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                                 chatViewModel.itemName = listResource.data.title;
                                 chatViewModel.itemPrice = listResource.data.price;
                                 chatViewModel.itemCurrency = listResource.data.itemCurrency.currencySymbol;
-                                chatViewModel.itemConditionName = listResource.data.itemCondition.name;
+                                chatViewModel.itemConditionName = listResource.data.conditionOfItem;
 
                                 bindItemData();
                             }
@@ -1202,7 +1204,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                                 chatViewModel.itemName = listResource.data.title;
                                 chatViewModel.itemPrice = listResource.data.price;
                                 chatViewModel.itemCurrency = listResource.data.itemCurrency.currencySymbol;
-                                chatViewModel.itemConditionName = listResource.data.itemCondition.name;
+                                chatViewModel.itemConditionName = listResource.data.conditionOfItem;
 
                                 bindItemData();
 
@@ -1238,7 +1240,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
         bindingButtonText(chatViewModel.chatFlag);
         binding.get().itemTextView.setText(chatViewModel.itemName);
 
-        if (!chatViewModel.itemCurrency.equals("") && !chatViewModel.itemPrice.equals("")) {
+        if (/*!chatViewModel.itemCurrency.equals("") &&*/ !chatViewModel.itemPrice.equals("")) {
 
             String currencySymbol = chatViewModel.itemCurrency;
             String price;
@@ -1260,10 +1262,10 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
             if (chatViewModel.itemPrice.isEmpty()) {
 
-                binding.get().priceTextView.setText(currencyPrice);
+                binding.get().priceTextView.setText(price);
             } else {
 
-                binding.get().priceTextView.setText(currencyPrice);
+                binding.get().priceTextView.setText(price);
             }
         }
 //        else{
