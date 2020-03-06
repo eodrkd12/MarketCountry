@@ -286,7 +286,7 @@ public class UserDetailFragment extends PSFragment implements DataBoundListAdapt
 
     private void replaceUserData(User user) {
 
-        binding.get().joinedDateTextView.setText(user.addedDate);
+        binding.get().joinedDateTextView.setText(user.addedDate.substring(0,10));
         binding.get().nameTextView.setText(user.userName);
         binding.get().overAllRatingTextView.setText(user.overallRating);
         binding.get().ratingBarInformation.setRating(user.ratingDetails.totalRatingValue);

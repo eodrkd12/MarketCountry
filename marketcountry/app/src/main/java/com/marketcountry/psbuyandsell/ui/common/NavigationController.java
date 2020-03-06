@@ -68,11 +68,11 @@ import com.marketcountry.psbuyandsell.ui.user.UserLoginFragment;
 import com.marketcountry.psbuyandsell.ui.user.UserRegisterActivity;
 import com.marketcountry.psbuyandsell.ui.user.UserRegisterFragment;
 import com.marketcountry.psbuyandsell.ui.user.phonelogin.PhoneLoginActivity;
+import com.marketcountry.psbuyandsell.ui.user.phonelogin.PhoneLoginFragment;
 import com.marketcountry.psbuyandsell.ui.user.userlist.UserListActivity;
 import com.marketcountry.psbuyandsell.ui.user.userlist.detail.UserDetailActivity;
 import com.marketcountry.psbuyandsell.ui.user.verifyemail.VerifyEmailActivity;
 import com.marketcountry.psbuyandsell.ui.user.verifyemail.VerifyEmailFragment;
-import com.marketcountry.psbuyandsell.ui.user.phonelogin.PhoneLoginFragment;
 import com.marketcountry.psbuyandsell.ui.user.verifyphone.VerifyMobileActivity;
 import com.marketcountry.psbuyandsell.ui.user.verifyphone.VerifyMobileFragment;
 import com.marketcountry.psbuyandsell.utils.Constants;
@@ -103,7 +103,6 @@ public class NavigationController {
     private final int containerId;
     private RegFragments currentFragment;
     public Uri photoURI;
-
     //endregion
 
 
@@ -862,7 +861,6 @@ public class NavigationController {
     public void navigateToSearchActivityCategoryFragment(FragmentActivity fragmentActivity, String fragName, String catId, String subCatId) {
         Intent intent = new Intent(fragmentActivity, DashboardSearchByCategoryActivity.class);
         intent.putExtra(Constants.CATEGORY_FLAG, fragName);
-
         if (!catId.equals(Constants.NO_DATA)) {
             intent.putExtra(Constants.CATEGORY_ID, catId);
         }

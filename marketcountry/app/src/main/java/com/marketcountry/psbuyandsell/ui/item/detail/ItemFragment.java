@@ -738,6 +738,8 @@ public class ItemFragment extends PSFragment {
                                 bindingPhotoCount(listResource.data);
                                 bindingVerifiedData(listResource.data);
                                 bindingItemDialOption(listResource.data);
+                                binding.get().joinedTextView.setText(binding.get().getItem().user.addedDate.substring(0,10));
+
                             }
 
                             break;
@@ -778,7 +780,7 @@ public class ItemFragment extends PSFragment {
                                 itemViewModel.otherUserId = listResource.data.user.userId;
                                 itemViewModel.otherUserName = listResource.data.user.userName;
 //                                checkText(listResource.data);
-
+                                binding.get().joinedTextView.setText(binding.get().getItem().user.addedDate.substring(0,10));
                             }
 
                             itemViewModel.setLoadingState(false);
@@ -1098,7 +1100,7 @@ public class ItemFragment extends PSFragment {
             binding.get().likesTextView.setVisibility(View.VISIBLE);
             binding.get().imageView22.setVisibility(View.VISIBLE);
         }
-        if (item != null && item.itemCondition.name != null && item.itemCondition.name.equals("")) {
+        if (item != null && item.conditionOfItem != null && item.conditionOfItem.equals("")) {
             binding.get().newTextView.setVisibility(View.GONE);
             binding.get().imageView18.setVisibility(View.GONE);
         } else {
@@ -1129,7 +1131,7 @@ public class ItemFragment extends PSFragment {
             binding.get().imageView24.setVisibility(View.VISIBLE);
         }
 
-        if (item != null && item.itemType.name != null && item.itemType.name.equals("")) {
+        if (item != null && item.itemTypeId != null && item.itemTypeId.equals("")) {
             binding.get().saleBuyTextView.setVisibility(View.GONE);
             binding.get().imageView27.setVisibility(View.GONE);
         } else {

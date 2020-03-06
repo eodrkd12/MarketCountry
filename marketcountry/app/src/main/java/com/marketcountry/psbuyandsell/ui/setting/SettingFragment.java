@@ -111,6 +111,23 @@ public class SettingFragment extends PSFragment {
 
         });
 
+        binding.get().removeAccountTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                psDialogMsg.showConfirmDialog(getString(R.string.profile__confirm_deactivate), getString(R.string.app__ok), getString(R.string.message__cancel_close));
+                psDialogMsg.show();
+
+                psDialogMsg.okButton.setOnClickListener(v12 -> {
+                    userViewModel.setDeleteUserObj(loginUserId);
+
+                    psDialogMsg.cancel();
+                });
+
+                psDialogMsg.cancelButton.setOnClickListener(v1 -> psDialogMsg.cancel());
+
+            }
+        });
+
         binding.get().gdprTextView.setOnClickListener(v13 -> SettingFragment.this.collectConsent());
 
         if (loginUserId.equals("")) {

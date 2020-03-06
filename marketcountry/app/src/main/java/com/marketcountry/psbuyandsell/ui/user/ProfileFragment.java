@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.marketcountry.psbuyandsell.databinding.FragmentProfileBinding;
 import com.marketcountry.psbuyandsell.ui.common.DataBoundListAdapter;
 import com.marketcountry.psbuyandsell.ui.common.PSFragment;
 import com.marketcountry.psbuyandsell.ui.item.adapter.ItemVerticalListAdapter;
+import com.marketcountry.psbuyandsell.ui.user.userlist.detail.UserDetailFragment;
 import com.marketcountry.psbuyandsell.utils.AutoClearedValue;
 import com.marketcountry.psbuyandsell.utils.Constants;
 import com.marketcountry.psbuyandsell.utils.PSDialogMsg;
@@ -96,7 +98,17 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         binding.get().settingTextView.setOnClickListener(view -> navigationController.navigateToSettingActivity(getActivity()));
         binding.get().followingUserTextView.setOnClickListener(view -> navigationController.navigateToUserListActivity(ProfileFragment.this.getActivity(), new UserParameterHolder().getFollowingUsers()));
         binding.get().followUserTextView.setOnClickListener(view -> navigationController.navigateToUserListActivity(ProfileFragment.this.getActivity(), new UserParameterHolder().getFollowerUsers()));
-        binding.get().deactivateTextView.setOnClickListener(new View.OnClickListener() {
+        //
+        binding.get().ratingBarInformation.setOnClickListener(v -> navigationController.navigateToRatingList(ProfileFragment.this.getActivity(),binding.get().getUser().userId));
+        binding.get().ratingBarInformation.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                navigationController.navigateToRatingList(ProfileFragment.this.getActivity(),binding.get().getUser().userId);
+            }
+            return true;
+        });
+        //
+
+        /*binding.get().deactivateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 psDialogMsg.showConfirmDialog(getString(R.string.profile__confirm_deactivate), getString(R.string.app__ok), getString(R.string.message__cancel_close));
@@ -111,7 +123,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
                 psDialogMsg.cancelButton.setOnClickListener(v1 -> psDialogMsg.cancel());
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -340,7 +352,7 @@ public class ProfileFragment extends PSFragment implements DataBoundListAdapter.
         binding.get().historyTextView.setText(binding.get().historyTextView.getText().toString());
         binding.get().seeAllTextView.setText(binding.get().seeAllTextView.getText().toString());
         binding.get().joinedDateTitleTextView.setText(binding.get().joinedDateTitleTextView.getText().toString());
-        binding.get().joinedDateTextView.setText(user.addedDate);
+        binding.get().joinedDateTextView.setText(user.addedDate.substring(0,10));
         binding.get().nameTextView.setText(user.userName);
         binding.get().overAllRatingTextView.setText(user.overallRating);
         binding.get().ratingBarInformation.setRating(user.ratingDetails.totalRatingValue);

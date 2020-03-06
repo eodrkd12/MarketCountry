@@ -3,6 +3,7 @@ package com.marketcountry.psbuyandsell.ui.chathistory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,12 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.login.Login;
 import com.marketcountry.psbuyandsell.Config;
 import com.marketcountry.psbuyandsell.R;
 import com.marketcountry.psbuyandsell.binding.FragmentDataBindingComponent;
 import com.marketcountry.psbuyandsell.databinding.FragmentSellerBinding;
+import com.marketcountry.psbuyandsell.ui.chat.chat.ChatActivity;
 import com.marketcountry.psbuyandsell.ui.chathistory.adapter.SellerChatHistoryListAdapter;
 import com.marketcountry.psbuyandsell.ui.common.DataBoundListAdapter;
 import com.marketcountry.psbuyandsell.ui.common.PSFragment;
@@ -29,6 +32,7 @@ import com.marketcountry.psbuyandsell.utils.Constants;
 import com.marketcountry.psbuyandsell.utils.Utils;
 import com.marketcountry.psbuyandsell.viewmodel.chathistory.ChatHistoryViewModel;
 import com.marketcountry.psbuyandsell.viewobject.ChatHistory;
+import com.marketcountry.psbuyandsell.viewobject.UserLogin;
 import com.marketcountry.psbuyandsell.viewobject.common.Resource;
 import com.marketcountry.psbuyandsell.viewobject.common.Status;
 
@@ -138,7 +142,6 @@ public class SellerFragment extends PSFragment implements DataBoundListAdapter.D
                         Constants.REQUEST_CODE__SELLER_CHAT_FRAGMENT), this);
         this.adapter = new AutoClearedValue<>(this, sellerChatHistoryListAdapter);
         binding.get().sellerList.setAdapter(sellerChatHistoryListAdapter);
-
     }
 
     @Override

@@ -488,7 +488,65 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+                    <RadioGroup
+                        android:id="@+id/typeRadioGroup"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/browser_actions_bg_grey"
+                        android:gravity="center_vertical"
+                        android:inputType="none"
+                        android:orientation="horizontal"
+                        android:paddingStart="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="2dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/typeOption1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="산지 직송"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/typeOption2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="팝니다"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/typeOption3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="삽니다"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/typeOption4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="무료 나눔"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/typeOption5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="교환신청"
+                            android:textSize="12sp" />
+                    </RadioGroup>
+
+                    <!--<TextView
                         android:id="@+id/typeTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -520,7 +578,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/down" />
+                        app:srcCompat="@drawable/down" />-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -572,38 +630,87 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/itemConditionTextView"
+                    <RadioGroup
+                        android:id="@+id/conditionRadioGroup"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@color/text__white"
+                        android:background="@color/browser_actions_bg_grey"
                         android:gravity="center_vertical"
-                        android:hint="@string/sf__notSet"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:textColor="@color/text__primary"
-                        android:textSize="@dimen/font_body_size"
-                        app:font='@{"normal"}'
+                        android:inputType="none"
+                        android:orientation="horizontal"
+                        android:paddingStart="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/itemConditionImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:tint="@color/md_grey_400"
-                        android:contentDescription="@string/image_default__image"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/down" />
+                        <RadioButton
+                            android:id="@+id/conditionOption1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="신선식품"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/conditionOption2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="가공식품"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/conditionOption3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="새상품"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/conditionOption4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="중고"
+                            android:textSize="12sp" />
+                    </RadioGroup>
+<!--                    <TextView-->
+<!--                        android:id="@+id/itemConditionTextView"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@color/text__white"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:hint="@string/sf__notSet"-->
+<!--                        android:paddingStart="10dp"-->
+<!--                        android:paddingEnd="10dp"-->
+<!--                        android:paddingTop="8dp"-->
+<!--                        android:paddingBottom="8dp"-->
+<!--                        android:textColor="@color/text__primary"-->
+<!--                        android:textSize="@dimen/font_body_size"-->
+<!--                        app:font='@{"normal"}'-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/itemConditionImageView"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:layout_marginEnd="8dp"-->
+<!--                        android:layout_marginBottom="8dp"-->
+<!--                        android:tint="@color/md_grey_400"-->
+<!--                        android:contentDescription="@string/image_default__image"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:srcCompat="@drawable/down" />-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -649,7 +756,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/priceTypeTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -665,7 +772,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/brandEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/brandEditText" />-->
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/priceTypeCardView"
@@ -682,7 +789,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceTypeTitleTextView">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -719,7 +826,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/down" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -735,9 +842,10 @@
                 android:textColor="@color/text__primary"
                 android:textSize="@dimen/font_title_size"
                 app:font='@{"normal"}'
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/priceTypeCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/brandEditText" />
 
             <TextView
                 android:id="@+id/starTextView8"
@@ -767,7 +875,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/priceTitleTextView">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
@@ -806,7 +914,7 @@
                         app:layout_constraintStart_toEndOf="@+id/priceTextView"
                         app:layout_constraintTop_toTopOf="@+id/priceTextView"
                         app:srcCompat="@drawable/down" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
             </androidx.cardview.widget.CardView>
 
             <EditText
@@ -814,6 +922,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/space_16"
                 android:background="@drawable/custom_progress_bar_horizontal"
                 android:inputType="numberDecimal"
                 android:paddingStart="@dimen/space_12"
@@ -823,14 +932,12 @@
                 android:paddingRight="@dimen/space_12"
                 android:paddingBottom="8dp"
                 android:textAlignment="viewStart"
-                android:layout_marginStart="@dimen/space_16"
-                android:layout_marginEnd="@dimen/space_16"
                 android:textColor="@color/text__primary"
                 android:textSize="14sp"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/priceCardView"
+                app:layout_constraintStart_toStartOf="@+id/priceTitleTextView"
                 app:layout_constraintTop_toBottomOf="@+id/priceTitleTextView" />
 
             <TextView
@@ -849,7 +956,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/priceCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/priceEditText" />
 
             <CheckBox
                 android:id="@+id/isShopCheckBox"
@@ -890,7 +997,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/isShopTextView" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/highlightInfoTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -932,7 +1039,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/highlightInfoTitleTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />-->
 
             <TextView
                 android:id="@+id/descTextView"
@@ -946,10 +1053,11 @@
                 android:textColor="@color/text__primary"
                 android:textSize="@dimen/font_title_size"
                 app:font='@{"normal"}'
+                android:text="@string/item_entry_detail__description"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/item_entry_detail__description"
-                app:layout_constraintTop_toBottomOf="@+id/highlightInfoEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/isShopTextView1"/>
 
             <TextView
                 android:id="@+id/starTextView5"
@@ -1041,42 +1149,52 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/dealOptionTextView"
+
+                    <RadioGroup
+                        android:id="@+id/dealOptionRadioGroup"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:background="@color/text__white"
+                        android:background="@color/browser_actions_bg_grey"
                         android:gravity="center_vertical"
-                        android:hint="@string/sf__notSet"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:textColor="@color/text__primary"
-                        android:textSize="@dimen/font_body_size"
-                        app:font='@{"normal"}'
+                        android:inputType="none"
+                        android:orientation="horizontal"
+                        android:paddingStart="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/idealOptionImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:tint="@color/md_grey_400"
-                        android:contentDescription="@string/image_default__image"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/down" />
+                        <CheckBox
+                            android:id="@+id/dealOption1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="택배"
+                            android:textSize="12sp" />
+
+                        <CheckBox
+                            android:id="@+id/dealOption2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="무료배송"
+                            android:textSize="12sp" />
+                        <CheckBox
+                            android:id="@+id/dealOption3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/global__primary"
+                            android:text="직거래"
+                            android:textSize="12sp" />
+
+                    </RadioGroup>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <EditText
+<!--            <EditText
                 android:id="@+id/remarkEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -1118,7 +1236,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/locationCardView" />
+                app:layout_constraintTop_toBottomOf="@+id/locationCardView" />-->
 
             <!--<com.google.android.gms.maps.MapView-->
             <!--android:id="@+id/mapView"-->
@@ -1132,7 +1250,7 @@
 
             <!--</com.google.android.gms.maps.MapView>-->
 
-            <com.google.android.gms.maps.MapView
+            <!--<com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
@@ -1236,7 +1354,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/lngTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />-->
 
             <TextView
                 android:id="@+id/locationTitleTextView"
@@ -1255,7 +1373,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/remarkEditText"
+                app:layout_constraintTop_toBottomOf="@+id/dealOptionCardView"
                 tools:layout_editor_absoluteY="1141dp" />
 
             <androidx.cardview.widget.CardView
@@ -1326,14 +1444,14 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/item_entry_detail__address"
-                app:layout_constraintTop_toBottomOf="@+id/lngEditText" />
+                app:layout_constraintTop_toBottomOf="@+id/locationCardView" />
+
 
             <EditText
                 android:id="@+id/addressEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/custom_progress_bar_horizontal"
                 android:inputType="textPersonName"
@@ -1344,14 +1462,14 @@
                 android:paddingRight="@dimen/space_12"
                 android:paddingBottom="8dp"
                 android:textAlignment="viewStart"
+                android:enabled="false"
                 android:textColor="@color/text__primary"
                 android:textSize="14sp"
                 app:font='@{"normal"}'
-                app:layout_constraintTop_toBottomOf="@+id/addressTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/dealOptionsConstraintLayout"

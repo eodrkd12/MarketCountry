@@ -5,17 +5,21 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,6 +40,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.marketcountry.psbuyandsell.Config;
+import com.marketcountry.psbuyandsell.GpsTracker;
 import com.marketcountry.psbuyandsell.MainActivity;
 import com.marketcountry.psbuyandsell.R;
 import com.marketcountry.psbuyandsell.binding.FragmentDataBindingComponent;
@@ -52,8 +57,15 @@ import com.marketcountry.psbuyandsell.viewmodel.item.ItemViewModel;
 import com.marketcountry.psbuyandsell.viewobject.Image;
 import com.marketcountry.psbuyandsell.viewobject.Item;
 import com.marketcountry.psbuyandsell.viewobject.common.Resource;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
+//
+import android.location.Address;
+//
 
 /**
  * A simple {@link Fragment} subclass.
@@ -101,7 +113,12 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private ProgressDialog progressDialog;
     private boolean isUploadSuccess = false;
 
-
+    private String typeTemp;
+    private String conditionTemp;
+    private GpsTracker gpsTracker;
+    private String address;
+    private double latitude;
+    private double longitude;
     @VisibleForTesting
     private AutoClearedValue<FragmentItemEntryBinding> binding;
     private AutoClearedValue<BottomSheetDialog> mBottomSheetDialog;
@@ -116,7 +133,67 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         setHasOptionsMenu(true);
         initializeMap(savedInstanceState);
 
+        //
+        gpsTracker = new GpsTracker(this.getActivity());
+
+        latitude = gpsTracker.getLatitude();
+        longitude = gpsTracker.getLongitude();
+
+        address = getCurrentAddress(latitude, longitude);
+        binding.get().addressEditText.setText(address);
+
+        //Toast.makeText(this.getActivity(), "현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
+
+        //
+
         return binding.get().getRoot();
+    }
+
+    public String getCurrentAddress( double latitude, double longitude) {
+
+        //지오코더... GPS를 주소로 변환
+        Geocoder geocoder = new Geocoder(this.getActivity(), Locale.KOREA);
+
+        List<Address> addresses;
+
+        try {
+
+            addresses = geocoder.getFromLocation(
+                    latitude,
+                    longitude,
+                    10);
+
+        } catch (IOException ioException) {
+            //네트워크 문제
+            Toast.makeText(this.getActivity(), "지오코더 서비스 사용불가", Toast.LENGTH_LONG).show();
+            return "지오코더 서비스 사용불가";
+        } catch (IllegalArgumentException illegalArgumentException) {
+            Toast.makeText(this.getActivity(), "잘못된 GPS 좌표", Toast.LENGTH_LONG).show();
+            return "잘못된 GPS 좌표";
+
+        }
+
+        if (addresses == null || addresses.size() == 0) {
+            Toast.makeText(this.getActivity(), "주소 미발견", Toast.LENGTH_LONG).show();
+            return "주소 미발견";
+        }
+
+        Address address = addresses.get(0);
+
+        String cut[] = addresses.get(0).toString().split(" ");
+        for(int i=0; i<cut.length; i++){
+            System.out.println("cut["+i+"] : " + cut[i]);
+        }
+
+        for (int i=0;i <= address.getMaxAddressLineIndex();i++) {
+
+            //여기서 변환된 주소 확인할  수 있음
+
+            Log.v("알림", "AddressLine(" + i + ")" + address.getAddressLine(i) + "\n");
+            Log.v("알림", cut[1] + " " + cut[2] + " " + cut[3]);
+        }
+        String convertAddr = cut[1] + " " + cut[2] + " " + cut[3];
+        return convertAddr;
     }
 
     private void initializeMap(Bundle savedInstanceState) {
@@ -128,12 +205,12 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             e.printStackTrace();
         }
 
-        binding.get().mapView.onCreate(savedInstanceState);
-        bindMap(selectedLat, selectedLng);
+        /*binding.get().mapView.onCreate(savedInstanceState);
+        bindMap(selectedLat, selectedLng);*/
 
     }
 
-    private void bindMap(String latValue, String lngValue) {
+    /*private void bindMap(String latValue, String lngValue) {
         binding.get().mapView.onResume();
 
         binding.get().mapView.getMapAsync(googleMap -> {
@@ -155,7 +232,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             }
 
         });
-    }
+    }*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -166,41 +243,44 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.catId = data.getStringExtra(Constants.CATEGORY_ID);
             binding.get().categoryTextView.setText(data.getStringExtra(Constants.CATEGORY_NAME));
             itemViewModel.holder.cat_id = this.catId;
-            this.subCatId = "";
+
+            navigationController.navigateToSearchActivityCategoryFragment(this.getActivity(), Constants.SUBCATEGORY, catId, subCatId); //added
+
+            /*this.subCatId = "";
             itemViewModel.holder.sub_cat_id = this.subCatId;
-            binding.get().subCategoryTextView.setText("");
+            binding.get().subCategoryTextView.setText("");*/
 
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_SUBCATEGORY) {
 
             this.subCatId = data.getStringExtra(Constants.SUBCATEGORY_ID);
             binding.get().subCategoryTextView.setText(data.getStringExtra(Constants.SUBCATEGORY_NAME));
             itemViewModel.holder.sub_cat_id = this.subCatId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_TYPE) {
+        } /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_TYPE) {
 
             this.typeId = data.getStringExtra(Constants.ITEM_TYPE_ID);
             binding.get().typeTextView.setText(data.getStringExtra(Constants.ITEM_TYPE_NAME));
             itemViewModel.holder.type_id = this.typeId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_PRICE_TYPE) {
+        }*/ /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_PRICE_TYPE) {
 
             this.priceTypeId = data.getStringExtra(Constants.ITEM_PRICE_TYPE_ID);
             binding.get().priceTypeTextView.setText(data.getStringExtra(Constants.ITEM_PRICE_TYPE_NAME));
             itemViewModel.holder.price_type_id = this.priceTypeId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CURRENCY_TYPE) {
+        } *//*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CURRENCY_TYPE) {
 
             this.currencyId = data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_ID);
             binding.get().priceTextView.setText(data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_NAME));
             itemViewModel.holder.currency_id = this.currencyId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
+        }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
 
             this.dealOptionId = data.getStringExtra(Constants.ITEM_OPTION_TYPE_ID);
-            binding.get().dealOptionTextView.setText(data.getStringExtra(Constants.ITEM_OPTION_TYPE_NAME));
+//            binding.get().dealOptionTextView.setText(data.getStringExtra(Constants.ITEM_OPTION_TYPE_NAME));
             itemViewModel.holder.deal_option_id = this.dealOptionId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CONDITION_TYPE) {
+        } /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CONDITION_TYPE) {
 
             this.conditionId = data.getStringExtra(Constants.ITEM_CONDITION_TYPE_ID);
             binding.get().itemConditionTextView.setText(data.getStringExtra(Constants.ITEM_CONDITION_TYPE_NAME));
             itemViewModel.holder.condition_id = this.conditionId;
-        } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_LOCATION_TYPE) {
+        }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_LOCATION_TYPE) {
 
             this.locationId = data.getStringExtra(Constants.ITEM_LOCATION_TYPE_ID);
             itemViewModel.latValue = data.getStringExtra(Constants.LAT);
@@ -211,7 +291,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             itemViewModel.mapLat = itemViewModel.latValue;
             itemViewModel.mapLng = itemViewModel.lngValue;
 
-            bindMap(itemViewModel.latValue, itemViewModel.lngValue);
+//            bindMap(itemViewModel.latValue, itemViewModel.lngValue);
         } else if (requestCode == Constants.RESULT_CODE__TO_MAP_VIEW && resultCode == Constants.RESULT_CODE__FROM_MAP_VIEW) {
 
             itemViewModel.latValue = data.getStringExtra(Constants.LAT);
@@ -219,7 +299,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
             changeCamera();
 
-            bindingLatLng(itemViewModel.latValue, itemViewModel.lngValue);
+            //bindingLatLng(itemViewModel.latValue, itemViewModel.lngValue);
         }
 
         //image  gallery upload
@@ -377,6 +457,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             }
         }
         //endregion
+
+
     }
 
     private String convertToImagePath(Uri selectedImage, String[] filePathColumn) {
@@ -467,9 +549,56 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             }
         });
 
-        binding.get().typeCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+        //binding.get().typeCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
-        binding.get().itemConditionCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CONDITION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+        binding.get().typeRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int id) {
+                switch (id){
+                    case R.id.typeOption1 :
+                        typeTemp = binding.get().typeOption1.getText().toString();
+                        break;
+                    case R.id.typeOption2 :
+                        typeTemp = binding.get().typeOption2.getText().toString();
+                        break;
+                    case R.id.typeOption3 :
+                        typeTemp = binding.get().typeOption3.getText().toString();
+                        break;
+                    case R.id.typeOption4 :
+                        typeTemp = binding.get().typeOption4.getText().toString();
+                        break;
+                    case R.id.typeOption5 :
+                        typeTemp = binding.get().typeOption5.getText().toString();
+                        break;
+                }
+
+            }
+
+        });
+
+        //binding.get().itemConditionCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CONDITION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+
+        binding.get().conditionRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int id) {
+                switch (id){
+                    case R.id.conditionOption1 :
+                        conditionTemp = binding.get().conditionOption1.getText().toString();
+                        break;
+                    case R.id.conditionOption2 :
+                        conditionTemp = binding.get().conditionOption2.getText().toString();
+                        break;
+                    case R.id.conditionOption3 :
+                        conditionTemp = binding.get().conditionOption3.getText().toString();
+                        break;
+                    case R.id.conditionOption4 :
+                        conditionTemp = binding.get().conditionOption4.getText().toString();
+                        break;
+
+                }
+            }
+
+        });
 
         binding.get().priceTypeCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_PRICE_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
@@ -479,7 +608,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         binding.get().priceCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CURRENCY_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
-        binding.get().mapViewButton.setOnClickListener(v -> {
+        /*binding.get().mapViewButton.setOnClickListener(v -> {
 
             map.clear();
 
@@ -490,7 +619,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             }
 
 
-        });
+        });*/
 
         binding.get().submitButton.setOnClickListener(view -> {
 
@@ -507,25 +636,25 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if (binding.get().subCategoryTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_subcategory), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().typeTextView.getText().toString().isEmpty()) {
+            } else if (binding.get().typeRadioGroup.isSelected()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_type), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().itemConditionTextView.getText().toString().isEmpty()) {
+            } else if (binding.get().conditionRadioGroup.isSelected()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_item_condition), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().dealOptionTextView.getText().toString().isEmpty()) {
+            } /*else if (binding.get().dealOptionTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_deal_option), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().descEditText.getText().toString().isEmpty()) {
+            }*/ else if (binding.get().descEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_description), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else if (binding.get().priceEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_price), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().priceTextView.getText().toString().isEmpty()) {
+            } /*else if (binding.get().priceTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_currency_symbol), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else {
+            }*/ else {
 
                 isUploadSuccess = false;
 
@@ -535,15 +664,15 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
                 if (itemViewModel.itemId != null) {
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
-                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeId, this.priceTypeId, this.currencyId, this.conditionId, this.locationId,
-                                binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
-                                binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), this.dealOptionId,
+                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
+                                "", binding.get().descEditText.getText().toString(),
+                                /*binding.get().highlightInfoEditText.getText().toString()*/"", binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
                     } else {//add new item
-                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeId, this.priceTypeId, this.currencyId, this.conditionId, this.locationId,
-                                binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
-                                binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), this.dealOptionId,
+                        itemViewModel.setUploadItemObj(this.catId, this.subCatId, this.typeTemp, this.priceTypeId, this.currencyId, this.conditionTemp, this.locationId,
+                                "", binding.get().descEditText.getText().toString(),
+                                /*binding.get().highlightInfoEditText.getText().toString()*/"", binding.get().priceEditText.getText().toString(), this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, "", binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, "", loginUserId);
                     }
@@ -777,7 +906,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         getIntentData();
 
-        bindingLatLng(itemViewModel.latValue, itemViewModel.lngValue);
+        //bindingLatLng(itemViewModel.latValue, itemViewModel.lngValue);
 
         getItemDetail();
 
@@ -1072,8 +1201,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         binding.get().titleEditText.setText(item.title);
         itemViewModel.holder.cat_id = item.catId;
         itemViewModel.holder.sub_cat_id = item.subCatId;
-        itemViewModel.holder.type_id = item.itemTypeId;
-        itemViewModel.holder.condition_id = item.conditionOfItem;
+        //itemViewModel.holder.type_id = item.itemTypeId;
+        //itemViewModel.holder.condition_id = item.conditionOfItem;
         itemViewModel.holder.price_type_id = item.itemPriceTypeId;
         itemViewModel.holder.currency_id = item.itemCurrencyId;
         itemViewModel.holder.location_id = item.itemLocation.id;
@@ -1081,29 +1210,29 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         itemViewModel.is_sold_out = item.isSoldOut;
         this.catId = item.catId;
         this.subCatId = item.subCatId;
-        this.typeId = item.itemTypeId;
-        this.conditionId = item.conditionOfItem;
+        //this.typeId = item.itemTypeId;
+        //this.conditionId = item.conditionOfItem;
         this.priceTypeId = item.itemPriceTypeId;
         this.currencyId = item.itemCurrencyId;
         this.locationId = item.itemLocation.id;
         this.dealOptionId = item.dealOptionId;
-        binding.get().dealOptionTextView.setText(item.itemDealOption.name);
+//        binding.get().dealOptionTextView.setText(item.itemDealOption.name);
         binding.get().categoryTextView.setText(item.category.name);
         binding.get().subCategoryTextView.setText(item.subCategory.name);
-        binding.get().typeTextView.setText(item.itemType.name);
-        binding.get().itemConditionTextView.setText(item.itemCondition.name);
-        binding.get().priceTypeTextView.setText(item.itemPriceType.name);
-        binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);
+        //binding.get().typeTextView.setText(item.itemType.name);
+        //binding.get().itemConditionTextView.setText(item.itemCondition.name);
+        //binding.get().priceTypeTextView.setText(item.itemPriceType.name);
+        //binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);
         binding.get().locationTextView.setText(item.itemLocation.name);
-        bindMap(item.lat, item.lng);
+        //bindMap(item.lat, item.lng);
         itemViewModel.mapLat = item.lat;
         itemViewModel.mapLng = item.lng;
-        bindingLatLng(item.lat, item.lng);
+        //bindingLatLng(item.lat, item.lng);
         binding.get().brandEditText.setText(item.brand);
         binding.get().priceEditText.setText(item.price);
-        binding.get().highlightInfoEditText.setText(item.highlightInfo);
+        //binding.get().highlightInfoEditText.setText(item.highlightInfo);
         binding.get().descEditText.setText(item.description);
-        binding.get().remarkEditText.setText(item.dealOptionRemark);
+//        binding.get().remarkEditText.setText(item.dealOptionRemark);
         bindingIsShop(item.businessMode);
         binding.get().addressEditText.setText(item.address);
 
@@ -1169,10 +1298,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
     }
 
-    private void bindingLatLng(String latValue, String lngValue) {
+    /*private void bindingLatLng(String latValue, String lngValue) {
         binding.get().latitudeEditText.setText(latValue);
         binding.get().lngEditText.setText(lngValue);
-    }
+    }*/
 
     private void changeCamera() {
 
