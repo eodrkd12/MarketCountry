@@ -291,7 +291,7 @@
     <string name="profile__status">상태</string>
     <string name="profile__notification">알림</string>
     <string name="profile__followers">팔로워</string>
-    <string name="profile__following">상품후기</string>
+    <string name="profile__following">팔로잉</string>
     <string name="profile__listing">판매목록</string>
     <string name="profile__follow">팔로우</string>
     <string name="profile__unfollow">언팔로우</string>
@@ -621,7 +621,7 @@
     <string name="chat__reject_text">거절</string>
     <string name="chat__sold">판매</string>
     <string name="chat__give_review">리뷰작성</string>
-    <string name="chat__item_is_sold">판매 된 상품</string>
+    <string name="chat__item_is_sold">거래 완료</string>
     <string name="chat__item_space_error">가격은 비워 둘 수 없습니다</string>
 
     <!-- Verify Email -->
