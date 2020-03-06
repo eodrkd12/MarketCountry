@@ -486,6 +486,7 @@ public class NavigationController {
     }
 
     public void navigateToCamera(Activity activity, String flag) {
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
             // Create the File where the photo should go
