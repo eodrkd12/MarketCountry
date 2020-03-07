@@ -151,7 +151,7 @@ public class CategoryListFragment extends PSFragment implements DataBoundListAda
         loadCategory();
     }
 
-    //region Private Methods
+    //region Private Methods                talkProfile.
 
     private void loadCategory() {
 

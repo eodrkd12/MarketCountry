@@ -19,6 +19,10 @@ public class KakaoSDKAdapter extends KakaoAdapter {
     public ISessionConfig getSessionConfig() {
         return new ISessionConfig() {
             @Override
+            public boolean isSecureMode() {
+                return false;
+            }
+            @Override
             public AuthType[] getAuthTypes() {
                 return new AuthType[] {AuthType.KAKAO_LOGIN_ALL};
             }
@@ -42,11 +46,6 @@ public class KakaoSDKAdapter extends KakaoAdapter {
     @Override
     public IApplicationConfig getApplicationConfig() {
         return new IApplicationConfig() {
-            @Override
-            public Activity getTopActivity() {
-                return PsApp.getCurrentActivity();
-            }
-
             @Override
             public Context getApplicationContext() {
                 return PsApp.getGlobalApplicationContext();
