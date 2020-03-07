@@ -11,6 +11,7 @@ import com.google.android.gms.dynamic.IFragmentWrapper;
 import com.marketcountry.psbuyandsell.Config;
 import com.marketcountry.psbuyandsell.R;
 import com.marketcountry.psbuyandsell.databinding.ItemSellerChatHistoryListAdapterBinding;
+import com.marketcountry.psbuyandsell.ui.chathistory.MessageFragment;
 import com.marketcountry.psbuyandsell.ui.common.DataBoundListAdapter;
 import com.marketcountry.psbuyandsell.ui.common.DataBoundViewHolder;
 import com.marketcountry.psbuyandsell.utils.Constants;
@@ -86,11 +87,24 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
         }
             binding.itemConditionTextView.setText(binding.getRoot().getResources().getString(R.string.item_condition__type, chatHistory.item.conditionOfItem));
 
-            if (chatHistory.buyerUnreadCount.equals(Constants.ZERO)) {
-                binding.countTextView.setVisibility(View.GONE);
-            } else {
-                binding.countTextView.setVisibility(View.VISIBLE);
+        binding.countTextView.setVisibility(View.GONE);
+        binding.countTextView2.setVisibility(View.GONE);
+
+        if(chatHistory.buyerUserId.equals(MessageFragment.userId)) {
+                if (chatHistory.buyerUnreadCount.equals(Constants.ZERO)) {
+                    binding.countTextView.setVisibility(View.GONE);
+                } else {
+                    binding.countTextView.setVisibility(View.VISIBLE);
+                }
+            }else if(chatHistory.sellerUserId.equals(MessageFragment.userId)){
+                if (chatHistory.sellerUnreadCount.equals(Constants.ZERO)) {
+                    binding.countTextView2.setVisibility(View.GONE);
+                } else {
+                    binding.countTextView2.setVisibility(View.VISIBLE);
+                }
             }
+        Log.d("확인 bCount",chatHistory.buyerUnreadCount);
+        Log.d("확인 sCount",chatHistory.sellerUnreadCount);
 
             if (chatHistory.item.isSoldOut.equals(Constants.ONE)) {
                 binding.soldTextView.setVisibility(View.VISIBLE);
@@ -104,14 +118,16 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
     protected boolean areItemsTheSame(ChatHistory oldItem, ChatHistory newItem) {
         return Objects.equals(oldItem.id, newItem.id) &&
                 oldItem.addedDate.equals(newItem.addedDate) &&
-                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount);
+                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount) &&
+                oldItem.sellerUnreadCount.equals(newItem.sellerUnreadCount);
     }
 
     @Override
     protected boolean areContentsTheSame(ChatHistory oldItem, ChatHistory newItem) {
         return Objects.equals(oldItem.id, newItem.id) &&
                 oldItem.addedDate.equals(newItem.addedDate) &&
-                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount);
+                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount) &&
+                oldItem.sellerUnreadCount.equals(newItem.sellerUnreadCount);
     }
 
     public interface ChatHistoryClickCallback {

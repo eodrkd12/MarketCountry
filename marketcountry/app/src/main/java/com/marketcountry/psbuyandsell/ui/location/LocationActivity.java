@@ -32,7 +32,6 @@ public class LocationActivity extends PSAppCompactActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(newBase);
         String CURRENT_LANG_CODE = preferences.getString(Constants.LANGUAGE_CODE, Config.DEFAULT_LANGUAGE);
         String CURRENT_LANG_COUNTRY_CODE = preferences.getString(Constants.LANGUAGE_COUNTRY_CODE, Config.DEFAULT_LANGUAGE_COUNTRY_CODE);

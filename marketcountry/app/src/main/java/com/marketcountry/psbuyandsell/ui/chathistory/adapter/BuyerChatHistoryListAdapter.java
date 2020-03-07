@@ -65,10 +65,10 @@ public class BuyerChatHistoryListAdapter extends DataBoundListAdapter<ChatHistor
     protected void bind(ItemBuyerChatHistoryListAdapterBinding binding, ChatHistory chatHistory) {
         binding.setChatHistory(chatHistory);
 
-        binding.itemConditionTextView.setText(binding.getRoot().getResources().getString(R.string.item_condition__type, chatHistory.item.itemCondition.name));
+        binding.itemConditionTextView.setText(binding.getRoot().getResources().getString(R.string.item_condition__type, chatHistory.item.conditionOfItem));
 
 
-        if (!chatHistory.item.itemCurrency.currencySymbol.equals("") && !chatHistory.item.price.equals("")) {
+        if (/*!chatHistory.item.itemCurrency.currencySymbol.equals("") && */!chatHistory.item.price.equals("")) {
 
             String currencySymbol = chatHistory.item.itemCurrency.currencySymbol;
             String price;
@@ -88,7 +88,7 @@ public class BuyerChatHistoryListAdapter extends DataBoundListAdapter<ChatHistor
                 currencyPrice = price + " " + currencySymbol;
             }
 
-            binding.priceTextView.setText(currencyPrice);
+            binding.priceTextView.setText(price);
         }
         if (chatHistory.sellerUnreadCount.equals(Constants.ZERO)) {
             binding.countTextView.setVisibility(View.GONE);

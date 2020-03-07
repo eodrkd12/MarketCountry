@@ -4,6 +4,7 @@ package com.marketcountry.psbuyandsell.ui.chathistory;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,8 @@ public class MessageFragment extends PSFragment {
     private PagerAdapter pagerAdapter;
     //endregion
 
+    public static String userId;
+
     //region Override Methods
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class MessageFragment extends PSFragment {
         // Inflate the layout for this fragment
         FragmentMessageBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false, dataBindingComponent);
         binding = new AutoClearedValue<>(this, dataBinding);
+
+        userId = pref.getString(Constants.USER_ID, Constants.EMPTY_STRING);
 
         return binding.get().getRoot();
     }

@@ -120,6 +120,27 @@
                     app:layout_constraintTop_toTopOf="@+id/userImageView"
                     tools:text="1" />
 
+                <TextView
+                    android:id="@+id/countTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/chat_bubble"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:paddingStart="@dimen/space_8"
+                    android:paddingTop="@dimen/space_2"
+                    android:paddingEnd="@dimen/space_8"
+                    android:paddingBottom="@dimen/space_2"
+                    android:text="@{chatHistory.sellerUnreadCount}"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/text__white"
+                    android:textSize="@dimen/font_body_s_size"
+                    app:font='@{"normal"}'
+                    app:layout_constraintEnd_toStartOf="@+id/cardView"
+                    app:layout_constraintTop_toTopOf="@+id/userImageView"
+                    tools:text="1" />
+
                 <View
                     android:id="@+id/view22"
                     android:layout_width="0dp"

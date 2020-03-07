@@ -119,6 +119,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private String address;
     private double latitude;
     private double longitude;
+
     @VisibleForTesting
     private AutoClearedValue<FragmentItemEntryBinding> binding;
     private AutoClearedValue<BottomSheetDialog> mBottomSheetDialog;

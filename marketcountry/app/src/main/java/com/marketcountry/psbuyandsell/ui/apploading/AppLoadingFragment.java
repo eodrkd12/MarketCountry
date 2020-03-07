@@ -1,12 +1,20 @@
 package com.marketcountry.psbuyandsell.ui.apploading;
 
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -28,9 +36,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import android.app.AlertDialog;
+import android.widget.Toast;
 
 public class AppLoadingFragment extends PSFragment {
-
 
     //region Variables
 
@@ -52,6 +61,7 @@ public class AppLoadingFragment extends PSFragment {
         AutoClearedValue<FragmentAppLoadingBinding> binding = new AutoClearedValue<>(this, dataBinding);
 
         return binding.get().getRoot();
+
     }
 
 
@@ -180,11 +190,21 @@ public class AppLoadingFragment extends PSFragment {
 
         } else {
             pref.edit().putBoolean(Constants.APPINFO_PREF_FORCE_UPDATE, false).apply();
-            if (!selected_location_id.isEmpty()) {
+
+            navigationController.navigateToMainActivity(getActivity(), selected_location_id, selected_location_name, selectedLat, selectedLng);
+            /*if (!selected_location_id.isEmpty()) {
                 navigationController.navigateToMainActivity(getActivity(), selected_location_id, selected_location_name, selectedLat, selectedLng);
+                Log.d("location id", selected_location_id);
+                Log.d("location name", selected_location_name);
+                Log.d("location lat", selectedLat);
+                Log.d("location lng", selectedLng);
             } else {
                 navigationController.navigateToLocationActivity(getActivity(), Constants.LOCATION_NOT_CLEAR_ICON, Constants.EMPTY_STRING);
-            }
+                Log.d("location id", selected_location_id);
+                Log.d("location name", selected_location_name);
+                Log.d("location lat", selectedLat);
+                Log.d("location lng", selectedLng);
+            }*/
             if (getActivity() != null) {
                 getActivity().finish();
             }
@@ -198,11 +218,13 @@ public class AppLoadingFragment extends PSFragment {
         psDialogMsg.okButton.setOnClickListener(v -> {
             psDialogMsg.cancel();
 
-            if (!selected_location_id.isEmpty()) {
+            navigationController.navigateToMainActivity(getActivity(), selected_location_id, selected_location_name, selectedLat, selectedLng);
+
+            /*if (!selected_location_id.isEmpty()) {
                 navigationController.navigateToMainActivity(getActivity(), selected_location_id, selected_location_name, selectedLat, selectedLng);
             } else {
                 navigationController.navigateToLocationActivity(getActivity(), Constants.LOCATION_NOT_CLEAR_ICON, Constants.EMPTY_STRING);
-            }
+            }*/
 
 
             if (getActivity() != null) {
