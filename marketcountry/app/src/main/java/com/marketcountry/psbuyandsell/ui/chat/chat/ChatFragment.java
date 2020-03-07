@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
@@ -97,9 +98,9 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        FragmentChatBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat, container, false, dataBindingComponent);
+        ViewDataBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat, container, false, dataBindingComponent);
 
-        binding = new AutoClearedValue<>(this, dataBinding);
+        binding = new AutoClearedValue(this, dataBinding);
 
         binding.get().setLoadingMore(connectivity.isConnected());
 
@@ -248,7 +249,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 intent.putExtra(Constants.ITEM_NAME, chatViewModel.itemName);
                 intent.putExtra(Constants.ITEM_PRICE,chatViewModel.itemPrice);
                 intent.putExtra(Constants.RECEIVE_USER_NAME,chatViewModel.receiverName);
-
                 getActivity().startActivity(intent);
             }
         });
@@ -1502,7 +1502,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
     private void getCustomLayoutDialog() {
         reviewDialog = new AutoClearedValue<>(this, new Dialog(binding.get().getRoot().getContext()));
-        itemRatingEntryBinding = new AutoClearedValue<>(this, DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.item_rating_entry, null, false, dataBindingComponent));
+        itemRatingEntryBinding = new AutoClearedValue(this, DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.item_rating_entry, null, false, dataBindingComponent));
 
         reviewDialog.get().requestWindowFeature(Window.FEATURE_NO_TITLE);
         //reviewDialog.setContentView(R.layout.item_rating_entry);
