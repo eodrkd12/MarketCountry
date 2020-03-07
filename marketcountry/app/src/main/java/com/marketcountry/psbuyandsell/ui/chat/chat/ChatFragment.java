@@ -35,6 +35,7 @@ import com.marketcountry.psbuyandsell.ui.chat.adapter.ChatListAdapter;
 import com.marketcountry.psbuyandsell.ui.chathistory.MessageFragment;
 import com.marketcountry.psbuyandsell.ui.common.DataBoundListAdapter;
 import com.marketcountry.psbuyandsell.ui.common.PSFragment;
+import com.marketcountry.psbuyandsell.ui.gallery.GalleryActivity;
 import com.marketcountry.psbuyandsell.utils.AutoClearedValue;
 import com.marketcountry.psbuyandsell.utils.Constants;
 import com.marketcountry.psbuyandsell.utils.PSDialogMsg;
@@ -234,6 +235,16 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
         }
 
         binding.get().offerButton.setOnClickListener(v -> callOfferDialog());
+
+        binding.get().payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GalleryActivity.class);
+
+                getActivity().startActivity(intent);
+
+            }
+        });
 
 //        binding.get().markAsSoldButton.setOnClickListener(v -> {
 //            //call server
