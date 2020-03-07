@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,6 +37,8 @@ import com.marketcountry.psbuyandsell.ui.chathistory.MessageFragment;
 import com.marketcountry.psbuyandsell.ui.common.DataBoundListAdapter;
 import com.marketcountry.psbuyandsell.ui.common.PSFragment;
 import com.marketcountry.psbuyandsell.ui.gallery.GalleryActivity;
+import com.marketcountry.psbuyandsell.ui.item.detail.ItemActivity;
+import com.marketcountry.psbuyandsell.ui.payment.PaymentActivity;
 import com.marketcountry.psbuyandsell.utils.AutoClearedValue;
 import com.marketcountry.psbuyandsell.utils.Constants;
 import com.marketcountry.psbuyandsell.utils.PSDialogMsg;
@@ -80,7 +83,8 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
     private String priceString;
     private int priceCount;
     private int priceByCount;
-    private String finalPrice;// added
+    private String finalPrice;
+    public static final int payment_code = 920115;// added
 
     @VisibleForTesting
     private AutoClearedValue<FragmentChatBinding> binding;
@@ -239,10 +243,13 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
         binding.get().payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), GalleryActivity.class);
+                Intent intent = new Intent(getActivity(), PaymentActivity.class);
+
+                intent.putExtra(Constants.ITEM_NAME, chatViewModel.itemName);
+                intent.putExtra(Constants.ITEM_PRICE,chatViewModel.itemPrice);
+                intent.putExtra(Constants.RECEIVE_USER_NAME,chatViewModel.receiverName);
 
                 getActivity().startActivity(intent);
-
             }
         });
 

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -7,7 +6,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.marketcountry.psbuyandsell.ui.payment.PaymentActivity">
+        tools:context="com.marketcountry.psbuyandsell.ui.user.PasswordChangeActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -19,7 +18,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/actionBarSize"
                 android:background="@color/global__primary"
-                app:popupTheme="@style/Base.PSTheme.PopupOverlay" />
+                app:popupTheme="@style/Base.PSTheme.PopupOverlay"
+                app:title="결제"
+                app:titleTextColor="@color/text__white" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,7 +30,5 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 </layout>
