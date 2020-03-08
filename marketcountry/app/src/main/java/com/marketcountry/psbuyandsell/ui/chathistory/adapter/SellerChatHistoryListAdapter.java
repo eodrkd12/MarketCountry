@@ -121,16 +121,14 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
     protected boolean areItemsTheSame(ChatHistory oldItem, ChatHistory newItem) {
         return Objects.equals(oldItem.id, newItem.id) &&
                 oldItem.addedDate.equals(newItem.addedDate) &&
-                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount) &&
-                oldItem.sellerUnreadCount.equals(newItem.sellerUnreadCount);
+                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount);
     }
 
     @Override
     protected boolean areContentsTheSame(ChatHistory oldItem, ChatHistory newItem) {
         return Objects.equals(oldItem.id, newItem.id) &&
                 oldItem.addedDate.equals(newItem.addedDate) &&
-                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount) &&
-                oldItem.sellerUnreadCount.equals(newItem.sellerUnreadCount);
+                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount);
     }
 
     public interface ChatHistoryClickCallback {

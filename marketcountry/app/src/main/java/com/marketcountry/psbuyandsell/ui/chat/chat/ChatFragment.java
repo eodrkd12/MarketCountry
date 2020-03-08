@@ -80,11 +80,10 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
     private int countProduct;
     private String countString;
-    private String priceString;
+
     private int priceCount;
     private int priceByCount;
-    private String finalPrice;
-    public static final int payment_code = 920115;// added
+
 
     @VisibleForTesting
     private AutoClearedValue<FragmentChatBinding> binding;
@@ -407,7 +406,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
                         if (chatViewModel.chatFlag.equals(Constants.CHAT_FROM_BUYER)) {
 
-                            //chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_BUYER);
+                            chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_BUYER);
 
                         } else {
 
@@ -574,10 +573,11 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
         if (chatFlag.equals(Constants.CHAT_FROM_BUYER)) {
             binding.get().offerButton.setVisibility(View.GONE);
             binding.get().soldTextView.setVisibility(View.VISIBLE);
-
+            binding.get().payButton.setVisibility(View.GONE);
         } else {
             binding.get().offerButton.setVisibility(View.VISIBLE);
             binding.get().soldTextView.setVisibility(View.GONE);
+            binding.get().payButton.setVisibility(View.VISIBLE);
 
         }
     }
