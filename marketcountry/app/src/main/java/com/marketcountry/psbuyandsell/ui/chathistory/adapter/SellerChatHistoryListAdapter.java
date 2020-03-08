@@ -35,6 +35,7 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
 
     @Override
     protected ItemSellerChatHistoryListAdapterBinding createBinding(ViewGroup parent) {
+
         ItemSellerChatHistoryListAdapterBinding binding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.getContext()),
                         R.layout.item_seller_chat_history_list_adapter, parent, false,
@@ -48,7 +49,9 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
                 callback.onClick(chatHistory, chatHistory.id);
             }
         });
+
         return binding;
+
     }
 
     @Override
