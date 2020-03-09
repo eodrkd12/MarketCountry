@@ -157,7 +157,7 @@
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 android:gravity="center"
-                                android:text="@string/item_detail__view_on_map"
+                                android:text="@{item.address}"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
