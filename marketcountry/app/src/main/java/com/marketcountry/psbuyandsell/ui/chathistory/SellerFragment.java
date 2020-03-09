@@ -142,7 +142,8 @@ public class SellerFragment extends PSFragment implements DataBoundListAdapter.D
                         chatHistoryFromSeller.item.conditionOfItem,
                         Constants.CHAT_FROM_SELLER,
                         chatHistoryFromSeller.sellerUser.userProfilePhoto,
-                        Constants.REQUEST_CODE__SELLER_CHAT_FRAGMENT), this);
+                        Constants.REQUEST_CODE__SELLER_CHAT_FRAGMENT
+                ), this);
         this.adapter = new AutoClearedValue<>(this, sellerChatHistoryListAdapter);
         binding.get().sellerList.setAdapter(sellerChatHistoryListAdapter);
     }
