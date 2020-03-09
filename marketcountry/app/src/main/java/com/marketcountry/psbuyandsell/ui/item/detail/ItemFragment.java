@@ -33,6 +33,7 @@ import com.marketcountry.psbuyandsell.Config;
 import com.marketcountry.psbuyandsell.R;
 import com.marketcountry.psbuyandsell.binding.FragmentDataBindingComponent;
 import com.marketcountry.psbuyandsell.databinding.FragmentItemBinding;
+import com.marketcountry.psbuyandsell.ui.city.selectedcity.SelectedCityFragment;
 import com.marketcountry.psbuyandsell.ui.common.PSFragment;
 import com.marketcountry.psbuyandsell.utils.AutoClearedValue;
 import com.marketcountry.psbuyandsell.utils.Constants;
@@ -88,6 +89,7 @@ public class ItemFragment extends PSFragment {
 
         imageView = binding.get().coverUserImageView;
 
+
         return binding.get().getRoot();
     }
 
@@ -117,12 +119,12 @@ public class ItemFragment extends PSFragment {
             }
         });
 
-        binding.get().viewOnMapTextView.setOnClickListener(new View.OnClickListener() {
+        /*binding.get().viewOnMapTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navigationController.navigateToMapActivity(getActivity(),itemViewModel.itemContainer.lng,itemViewModel.itemContainer.lat,Constants.MAP);
             }
-        });
+        });*/
         //백업시
         //binding.get().safetyTipButton.setOnClickListener(v -> navigationController.navigateToSafetyTipsActivity(getActivity()));
 

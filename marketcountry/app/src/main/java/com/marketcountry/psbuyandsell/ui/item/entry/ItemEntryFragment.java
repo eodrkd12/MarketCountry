@@ -637,16 +637,16 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if (binding.get().subCategoryTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_subcategory), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().typeRadioGroup.isSelected()) {
+            } else if (!binding.get().typeOption1.isChecked() && !binding.get().typeOption2.isChecked() && !binding.get().typeOption3.isChecked() && !binding.get().typeOption4.isChecked() && !binding.get().typeOption5.isChecked()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_type), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().conditionRadioGroup.isSelected()) {
+            } else if (!binding.get().conditionOption1.isChecked() && !binding.get().conditionOption2.isChecked() && !binding.get().conditionOption3.isChecked() && !binding.get().conditionOption4.isChecked()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_item_condition), getString(R.string.app__ok));
                 psDialogMsg.show();
-            } /*else if (binding.get().dealOptionTextView.getText().toString().isEmpty()) {
+            } else if (!binding.get().dealOption1.isChecked() && !binding.get().dealOption2.isChecked() && !binding.get().dealOption3.isChecked()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_deal_option), getString(R.string.app__ok));
                 psDialogMsg.show();
-            }*/ else if (binding.get().descEditText.getText().toString().isEmpty()) {
+            } else if (binding.get().descEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(getString(R.string.item_entry_need_description), getString(R.string.app__ok));
                 psDialogMsg.show();
             } else if (binding.get().priceEditText.getText().toString().isEmpty()) {

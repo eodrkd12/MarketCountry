@@ -81,11 +81,10 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
     private int countProduct;
     private String countString;
-    private String priceString;
+
     private int priceCount;
     private int priceByCount;
-    private String finalPrice;
-    public static final int payment_code = 920115;// added
+
 
     @VisibleForTesting
     private AutoClearedValue<FragmentChatBinding> binding;
@@ -183,7 +182,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
             Log.d("확인 msg loginid",loginUserId);
             Log.d("확인 msg userid",MessageFragment.userId);
             if (!binding.get().editText.getText().toString().isEmpty()) {
-                if(loginUserId.equals(MessageFragment.userId)) {
                     chatViewModel.setSaveMessagesToFirebaseObj(
                             new Message(
                                     Utils.generateKeyForChatHeadId(loginUserId, chatViewModel.receiverId),
@@ -194,18 +192,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                                     Constants.CHAT_STATUS_NULL,
                                     false
                             ), loginUserId, chatViewModel.receiverId);
-                } else {
-                    chatViewModel.setSaveMessagesToFirebaseObj(
-                            new Message(
-                                    Utils.generateKeyForChatHeadId(loginUserId, chatViewModel.receiverId),
-                                    chatViewModel.itemId,
-                                    binding.get().editText.getText().toString().trim(),
-                                    Constants.CHAT_TYPE_TEXT,
-                                    loginUserId,
-                                    Constants.CHAT_STATUS_NULL,
-                                    false
-                            ), chatViewModel.receiverId, loginUserId);
-                }
 
 
                 if (!connectivity.isConnected()) {
@@ -411,23 +397,25 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
                         dialog.dismiss();
                         //call api
-                        chatViewModel.offerItemPrice = itemOfferPriceEditText.getText().toString().trim();
+
+                        //chatViewModel.offerItemPrice = itemOfferPriceEditText.getText().toString().trim();
+                        chatViewModel.offerItemPrice =  itemOfferPriceEditText.getText().toString();
+                        //binding.get().priceTextView.setText(itemOfferPriceEditText.getText().toString());
+
+                        Log.d("확인 price", chatViewModel.itemPrice);
 
                         if (chatViewModel.chatFlag.equals(Constants.CHAT_FROM_BUYER)) {
 
-                            //chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_BUYER);
+                            chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_BUYER);
 
                         } else {
 
                             chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, loginUserId, chatViewModel.receiverId, chatViewModel.offerItemPrice, Constants.CHAT_TO_SELLER);
-                            chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_SELLER);
 
-                            Log.d("확인 user 1", loginUserId);
-                            Log.d("확인 user 2", chatViewModel.receiverId);
+                            Log.d("확인 user 1", loginUserName);
+                            Log.d("확인 user 2", chatViewModel.receiverName);
 
                         }
-                        chatViewModel.itemPrice = itemOfferPriceEditText.getText().toString();
-                        binding.get().priceTextView.setText(itemOfferPriceEditText.getText().toString());
                     }
 
 
@@ -585,10 +573,11 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
         if (chatFlag.equals(Constants.CHAT_FROM_BUYER)) {
             binding.get().offerButton.setVisibility(View.GONE);
             binding.get().soldTextView.setVisibility(View.VISIBLE);
-
+            binding.get().payButton.setVisibility(View.GONE);
         } else {
             binding.get().offerButton.setVisibility(View.VISIBLE);
             binding.get().soldTextView.setVisibility(View.GONE);
+            binding.get().payButton.setVisibility(View.VISIBLE);
 
         }
     }
@@ -1277,10 +1266,12 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
     private void bindItemData() {
         bindingButtonText(chatViewModel.chatFlag);
         binding.get().itemTextView.setText(chatViewModel.itemName);
+        Log.d("알림 price 1 ",chatViewModel.offerItemPrice);
+        Log.d("알림 price 2 ",chatViewModel.itemPrice);
 
         if (/*!chatViewModel.itemCurrency.equals("") &&*/ !chatViewModel.itemPrice.equals("")) {
 
-            String currencySymbol = chatViewModel.itemCurrency;
+            //String currencySymbol = chatViewModel.itemCurrency;
             String price;
             try {
                 price = Utils.format(Double.parseDouble(chatViewModel.itemPrice));
@@ -1291,12 +1282,12 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
             Utils.psLog("**********" + price);
 
-            String currencyPrice;
+            /*String currencyPrice;
             if (Config.SYMBOL_SHOW_FRONT) {
                 currencyPrice = currencySymbol + " " + price;
             } else {
                 currencyPrice = price + " " + currencySymbol;
-            }
+            }*/
 
             if (chatViewModel.itemPrice.isEmpty()) {
 

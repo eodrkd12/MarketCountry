@@ -35,6 +35,7 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
 
     @Override
     protected ItemSellerChatHistoryListAdapterBinding createBinding(ViewGroup parent) {
+
         ItemSellerChatHistoryListAdapterBinding binding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.getContext()),
                         R.layout.item_seller_chat_history_list_adapter, parent, false,
@@ -48,7 +49,9 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
                 callback.onClick(chatHistory, chatHistory.id);
             }
         });
+
         return binding;
+
     }
 
     @Override
@@ -118,16 +121,14 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
     protected boolean areItemsTheSame(ChatHistory oldItem, ChatHistory newItem) {
         return Objects.equals(oldItem.id, newItem.id) &&
                 oldItem.addedDate.equals(newItem.addedDate) &&
-                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount) &&
-                oldItem.sellerUnreadCount.equals(newItem.sellerUnreadCount);
+                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount);
     }
 
     @Override
     protected boolean areContentsTheSame(ChatHistory oldItem, ChatHistory newItem) {
         return Objects.equals(oldItem.id, newItem.id) &&
                 oldItem.addedDate.equals(newItem.addedDate) &&
-                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount) &&
-                oldItem.sellerUnreadCount.equals(newItem.sellerUnreadCount);
+                oldItem.buyerUnreadCount.equals(newItem.buyerUnreadCount);
     }
 
     public interface ChatHistoryClickCallback {

@@ -48,7 +48,6 @@ public class SellerFragment extends PSFragment implements DataBoundListAdapter.D
     private ChatHistoryViewModel chatHistoryViewModel;
     public String catId;
 
-    public static String userId;
 
     @VisibleForTesting
     private AutoClearedValue<FragmentSellerBinding> binding;
