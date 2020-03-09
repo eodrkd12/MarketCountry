@@ -27,13 +27,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_item_entry.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_item_entry.xml" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/taskHistory.bin" afterDir="false" />
@@ -152,10 +151,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-<<<<<<< HEAD
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +161,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_4_API_27" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="291087cda83f7ece" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -184,142 +179,91 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/entry/ItemEntryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-<<<<<<< HEAD
             <state relative-caret-position="377">
               <caret line="538" column="115" lean-forward="true" selection-start-line="538" selection-start-column="115" selection-end-line="538" selection-end-column="115" />
-=======
             <state relative-caret-position="-654">
               <caret line="494" column="63" lean-forward="true" selection-start-line="494" selection-start-column="63" selection-end-line="494" selection-end-column="63" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
-            <state relative-caret-position="-654">
-              <caret line="494" column="63" lean-forward="true" selection-start-line="494" selection-start-column="63" selection-end-line="494" selection-end-column="63" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
-<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="877" column="62" lean-forward="true" selection-start-line="877" selection-start-column="62" selection-end-line="877" selection-end-column="62" />
-=======
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/utils/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="631">
+              <caret line="378" column="22" selection-start-line="378" selection-start-column="22" selection-end-line="378" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/itemtype/SearchViewActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="271">
               <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
-=======
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="904" column="52" selection-start-line="904" selection-start-column="52" selection-end-line="904" selection-end-column="52" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/itemtype/ItemTypeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="206">
               <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
-=======
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_by_category.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/utils/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
-<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/itemtype/adapter/ItemTypeAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="76">
               <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-=======
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashboardSearchByCategoryActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="388">
               <caret line="904" column="52" selection-start-line="904" selection-start-column="52" selection-end-line="904" selection-end-column="52" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
-<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/utils/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="291" column="11" selection-start-line="291" selection-start-column="11" selection-end-line="291" selection-end-column="11" />
-=======
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_by_category.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/viewobject/Item.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2679">
               <caret line="145" column="12" selection-start-line="145" selection-start-column="12" selection-end-line="145" selection-end-column="12" />
-=======
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashboardSearchByCategoryActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_entry.xml">
           <provider editor-type-id="android-designer2" />
@@ -332,15 +276,6 @@
               </folding>
             </state>
           </provider>
-=======
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashBoardSearchCategoryFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
-            </state>
-          </provider>
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashBoardSearchCategoryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -348,7 +283,6 @@
               <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
             </state>
           </provider>
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         </entry>
       </file>
     </leaf>
@@ -362,11 +296,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
       <find>flag</find>
       <find>address</find>
       <find>ButtonClick</find>
@@ -383,7 +312,6 @@
       <find>oncl</find>
       <find>ONCLick</find>
       <find>sumit</find>
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
       <find>submit</find>
       <find>onactivi</find>
       <find>subcatid</find>
@@ -397,8 +325,6 @@
       <find>nvaigt</find>
       <find>select</find>
       <find>category</find>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <find>onclick</find>
       <find>categoryte</find>
       <find>typete</find>
@@ -407,12 +333,7 @@
       <find>searchc</find>
       <find>value</find>
       <find>set</find>
-=======
       <find>fini</find>
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
-      <find>fini</find>
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -465,27 +386,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/detail/ItemFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-<<<<<<< HEAD
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashBoardSearchCategoryFragment.java" />
-=======
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_item_entry.xml" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashboardSearchByCategoryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/entry/ItemEntryFragment.java" />
-<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_item_entry.xml" />
-=======
-        <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashBoardSearchCategoryFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_item_entry.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashboardSearchByCategoryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/entry/ItemEntryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashBoardSearchCategoryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
       </list>
     </option>
   </component>
@@ -500,7 +409,24 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="marketcountry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="marketcountry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="marketcountry" type="b2602c69:ProjectViewProjectNode" />
+              <item name="marketcountry" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -640,14 +566,12 @@
       <window_info id="Resources Explorer" order="6" weight="0.32995737" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49946696" weight="0.2646421" />
+      <window_info active="true" anchor="bottom" id="Run" order="0" sideWeight="0.49946696" visible="true" weight="0.2646421" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.24186552" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" />
       <window_info anchor="bottom" id="Debug" order="4" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.329718" />
-<<<<<<< HEAD
-<<<<<<< HEAD
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5021322" side_tool="true" visible="true" weight="0.23969631" />
       <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="8" />
@@ -679,15 +603,9 @@
       <window_info anchor="bottom" id="Android Profiler" order="3" />
       <window_info anchor="bottom" id="Debug" order="4" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.329718" />
-=======
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.23969631" />
       <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.4989339" visible="true" weight="0.23969631" />
-      <window_info anchor="bottom" id="Find" order="10" weight="0.3286334" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.32992172" />
@@ -700,11 +618,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_gallery.xml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
@@ -749,7 +662,6 @@
         </state>
       </provider>
     </entry>
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/viewobject/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -846,44 +758,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_from_follower_list.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_condition.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_currency_type.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_deal_option_type.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_price_type.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/detail/ItemFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="803">
-          <caret line="407" column="48" selection-start-line="407" selection-start-column="48" selection-end-line="407" selection-end-column="48" />
+        <state relative-caret-position="627">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
+        <state relative-caret-position="836">
           <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_from_follower_list.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_condition.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_currency_type.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_price_type.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_type.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_backup.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/detail/ItemFragment.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -928,8 +841,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/viewobject/holder/ItemParameterHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -945,28 +856,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/category/adapter/SearchCategoryAdapter.java">
-=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/viewmodel/item/ItemViewModel.java">
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/viewmodel/item/ItemViewModel.java">
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_by_category.xml">
       <provider editor-type-id="android-designer2" />
-=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/viewobject/holder/ItemParameterHolder.java">
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/viewobject/holder/ItemParameterHolder.java">
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
@@ -990,14 +889,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashBoardSearchSubCategoryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="378" column="22" selection-start-line="378" selection-start-column="22" selection-end-line="378" selection-end-column="22" />
         <state relative-caret-position="1739">
           <caret line="168" column="49" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_search_category.xml">
-<<<<<<< HEAD
-<<<<<<< HEAD
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="523">
@@ -1012,12 +911,8 @@
           <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
         </state>
       </provider>
-=======
-=======
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="android-designer2" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/PSAppCompactActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1026,8 +921,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashBoardSearchSubCategoryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -1049,23 +942,13 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-=======
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_by_category.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
           <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search_by_category.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/viewobject/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2679">
@@ -1077,37 +960,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashboardSearchByCategoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-=======
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/dashboard/DashboardSearchByCategoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         <state relative-caret-position="388">
           <caret line="47" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-<<<<<<< HEAD
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/utils/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-<<<<<<< HEAD
           <caret line="291" column="11" selection-start-line="291" selection-start-column="11" selection-end-line="291" selection-end-column="11" />
-=======
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/itemtype/ItemTypeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="206">
           <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
         </state>
@@ -1117,30 +986,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
           <caret line="538" column="115" lean-forward="true" selection-start-line="538" selection-start-column="115" selection-end-line="538" selection-end-column="115" />
-=======
-        <state relative-caret-position="219">
-          <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
-=======
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/utils/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="388">
           <caret line="904" column="52" selection-start-line="904" selection-start-column="52" selection-end-line="904" selection-end-column="52" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
         <state relative-caret-position="225">
           <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="187">
           <caret line="877" column="62" lean-forward="true" selection-start-line="877" selection-start-column="62" selection-end-line="877" selection-end-column="62" />
         </state>
@@ -1152,41 +1011,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/item/itemtype/adapter/ItemTypeAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="76">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-=======
-        <state relative-caret-position="219">
-          <caret line="112" column="62" selection-start-line="112" selection-start-column="62" selection-end-line="112" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/marketcountry/psbuyandsell/ui/common/NavigationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="904" column="52" selection-start-line="904" selection-start-column="52" selection-end-line="904" selection-end-column="52" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_item_entry.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="303">
           <caret line="537" column="54" lean-forward="true" selection-start-line="537" selection-start-column="54" selection-end-line="537" selection-end-column="54" />
           <folding>
             <element signature="e#25622#25642#0" expanded="true" />
             <element signature="e#26001#26024#0" expanded="true" />
           </folding>
-=======
         <state relative-caret-position="-654">
           <caret line="494" column="63" lean-forward="true" selection-start-line="494" selection-start-column="63" selection-end-line="494" selection-end-column="63" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
-=======
-        <state relative-caret-position="-654">
-          <caret line="494" column="63" lean-forward="true" selection-start-line="494" selection-start-column="63" selection-end-line="494" selection-end-column="63" />
->>>>>>> parent of 3b04726... [TaeWoo] 카테고리 수정
         </state>
       </provider>
     </entry>

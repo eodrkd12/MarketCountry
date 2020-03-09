@@ -7,7 +7,10 @@ import android.util.Log;
 
 import com.kakao.auth.ApiResponseCallback;
 import com.kakao.auth.ErrorCode;
-import com.kakao.auth.ErrorResult;
+import com.kakao.kakaotalk.callback.TalkResponseCallback;
+import com.kakao.kakaotalk.response.KakaoTalkProfile;
+import com.kakao.kakaotalk.v2.KakaoTalkService;
+import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
@@ -35,42 +38,33 @@ public class KakaoSignupActivity extends Activity{
      * 사용자의 상태를 알아 보기 위해 me API 호출을 한다.
      */
     protected void requestMe() { //유저의 정보를 받아오는 함수
-        UserManagement.requestMe(new MeResponseCallback() {
+        KakaoTalkService.getInstance().requestProfile(new TalkResponseCallback<KakaoTalkProfile>() {
             @Override
-            public void onFailure(ErrorResult errorResult) {
-                String message = "failed to get user info. msg=" + errorResult;
-                Logger.d(message);
+            public void onNotKakaoTalkUser() {
 
-                ErrorCode result = ErrorCode.valueOf(String.valueOf(errorResult.getErrorCode()));
-                if (result == ErrorCode.CLIENT_ERROR_CODE) {
-                    finish();
-                } else {
-                    redirectLoginActivity();
-                }
             }
 
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
+                Log.d("카카오",errorResult.toString());
                 redirectLoginActivity();
             }
-            @Override
-            public void onNotSignedUp() {} // 카카오톡 회원이 아닐 시 showSignup(); 호출해야함
 
             @Override
-            public void onSuccess(UserProfile userProfile) {  //성공 시 userProfile 형태로 반환
-                kakaoID = String.valueOf(userProfile.getId()); // userProfile에서 ID값을 가져옴
-                kakaoNickname = userProfile.getNickname();     // Nickname 값을 가져옴
-                url = String.valueOf(userProfile.getProfileImagePath());
+            public void onSuccess(KakaoTalkProfile talkProfile) {
+                final String nickName = talkProfile.getNickName();
+                final String profileImageURL = talkProfile.getProfileImageUrl();
+                final String thumbnailURL = talkProfile.getThumbnailUrl();
+                final String countryISO = talkProfile.getCountryISO();
 
-                Logger.d("UserProfile : " + userProfile);
-                Log.d("kakao", "==========================");
-                Log.d("kakao", ""+userProfile);
-                Log.d("kakao", kakaoID);
-                Log.d("kakao", kakaoNickname);
-                Log.d("kakao", "==========================");
-                redirectMainActivity(url, kakaoNickname); // 로그인 성공시 MainActivity로
+                Log.d("카카오","nickname : "+nickName);
+                Log.d("카카오","profileURL : "+profileImageURL);
+                Log.d("카카오","thumbnailURL : "+thumbnailURL);
+                Log.d("카카오","countryISO : "+countryISO);
+
+                redirectMainActivity(profileImageURL,nickName);
             }
-        });
+        },true);
     }
     private void redirectMainActivity(String url, String nickname) {
         Intent intent = new Intent();
