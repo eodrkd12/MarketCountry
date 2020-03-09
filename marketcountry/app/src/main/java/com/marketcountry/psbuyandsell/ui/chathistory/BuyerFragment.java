@@ -96,7 +96,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                 }
             }
         });
-        binding.get().sellerList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        /*binding.get().sellerList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 LinearLayoutManager layoutManager = (LinearLayoutManager)
@@ -123,25 +123,25 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                     }
                 }
             }
-        });
+        });*/
 
         binding.get().swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.view__primary_line));
         binding.get().swipeRefresh.setProgressBackgroundColorSchemeColor(getResources().getColor(R.color.global__primary));
         binding.get().swipeRefresh.setOnRefreshListener(() -> {
 
             buyerChatHistoryViewModel.loadingDirection = Utils.LoadingDirection.top;
-            sellerChatHistoryViewModel.loadingDirection=Utils.LoadingDirection.top;
+            //sellerChatHistoryViewModel.loadingDirection=Utils.LoadingDirection.top;
 
             // reset productViewModel.offset
             buyerChatHistoryViewModel.offset = 0;
-            sellerChatHistoryViewModel.offset = 0;
+            //sellerChatHistoryViewModel.offset = 0;
             // reset productViewModel.forceEndLoading
             buyerChatHistoryViewModel.forceEndLoading = false;
-            sellerChatHistoryViewModel.forceEndLoading=false;
+            //sellerChatHistoryViewModel.forceEndLoading=false;
             // update live data
             if (!loginUserId.isEmpty()) {
                 buyerChatHistoryViewModel.setChatHistoryListObj(loginUserId, buyerChatHistoryViewModel.holder.getBuyerHistoryList(), String.valueOf(Config.CHAT_HISTORY_COUNT), String.valueOf(buyerChatHistoryViewModel.offset));
-                sellerChatHistoryViewModel.setChatHistoryListObj(loginUserId, sellerChatHistoryViewModel.holder.getSellerHistoryList(), String.valueOf(Config.CHAT_HISTORY_COUNT), String.valueOf(sellerChatHistoryViewModel.offset));
+                //sellerChatHistoryViewModel.setChatHistoryListObj(loginUserId, sellerChatHistoryViewModel.holder.getSellerHistoryList(), String.valueOf(Config.CHAT_HISTORY_COUNT), String.valueOf(sellerChatHistoryViewModel.offset));
             }
         });
     }
@@ -150,7 +150,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
     protected void initViewModels() {
 
         buyerChatHistoryViewModel = ViewModelProviders.of(this, viewModelFactory).get(ChatHistoryViewModel.class);
-        sellerChatHistoryViewModel = ViewModelProviders.of(this,viewModelFactory).get(ChatHistoryViewModel.class);
+        //sellerChatHistoryViewModel = ViewModelProviders.of(this,viewModelFactory).get(ChatHistoryViewModel.class);
     }
 
     @Override
@@ -173,7 +173,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
         this.buyerAdapter = new AutoClearedValue<>(this, buyerChatHistoryListAdapter);
         binding.get().buyerList.setAdapter(buyerChatHistoryListAdapter);
 
-        SellerChatHistoryListAdapter sellerChatHistoryListAdapter = new SellerChatHistoryListAdapter(dataBindingComponent,
+        /*SellerChatHistoryListAdapter sellerChatHistoryListAdapter = new SellerChatHistoryListAdapter(dataBindingComponent,
                 (chatHistoryFromSeller, id) -> navigationController.navigateToChatActivity(getActivity(),
                         chatHistoryFromSeller.itemId,
                         chatHistoryFromSeller.sellerUserId,
@@ -188,7 +188,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                         Constants.REQUEST_CODE__SELLER_CHAT_FRAGMENT
                 ), this);
         this.sellerAdapter = new AutoClearedValue<>(this, sellerChatHistoryListAdapter);
-        binding.get().sellerList.setAdapter(sellerChatHistoryListAdapter);
+        binding.get().sellerList.setAdapter(sellerChatHistoryListAdapter);*/
 
     }
 
@@ -202,11 +202,11 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
         // Load Category List
         if (!loginUserId.isEmpty()) {
             buyerChatHistoryViewModel.setChatHistoryListObj(loginUserId, buyerChatHistoryViewModel.holder.getBuyerHistoryList(), String.valueOf(Config.CHAT_HISTORY_COUNT), String.valueOf(buyerChatHistoryViewModel.offset));
-            sellerChatHistoryViewModel.setChatHistoryListObj(loginUserId, sellerChatHistoryViewModel.holder.getBuyerHistoryList(), String.valueOf(Config.CHAT_HISTORY_COUNT), String.valueOf(sellerChatHistoryViewModel.offset));
+            //sellerChatHistoryViewModel.setChatHistoryListObj(loginUserId, sellerChatHistoryViewModel.holder.getBuyerHistoryList(), String.valueOf(Config.CHAT_HISTORY_COUNT), String.valueOf(sellerChatHistoryViewModel.offset));
         }
 
         LiveData<Resource<List<ChatHistory>>> buyerNews = buyerChatHistoryViewModel.getChatHistoryListData();
-        LiveData<Resource<List<ChatHistory>>> sellerNews = sellerChatHistoryViewModel.getChatHistoryListData();
+        //LiveData<Resource<List<ChatHistory>>> sellerNews = sellerChatHistoryViewModel.getChatHistoryListData();
 
         if (buyerNews != null) {
             buyerNews.observe(this, listResource -> {
@@ -247,7 +247,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                 }
             });
         }
-        if (sellerNews != null) {
+        /*if (sellerNews != null) {
             sellerNews.observe(this, listResource -> {
                 if (listResource != null) {
                     Utils.psLog("Seller Got Data" + listResource.message + listResource.toString());
@@ -285,7 +285,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                     }
                 }
             });
-        }
+        }*/
 
         buyerChatHistoryViewModel.getNextPageChatHistoryListData().observe(this, state -> {
             if (state != null) {
@@ -297,7 +297,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                 }
             }
         });
-        sellerChatHistoryViewModel.getNextPageChatHistoryListData().observe(this, state -> {
+        /*sellerChatHistoryViewModel.getNextPageChatHistoryListData().observe(this, state -> {
             if (state != null) {
                 if (state.status == Status.ERROR) {
                     Utils.psLog("Next Page State : " + state.data);
@@ -306,7 +306,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                     sellerChatHistoryViewModel.forceEndLoading = true;
                 }
             }
-        });
+        });*/
 
         buyerChatHistoryViewModel.getLoadingState().observe(this, loadingState -> {
 
@@ -316,14 +316,14 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                 binding.get().swipeRefresh.setRefreshing(false);
             }
         });
-        sellerChatHistoryViewModel.getLoadingState().observe(this, loadingState -> {
+       /* sellerChatHistoryViewModel.getLoadingState().observe(this, loadingState -> {
 
             binding.get().setLoadingMore(sellerChatHistoryViewModel.isLoading);
 
             if (loadingState != null && !loadingState) {
                 binding.get().swipeRefresh.setRefreshing(false);
             }
-        });
+        });*/
 
     }
 
@@ -347,7 +347,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                 }
             }
         }
-        if (sellerChatHistoryViewModel.loadingDirection == Utils.LoadingDirection.bottom) {
+        /*if (sellerChatHistoryViewModel.loadingDirection == Utils.LoadingDirection.bottom) {
             if (binding.get().sellerList != null) {
                 LinearLayoutManager layoutManager = (LinearLayoutManager)
                         binding.get().sellerList.getLayoutManager();
@@ -355,7 +355,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                     layoutManager.scrollToPosition(0);
                 }
             }
-        }
+        }*/
     }
 
     @Override
@@ -373,7 +373,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
                 buyerChatHistoryViewModel.setChatHistoryListObj(loginUserId, buyerChatHistoryViewModel.holder.getBuyerHistoryList(), String.valueOf(Config.CHAT_HISTORY_COUNT), String.valueOf(buyerChatHistoryViewModel.offset));
             }
 
-            sellerChatHistoryViewModel.loadingDirection = Utils.LoadingDirection.top;
+            /*sellerChatHistoryViewModel.loadingDirection = Utils.LoadingDirection.top;
             // reset productViewModel.offset
             sellerChatHistoryViewModel.offset = 0;
             // reset productViewModel.forceEndLoading
@@ -381,7 +381,7 @@ public class BuyerFragment extends PSFragment implements DataBoundListAdapter.Di
             // update live data
             if (!loginUserId.isEmpty()) {
                 sellerChatHistoryViewModel.setChatHistoryListObj(loginUserId, sellerChatHistoryViewModel.holder.getSellerHistoryList(), String.valueOf(Config.CHAT_HISTORY_COUNT), String.valueOf(sellerChatHistoryViewModel.offset));
-            }
+            }*/
         }
     }
 }
