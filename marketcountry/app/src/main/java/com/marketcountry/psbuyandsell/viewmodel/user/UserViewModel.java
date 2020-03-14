@@ -1,7 +1,5 @@
 package com.marketcountry.psbuyandsell.viewmodel.user;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
@@ -524,9 +522,8 @@ public class UserViewModel extends PSViewModel {
         tmpDataHolder.name = name;
         tmpDataHolder.imageUrl = imageUrl;
         tmpDataHolder.deviceToken = deviceToken;
-
-
         kakaoLoginObj.setValue(tmpDataHolder);
+
     }
 
     public LiveData<Resource<UserLogin>> getKakaoLoginData() {

@@ -5,7 +5,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/fb_register_bg"
         android:fillViewport="true">
 
 
@@ -13,22 +12,35 @@
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/fb_register_bg"
             android:scrollbarAlwaysDrawHorizontalTrack="false"
             android:scrollbarAlwaysDrawVerticalTrack="false">
 
+
+            <ImageView
+                android:id="@+id/bgImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/image_default__image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/login_app_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView32"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/image_default__image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/bgImageView"
                 app:srcCompat="@drawable/login_app_logo" />
 
             <Button
@@ -57,6 +69,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            <TextView
+                android:id="@+id/app_name_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/space_4"
+                android:text="@string/app__app_name"
+                android:textColor="@color/md_white_1000"
+                android:textSize="@dimen/font_h5_size"
+                app:font='@{"bold"}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView32" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -144,8 +173,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="28dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintBottom_toTopOf="@id/googleLoginButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -233,12 +262,12 @@
                 android:layout_width="312dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/rounded_corner_shape_for_login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView32">
+                app:layout_constraintTop_toBottomOf="@+id/app_name_text">
 
                 <EditText
                     android:id="@+id/emailEditText"
