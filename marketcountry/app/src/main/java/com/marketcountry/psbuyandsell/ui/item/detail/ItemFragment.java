@@ -263,20 +263,18 @@ public class ItemFragment extends PSFragment {
             }
         });
         //백업시
-        /*binding.get().gettingThisDownImageView.setOnClickListener(v -> {
+        binding.get().gettingThisDownImageView.setOnClickListener(v -> {
             boolean show = Utils.toggleUpDownWithAnimation(v);
             if (show) {
                 ViewAnimationUtil.expand(binding.get().meetTextView);
-                ViewAnimationUtil.expand(binding.get().addressTextView);
                 ViewAnimationUtil.expand(binding.get().imageView25);
             } else {
                 ViewAnimationUtil.collapse(binding.get().meetTextView);
-                ViewAnimationUtil.collapse(binding.get().addressTextView);
                 ViewAnimationUtil.collapse(binding.get().imageView25);
             }
         });
 
-        binding.get().safetyTipsDownImageView.setOnClickListener(v -> {
+        /*binding.get().safetyTipsDownImageView.setOnClickListener(v -> {
             boolean show = Utils.toggleUpDownWithAnimation(v);
             if (show) {
                 ViewAnimationUtil.expand(binding.get().safetyTipButton);
@@ -287,21 +285,19 @@ public class ItemFragment extends PSFragment {
                 ViewAnimationUtil.collapse(binding.get().safetyTextView);
 
             }
-        });
+        });*/
 
         binding.get().gettingThisTextView.setOnClickListener(v -> {
             boolean show = Utils.toggleUpDownWithAnimation(binding.get().gettingThisDownImageView);
             if (show) {
                 ViewAnimationUtil.expand(binding.get().meetTextView);
-                ViewAnimationUtil.expand(binding.get().addressTextView);
                 ViewAnimationUtil.expand(binding.get().imageView25);
             } else {
                 ViewAnimationUtil.collapse(binding.get().meetTextView);
-                ViewAnimationUtil.collapse(binding.get().addressTextView);
                 ViewAnimationUtil.collapse(binding.get().imageView25);
             }
         });
-
+/*
         binding.get().safetyTitleTextView.setOnClickListener(v -> {
             boolean show = Utils.toggleUpDownWithAnimation(binding.get().safetyTipsDownImageView);
             if (show) {

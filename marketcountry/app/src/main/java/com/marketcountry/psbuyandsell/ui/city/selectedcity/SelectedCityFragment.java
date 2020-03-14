@@ -204,16 +204,10 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
         longitude = gpsTracker.getLongitude();
 
         address = getCurrentAddress(latitude, longitude);
-        isFirstEntryLocation = pref.getString("isFirstEntryLocation","0");
-
-        if(isFirstEntryLocation.equals("0") && !address.equals("주소 미발견"))
-        {
-            pref.edit().putString("isFirstEntryLocation","1").apply();
-            pref.edit().putString(Constants.SELECTED_LOCATION_NAME,address).apply();
-        }
 //
         return binding.get().getRoot();
     }
+
     public String getCurrentAddress( double latitude, double longitude) {
 
         //지오코더... GPS를 주소로 변환
@@ -235,7 +229,6 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
         } catch (IllegalArgumentException illegalArgumentException) {
             Toast.makeText(this.getActivity(), "잘못된 GPS 좌표", Toast.LENGTH_LONG).show();
             return "잘못된 GPS 좌표";
-
         }
 
         if (addresses == null || addresses.size() == 0) {
@@ -243,22 +236,12 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
             return "주소 미발견";
         }
 
-        Address address = addresses.get(0);
-
         String cut[] = addresses.get(0).toString().split(" ");
         for(int i=0; i<cut.length; i++){
             System.out.println("cut["+i+"] : " + cut[i]);
         }
 
-        /*for (int i=0;i <= address.getMaxAddressLineIndex();i++) {
-
-            //여기서 변환된 주소 확인할  수 있음
-
-            Log.v("알림", "AddressLine(" + i + ")" + address.getAddressLine(i) + "\n");
-            Log.v("알림", cut[1] + " " + cut[2] + " " + cut[3]);
-        }*/
-
-        String convertAddr = cut[1].substring(0,2);
+        String convertAddr = cut[1] + " " + cut[2] + " " + cut[3];
         return convertAddr;
     }
     @Override
@@ -308,8 +291,8 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         });
 
-        binding.get().locationTextView.setOnClickListener(v -> navigationController.navigateToLocationActivity(getActivity(), Constants.SELECT_LOCATION_FROM_HOME,selected_location_id));
-
+//        binding.get().locationTextView.setOnClickListener(v -> navigationController.navigateToLocationActivity(getActivity(), Constants.SELECT_LOCATION_FROM_HOME,selected_location_id));
+        binding.get().locationTextView.setText(address);
 
 //        binding.get().blogViewPager.setOnFocusChangeListener((v, hasFocus) -> {
 //            if (hasFocus) {
@@ -536,7 +519,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
             popularItemViewModel.popularItemParameterHolder.location_id = recentItemViewModel.locationId;
             searchItemParameterHolder.location_id = recentItemViewModel.locationId;
 
-            binding.get().locationTextView.setText(recentItemViewModel.locationName);
+//            binding.get().locationTextView.setText(recentItemViewModel.locationName);
 
         }
     }

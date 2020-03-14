@@ -164,9 +164,9 @@
                                 app:layout_constraintTop_toBottomOf="@+id/view65"
                                 tools:text="View On Map" />
 
+
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
-
                     <androidx.cardview.widget.CardView
                         android:id="@+id/thirdCardView"
                         android:layout_width="match_parent"
@@ -175,7 +175,97 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="@dimen/space_16"
                         app:layout_constraintTop_toBottomOf="@+id/locationCardView"
-                        tools:layout_editor_absoluteX="0dp"/>
+                        tools:layout_editor_absoluteX="0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/highLightImageView"
+                                android:layout_width="@dimen/space_24"
+                                android:layout_height="@dimen/space_24"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:contentDescription="@string/image_default__image"
+                                android:tint="@color/global__primary"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/baseline_highlight_green_24" />
+
+                            <TextView
+                                android:id="@+id/gettingThisTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:text="@string/item_detail__getting_this"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/text__primary_dark"
+                                android:textSize="@dimen/font_title_size"
+                                app:font='@{"normal"}'
+                                app:layout_constraintBottom_toBottomOf="@+id/highLightImageView"
+                                app:layout_constraintEnd_toStartOf="@+id/gettingThisDownImageView"
+                                app:layout_constraintStart_toEndOf="@+id/highLightImageView"
+                                app:layout_constraintTop_toTopOf="@+id/highLightImageView" />
+
+                            <View
+                                android:id="@+id/view62"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="16dp"
+                                android:background="@color/view__primary_line"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/gettingThisTextView"
+                                tools:ignore="MissingConstraints" />
+
+                            <ImageView
+                                android:id="@+id/gettingThisDownImageView"
+                                android:layout_width="50dp"
+                                android:layout_height="36dp"
+                                android:layout_marginEnd="8dp"
+                                android:contentDescription="@string/image_default__image"
+                                android:rotation="180"
+                                android:scaleType="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/gettingThisTextView"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/gettingThisTextView"
+                                app:srcCompat="@drawable/baseline_down_arrow_black_24"
+                                tools:ignore="MissingConstraints" />
+
+                            <ImageView
+                                android:id="@+id/imageView25"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:contentDescription="@string/image_default__image"
+                                android:src="@drawable/baseline_location_grey_24"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/meetTextView"
+                                app:layout_constraintBottom_toBottomOf="@+id/meetTextView"/>
+
+                            <TextView
+                                android:id="@+id/meetTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:layout_marginTop="16dp"
+                                android:textColor="@color/text__primary_dark"
+                                android:textSize="@dimen/font_body_size"
+                                android:text="@{item.dealOptionId}"
+                                app:font='@{"normal"}'
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imageView25"
+                                app:layout_constraintTop_toTopOf="@+id/view62"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                tools:text="Meetup" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/safetyCardView"
@@ -609,7 +699,7 @@
                                 android:id="@+id/newTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
+                                android:layout_marginStart="16dp"
                                 android:layout_marginTop="4dp"
                                 android:text="@{item.conditionOfItem}"
                                 android:textColor="@color/text__primary"
@@ -702,7 +792,7 @@
                                 android:id="@+id/activeHourTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
+                                android:layout_marginStart="16dp"
                                 android:layout_marginTop="4dp"
                                 android:textColor="@color/text__primary"
                                 android:textSize="@dimen/font_body_size"
