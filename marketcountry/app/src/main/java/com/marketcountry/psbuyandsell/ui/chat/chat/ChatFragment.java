@@ -64,6 +64,8 @@ import java.util.List;
 
 public class ChatFragment extends PSFragment implements DataBoundListAdapter.DiffUtilDispatchedInterface {
 
+    private final int REQUEST_PAY=0;
+
     private final androidx.databinding.DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
 
     private ChatViewModel chatViewModel;
@@ -143,6 +145,44 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 }
             }
         }
+        else if(requestCode==REQUEST_PAY){
+            String method=data.getStringExtra("method");
+            String iName=data.getStringExtra("iName");
+            int iPrice=data.getIntExtra("iPrice",-1);
+
+            String message="상품 입금이 완료되었습니다." +
+                    "\n결제수단 : " + method +
+                    "\n상품명 : " + iName +
+                    "\n결제가격 : " + iPrice;
+
+
+            if (!connectivity.isConnected()) {
+                Toast.makeText(getContext(), R.string.no_internet_error, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            chatViewModel.setSaveMessagesToFirebaseObj(
+                    new Message(
+                            Utils.generateKeyForChatHeadId(loginUserId, chatViewModel.receiverId),
+                            chatViewModel.itemId,
+                            message,
+                            Constants.CHAT_TYPE_TEXT,
+                            loginUserId,
+                            Constants.CHAT_STATUS_NULL,
+                            false
+                    ), loginUserId, chatViewModel.receiverId);
+            if (!connectivity.isConnected()) {
+                binding.get().editText.getText().clear();
+            } else {
+                if (chatViewModel.isFirstMessage) {
+                    if (chatViewModel.chatFlag.equals(Constants.CHAT_FROM_BUYER)) {
+                        chatViewModel.setSyncChatHistoryObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, Constants.CHAT_TO_BUYER);
+                    } else {
+                        chatViewModel.setSyncChatHistoryObj(chatViewModel.itemId, loginUserId, chatViewModel.receiverId, Constants.CHAT_TO_SELLER);
+                    }
+                }
+            }
+        }
     }
 
 
@@ -173,8 +213,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
 
         binding.get().sendButton.setOnClickListener(v -> {
-
-
             if (!connectivity.isConnected()) {
                 Toast.makeText(getContext(), R.string.no_internet_error, Toast.LENGTH_SHORT).show();
                 return;
@@ -192,27 +230,18 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                                     Constants.CHAT_STATUS_NULL,
                                     false
                             ), loginUserId, chatViewModel.receiverId);
-
-
                 if (!connectivity.isConnected()) {
                     binding.get().editText.getText().clear();
                 } else {
                     if (chatViewModel.isFirstMessage) {
                         if (chatViewModel.chatFlag.equals(Constants.CHAT_FROM_BUYER)) {
-
                             chatViewModel.setSyncChatHistoryObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, Constants.CHAT_TO_BUYER);
-
                         } else {
-
                             chatViewModel.setSyncChatHistoryObj(chatViewModel.itemId, loginUserId, chatViewModel.receiverId, Constants.CHAT_TO_SELLER);
-
                         }
                     }
-
                 }
-
             }
-
         });
 
         binding.get().imageButton.setOnClickListener(v -> navigationController.getImageFromGallery(getActivity()));
@@ -235,7 +264,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 intent.putExtra(Constants.ITEM_NAME, chatViewModel.itemName);
                 intent.putExtra(Constants.ITEM_PRICE,chatViewModel.itemPrice);
                 intent.putExtra(Constants.RECEIVE_USER_NAME,chatViewModel.receiverName);
-                getActivity().startActivity(intent);
+                getActivity().startActivityForResult(intent,REQUEST_PAY);
             }
         });
 

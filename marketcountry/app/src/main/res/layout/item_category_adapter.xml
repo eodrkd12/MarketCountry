@@ -96,6 +96,7 @@
                     android:baselineAlignBottom="false"
                     android:contentDescription="@string/image_default__image"
                     android:scaleType="centerCrop"
+                    android:visibility="invisible"
                     app:imageCircleUrl="@{category.defaultIcon.imgPath}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

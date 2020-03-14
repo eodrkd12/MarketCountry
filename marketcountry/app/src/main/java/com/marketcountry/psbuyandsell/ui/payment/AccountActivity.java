@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.marketcountry.psbuyandsell.ui.chat.chat.ChatFragment;
+
 import java.text.SimpleDateFormat;
 
 import kr.co.bootpay.Bootpay;
@@ -26,8 +28,8 @@ import kr.co.bootpay.model.BootUser;
 public class AccountActivity extends AppCompatActivity {
     private int stuck = 10;
 
-    String iName,iPrice,rName;
-    int price;
+    String iName,rName;
+    int iPrice;
     String orderId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,7 @@ public class AccountActivity extends AppCompatActivity {
         Intent intent=getIntent();
 
         iName=intent.getStringExtra("iName");
-        iPrice=intent.getStringExtra("iPrice");
-        price=Integer.parseInt(iPrice);
+        iPrice=intent.getIntExtra("iPrice",0);
         rName=intent.getStringExtra("rName");
 
         //orderId : 판매자+상품명+가격+현재시각
@@ -65,7 +66,7 @@ public class AccountActivity extends AppCompatActivity {
 //                .setUserPhone("010-1234-5678") // 구매자 전화번호
                 .setName(iName) // 결제할 상품명
                 .setOrderId(orderId) // 결제 고유번호expire_month
-                .setPrice(price) // 결제할 금액
+                .setPrice(iPrice) // 결제할 금액
                 //.addItem("마우's 스", 1, "ITEM_CODE_MOUSE", 100) // 주문정보에 담길 상품정보, 통계를 위해 사용
                 //.addItem("키보드", 1, "ITEM_CODE_KEYBOARD", 200, "패션", "여성상의", "블라우스") // 주문정보에 담길 상품정보, 통계를 위해 사용
                 .onConfirm(new ConfirmListener() { // 결제가 진행되기 바로 직전 호출되는 함수로, 주로 재고처리 등의 로직이 수행
@@ -81,6 +82,11 @@ public class AccountActivity extends AppCompatActivity {
                     @Override
                     public void onDone(@Nullable String message) {
                         Log.d("done", message);
+                        Intent returnIntent= new Intent(AccountActivity.this, PaymentActivity.class);
+                        returnIntent.putExtra("method","카카오페이");
+                        returnIntent.putExtra("iName",iName);
+                        returnIntent.putExtra("iPrice",iPrice);
+                        setResult(0,returnIntent);
                         finish();
                     }
                 })

@@ -39,6 +39,7 @@ import com.marketcountry.psbuyandsell.Config;
 import com.marketcountry.psbuyandsell.MainActivity;
 import com.marketcountry.psbuyandsell.R;
 import com.marketcountry.psbuyandsell.binding.FragmentDataBindingComponent;
+import com.marketcountry.psbuyandsell.databinding.FragmentUserLoginBackupBinding;
 import com.marketcountry.psbuyandsell.databinding.FragmentUserLoginBinding;
 import com.marketcountry.psbuyandsell.ui.common.PSFragment;
 import com.marketcountry.psbuyandsell.utils.AutoClearedValue;
@@ -118,8 +119,9 @@ public class UserLoginFragment extends PSFragment {
 
         // Inflate the layout for this fragment
         FragmentUserLoginBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_login, container, false, dataBindingComponent);
+        //FragmentUserLoginBackupBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_login_backup, container, false, dataBindingComponent);
 
-        binding = new AutoClearedValue<>(this, dataBinding);
+        binding = new AutoClearedValue(this, dataBinding);
 
         callback=new ISessionCallback() {
             @Override

@@ -32,6 +32,7 @@ public class KakaoSignupActivity extends Activity{
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("카카오","카카오가입액티비티");
         requestMe();
     }
     /**
@@ -46,7 +47,7 @@ public class KakaoSignupActivity extends Activity{
 
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
-                Log.d("카카오",errorResult.toString());
+                Log.d("카카오","onSessionClosed : " + errorResult.toString());
                 redirectLoginActivity();
             }
 
@@ -57,10 +58,7 @@ public class KakaoSignupActivity extends Activity{
                 final String thumbnailURL = talkProfile.getThumbnailUrl();
                 final String countryISO = talkProfile.getCountryISO();
 
-                Log.d("카카오","nickname : "+nickName);
-                Log.d("카카오","profileURL : "+profileImageURL);
-                Log.d("카카오","thumbnailURL : "+thumbnailURL);
-                Log.d("카카오","countryISO : "+countryISO);
+                Log.d("카카오",talkProfile.toString());
 
                 redirectMainActivity(profileImageURL,nickName);
             }
