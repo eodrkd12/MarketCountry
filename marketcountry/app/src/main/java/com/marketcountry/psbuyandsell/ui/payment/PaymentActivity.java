@@ -16,6 +16,8 @@ import com.marketcountry.psbuyandsell.utils.Constants;
 
 public class PaymentActivity extends Activity {
 
+    private final int PAY_FOR_ACCOUNT=0;
+    private final int PAY_FOR_KAKAO=1;
 
     //region Override Methods
     @Override
@@ -56,8 +58,7 @@ public class PaymentActivity extends Activity {
                 intent.putExtra("iName",iName);
                 intent.putExtra("iPrice",price);
                 intent.putExtra("rName",rName);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent,PAY_FOR_ACCOUNT);
             }
         });
         btnKakaopay.setOnClickListener(new View.OnClickListener(){
@@ -72,10 +73,20 @@ public class PaymentActivity extends Activity {
                 intent.putExtra("iName",iName);
                 intent.putExtra("iPrice",price);
                 intent.putExtra("rName",rName);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent,PAY_FOR_KAKAO);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==PAY_FOR_ACCOUNT){
+            setResult(0,data);
+        }
+        else if(requestCode==PAY_FOR_KAKAO){
+            setResult(0,data);
+        }
+        finish();
     }
 }
 

@@ -4,6 +4,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/fb_register_bg"
         android:fillViewport="true">
 
 
@@ -27,20 +28,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
             <ImageView
-                android:id="@+id/bgImageView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:contentDescription="@string/image_default__image"
-                android:scaleType="centerCrop"
-                android:src="@drawable/login_app_bg"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
                 android:id="@+id/imageView32"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -49,10 +36,10 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:contentDescription="@string/image_default__image"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/app_name_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/login_app_logo" />
 
             <TextView
@@ -79,8 +66,8 @@
                 android:layout_marginStart="@dimen/space_24"
                 android:layout_marginTop="@dimen/space_24"
                 android:layout_marginEnd="@dimen/space_24"
-                android:text="@string/verify_phone__back_login"
                 android:gravity="center"
+                android:text="@string/verify_phone__back_login"
                 android:textColor="@color/text__white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,9 +127,9 @@
                     android:singleLine="true"
                     android:textColor="@color/text__primary"
                     app:font='@{"normal"}'
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/nameEditText"
                     app:textSize='@{"edit_text"}' />
 
