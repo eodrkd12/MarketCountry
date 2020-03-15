@@ -486,7 +486,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
 
     }
-
+//
     private void CheckDealOption(){
         String tmp = "";
 
@@ -508,9 +508,48 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         dealOptionId = tmp.substring(0,tmp.length()-3);
     }
 
+    private void initButton() {
+        if(binding.get().typeOption1.getText().toString().equals(typeId)){
+            binding.get().typeOption1.setChecked(true);
+        } else if(binding.get().typeOption2.getText().toString().equals(typeId)) {
+            binding.get().typeOption2.setChecked(true);
+        } else if(binding.get().typeOption3.getText().toString().equals(typeId)) {
+            binding.get().typeOption3.setChecked(true);
+        } else if(binding.get().typeOption4.getText().toString().equals(typeId)) {
+            binding.get().typeOption4.setChecked(true);
+        } else if(binding.get().typeOption5.getText().toString().equals(typeId)) {
+            binding.get().typeOption5.setChecked(true);
+        }
+        Log.d("확인 type",typeId);
+
+        if(binding.get().conditionOption1.getText().toString().equals(conditionId)){
+            binding.get().conditionOption1.setChecked(true);
+        } else if(binding.get().conditionOption2.getText().toString().equals(conditionId)) {
+            binding.get().conditionOption2.setChecked(true);
+        } else if(binding.get().conditionOption3.getText().toString().equals(conditionId)) {
+            binding.get().conditionOption3.setChecked(true);
+        } else if(binding.get().conditionOption4.getText().toString().equals(conditionId)) {
+            binding.get().conditionOption4.setChecked(true);
+        }
+
+        Log.d("확인 condition",conditionId);
+
+        String cut[] = dealOptionId.split(" / ");
+        for(int i=0; i<cut.length; i++){
+            if(binding.get().dealOption1.toString().equals(cut[i])) {
+                binding.get().dealOption1.setChecked(true);
+            } else if(binding.get().dealOption2.toString().equals(cut[i])) {
+                binding.get().dealOption2.setChecked(true);
+            } else if(binding.get().dealOption3.toString().equals(cut[i])) {
+                binding.get().dealOption3.setChecked(true);
+            }
+            Log.d("확인 dealoption"+" "+i,cut[i]);
+        }
+
+    }
+//
     @Override
     protected void initUIAndActions() {
-
         itemViewModel.latValue = selectedLat;
         itemViewModel.lngValue = selectedLng;
 
@@ -752,6 +791,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         });
 
 
+        initButton(); // added
     }
 
     private void getImagePathList() {
@@ -859,7 +899,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 //            if (photoFile != null) {
 //                photoURI = FileProvider.getUriForFile(getContext(),
 //                        "com.panaceasoft.psbuyandsell.fileprovider",
-//                        photoFile);
+//                        photoFile;
 //                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
 //                startActivityForResult(takePictureIntent,  Constants.REQUEST_CODE__SEC_CAMERA);
 //            }

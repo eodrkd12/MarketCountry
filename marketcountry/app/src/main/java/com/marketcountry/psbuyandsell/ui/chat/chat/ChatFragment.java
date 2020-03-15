@@ -179,8 +179,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 Toast.makeText(getContext(), R.string.no_internet_error, Toast.LENGTH_SHORT).show();
                 return;
             }
-            Log.d("확인 msg loginid",loginUserId);
-            Log.d("확인 msg userid",MessageFragment.userId);
+
             if (!binding.get().editText.getText().toString().isEmpty()) {
                     chatViewModel.setSaveMessagesToFirebaseObj(
                             new Message(
@@ -402,8 +401,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                         chatViewModel.offerItemPrice =  itemOfferPriceEditText.getText().toString();
                         //binding.get().priceTextView.setText(itemOfferPriceEditText.getText().toString());
 
-                        Log.d("확인 price", chatViewModel.itemPrice);
-
                         if (chatViewModel.chatFlag.equals(Constants.CHAT_FROM_BUYER)) {
 
                             chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, chatViewModel.receiverId, loginUserId, chatViewModel.offerItemPrice, Constants.CHAT_TO_BUYER);
@@ -412,8 +409,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
                             chatViewModel.setUpdateOfferPriceObj(chatViewModel.itemId, loginUserId, chatViewModel.receiverId, chatViewModel.offerItemPrice, Constants.CHAT_TO_SELLER);
 
-                            Log.d("확인 user 1", loginUserName);
-                            Log.d("확인 user 2", chatViewModel.receiverName);
 
                         }
                     }
