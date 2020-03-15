@@ -587,8 +587,8 @@
     <!--City List-->
 
     <!--Location-->
-    <string name="location_title">선택한 지역</string>
-    <string name="location_change_later">차후에 위치를 변경할 수 있습니다!</string>
+    <string name="location_title">현재 위</string>
+    <string name="location_change_later">차후에 위치를 변경할 수 있습치니다!</string>
     <string name="location_select">도시를 선택해주세요.</string>
 
     <!--Country-->

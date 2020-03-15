@@ -271,17 +271,17 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.currencyId = data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_ID);
             binding.get().priceTextView.setText(data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_NAME));
             itemViewModel.holder.currency_id = this.currencyId;
-        }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
+        }*/ /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
 
             this.dealOptionId = data.getStringExtra(Constants.ITEM_OPTION_TYPE_ID);
-//            binding.get().dealOptionTextView.setText(data.getStringExtra(Constants.ITEM_OPTION_TYPE_NAME));
+            binding.get().dealOptionTextView.setText(data.getStringExtra(Constants.ITEM_OPTION_TYPE_NAME));
             itemViewModel.holder.deal_option_id = this.dealOptionId;
-        } /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CONDITION_TYPE) {
+        } *//*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CONDITION_TYPE) {
 
             this.conditionId = data.getStringExtra(Constants.ITEM_CONDITION_TYPE_ID);
             binding.get().itemConditionTextView.setText(data.getStringExtra(Constants.ITEM_CONDITION_TYPE_NAME));
             itemViewModel.holder.condition_id = this.conditionId;
-        }*/ else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_LOCATION_TYPE) {
+        }*/ /*else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_LOCATION_TYPE) {
 
             this.locationId = data.getStringExtra(Constants.ITEM_LOCATION_TYPE_ID);
             itemViewModel.latValue = data.getStringExtra(Constants.LAT);
@@ -293,7 +293,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             itemViewModel.mapLng = itemViewModel.lngValue;
 
 //            bindMap(itemViewModel.latValue, itemViewModel.lngValue);
-        } else if (requestCode == Constants.RESULT_CODE__TO_MAP_VIEW && resultCode == Constants.RESULT_CODE__FROM_MAP_VIEW) {
+        }*/ else if (requestCode == Constants.RESULT_CODE__TO_MAP_VIEW && resultCode == Constants.RESULT_CODE__FROM_MAP_VIEW) {
 
             itemViewModel.latValue = data.getStringExtra(Constants.LAT);
             itemViewModel.lngValue = data.getStringExtra(Constants.LNG);
@@ -487,6 +487,27 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
     }
 
+    private void CheckDealOption(){
+        String tmp = "";
+
+        if(binding.get().dealOption1.isChecked())
+        {
+            tmp += binding.get().dealOption1.getText().toString();
+            tmp += " / ";
+        }
+        if(binding.get().dealOption2.isChecked())
+        {
+            tmp += binding.get().dealOption2.getText().toString();
+            tmp += " / ";
+        }
+        if(binding.get().dealOption3.isChecked())
+        {
+            tmp += binding.get().dealOption3.getText().toString();
+            tmp += " / ";
+        }
+        dealOptionId = tmp.substring(0,tmp.length()-3);
+    }
+
     @Override
     protected void initUIAndActions() {
 
@@ -603,9 +624,9 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         binding.get().priceTypeCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_PRICE_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
-        binding.get().dealOptionCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_DEAL_OPTION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+//        binding.get().dealOptionCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_DEAL_OPTION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
-        binding.get().locationCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_LOCATION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
+        //binding.get().locationCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_LOCATION_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
         binding.get().priceCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CURRENCY_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
 
@@ -662,6 +683,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 getImagePathList();
 
                 checkIsShop();
+
+                CheckDealOption(); //added
 
                 if (itemViewModel.itemId != null) {
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
@@ -1224,7 +1247,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         //binding.get().itemConditionTextView.setText(item.itemCondition.name);
         //binding.get().priceTypeTextView.setText(item.itemPriceType.name);
         //binding.get().priceTextView.setText(item.itemCurrency.currencySymbol);
-        binding.get().locationTextView.setText(item.itemLocation.name);
+//        binding.get().locationTextView.setText(item.itemLocation.name);
         //bindMap(item.lat, item.lng);
         itemViewModel.mapLat = item.lat;
         itemViewModel.mapLng = item.lng;
@@ -1256,7 +1279,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                     this.locationId = getActivity().getIntent().getExtras().getString(Constants.SELECTED_LOCATION_ID);
                     itemViewModel.holder.location_id = this.locationId;
                     String locationName = getActivity().getIntent().getExtras().getString(Constants.SELECTED_LOCATION_NAME);
-                    binding.get().locationTextView.setText(locationName);
+//                    binding.get().locationTextView.setText(locationName);
 
                     if (itemViewModel.itemId != null) {
                         if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
