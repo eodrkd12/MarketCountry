@@ -821,8 +821,6 @@ public class UserLoginFragment extends PSFragment {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("카카오",String.valueOf(requestCode));
-
         if(Session.getCurrentSession().handleActivityResult(requestCode,resultCode,data)){
             return;
         }
@@ -842,10 +840,10 @@ public class UserLoginFragment extends PSFragment {
             }
         }else if(requestCode==KAKAO_SIGN) {
             String name=data.getStringExtra("name");
-            String imageUrl=data.getStringExtra("url");
-            String kakaoId=data.getStringExtra("name");
+            String imgUrl=data.getStringExtra("url");
+            String email=data.getStringExtra("email");
 
-            userViewModel.setKakaoLoginUser(kakaoId,name,imageUrl,token);
+            userViewModel.setGoogleLoginUser(email,name,email,imgUrl,token);
         }
     }
 

@@ -189,7 +189,7 @@ public class UserViewModel extends PSViewModel {
                return AbsentLiveData.create();
            }
            Utils.psLog("UserViewModel : kakaoLoginData");
-           return repository.postKakaoLogin(Config.API_KEY,obj.kakaoId,obj.name,obj.email,obj.imageUrl,obj.deviceToken);
+           return repository.postKakaoLogin(Config.API_KEY,obj.googleId,obj.name,obj.email,obj.imageUrl,obj.deviceToken);
         });
 
         // Get User Data
@@ -518,7 +518,7 @@ public class UserViewModel extends PSViewModel {
     // kakao login User
     public void setKakaoLoginUser(String kakaoId, String name,String imageUrl, String deviceToken) {
         TmpDataHolder tmpDataHolder = new TmpDataHolder();
-        tmpDataHolder.kakaoId = kakaoId;
+        tmpDataHolder.googleId = kakaoId;
         tmpDataHolder.name = name;
         tmpDataHolder.imageUrl = imageUrl;
         tmpDataHolder.deviceToken = deviceToken;
@@ -604,7 +604,6 @@ public class UserViewModel extends PSViewModel {
         public String password = "";
         public String fbId = "";
         public String googleId = "";
-        public String kakaoId="";
         public String name = "";
         public String email = "";
         public String imageUrl = "";
