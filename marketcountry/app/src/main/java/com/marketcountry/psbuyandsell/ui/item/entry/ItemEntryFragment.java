@@ -520,7 +520,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         } else if(binding.get().typeOption5.getText().toString().equals(itemType)) {
             binding.get().typeOption5.setChecked(true);
         }
-        Log.d("확인 type",itemType);
 
         if(binding.get().conditionOption1.getText().toString().equals(itemCondition)){
             binding.get().conditionOption1.setChecked(true);
@@ -532,8 +531,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             binding.get().conditionOption4.setChecked(true);
         }
 
-        Log.d("확인 condition",itemCondition);
-
         String cut[] = itemDealOption.split(" / ");
         for(int i=0; i<cut.length; i++){
             if(binding.get().dealOption1.getText().toString().equals(cut[i])) {
@@ -543,7 +540,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if(binding.get().dealOption3.getText().toString().equals(cut[i])) {
                 binding.get().dealOption3.setChecked(true);
             }
-            Log.d("확인 dealoption"+" "+i,cut[i]);
         }
 
     }
