@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marketcountry.psbuyandsell.R;
 import com.marketcountry.psbuyandsell.databinding.ActivityItemEntryBinding;
@@ -14,6 +16,8 @@ import com.marketcountry.psbuyandsell.utils.Constants;
 
 public class PaymentActivity extends Activity {
 
+    private final int PAY_FOR_ACCOUNT=0;
+    private final int PAY_FOR_KAKAO=1;
 
     //region Override Methods
     @Override
@@ -25,7 +29,7 @@ public class PaymentActivity extends Activity {
         Intent intent = getIntent();
 
         String iName=intent.getStringExtra(Constants.ITEM_NAME);
-        String iPrice=intent.getStringExtra(Constants.ITEM_PRICE);
+        //String iPrice=intent.getStringExtra(Constants.ITEM_PRICE);
         String rName=intent.getStringExtra(Constants.RECEIVE_USER_NAME);
 
         Log.d("확인 페이먼트 iName",intent.getStringExtra(Constants.ITEM_NAME));
@@ -37,31 +41,52 @@ public class PaymentActivity extends Activity {
         Button btnAccount=findViewById(R.id.btn_account);
         Button btnKakaopay=findViewById(R.id.btn_kakaopay);
 
+        EditText editPrice=findViewById(R.id.edit_price);
+
         textItem.setText("상품 : "+iName);
-        textPrice.setText("가격 : "+iPrice);
+        textPrice.setText("가격 :");
 
         btnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(editPrice.getText().toString().equals("")){
+                    Toast.makeText(PaymentActivity.this, "흥정한 가격을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int price=Integer.parseInt(editPrice.getText().toString());
                 Intent intent=new Intent(PaymentActivity.this,AccountActivity.class);
                 intent.putExtra("iName",iName);
-                intent.putExtra("iPrice",iPrice);
+                intent.putExtra("iPrice",price);
                 intent.putExtra("rName",rName);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent,PAY_FOR_ACCOUNT);
             }
         });
         btnKakaopay.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                if(editPrice.getText().toString().equals("")){
+                    Toast.makeText(PaymentActivity.this, "흥정한 가격을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int price=Integer.parseInt(editPrice.getText().toString());
                 Intent intent=new Intent(PaymentActivity.this,KakaopayActivity.class);
                 intent.putExtra("iName",iName);
-                intent.putExtra("iPrice",iPrice);
+                intent.putExtra("iPrice",price);
                 intent.putExtra("rName",rName);
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent,PAY_FOR_KAKAO);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==PAY_FOR_ACCOUNT){
+            setResult(0,data);
+        }
+        else if(requestCode==PAY_FOR_KAKAO){
+            setResult(0,data);
+        }
+        finish();
     }
 }
 
