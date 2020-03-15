@@ -1260,7 +1260,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             });
         }
     }
-
+//
     private void bindingItemDetailData(Item item) {
         binding.get().titleEditText.setText(item.title);
         itemViewModel.holder.cat_id = item.catId;
