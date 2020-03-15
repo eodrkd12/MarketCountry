@@ -106,8 +106,6 @@ public class SellerChatHistoryListAdapter extends DataBoundListAdapter<ChatHisto
                     binding.countTextView2.setVisibility(View.VISIBLE);
                 }
             }
-        Log.d("확인 bCount",chatHistory.buyerUnreadCount);
-        Log.d("확인 sCount",chatHistory.sellerUnreadCount);
 
             if (chatHistory.item.isSoldOut.equals(Constants.ONE)) {
                 binding.soldTextView.setVisibility(View.VISIBLE);
