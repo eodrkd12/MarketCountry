@@ -508,39 +508,39 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         dealOptionId = tmp.substring(0,tmp.length()-3);
     }
 
-    private void initButton() {
-        if(binding.get().typeOption1.getText().toString().equals(typeId)){
+    private void initButton(String itemType, String itemCondition, String itemDealOption) {
+        if(binding.get().typeOption1.getText().toString().equals(itemType)){
             binding.get().typeOption1.setChecked(true);
-        } else if(binding.get().typeOption2.getText().toString().equals(typeId)) {
+        } else if(binding.get().typeOption2.getText().toString().equals(itemType)) {
             binding.get().typeOption2.setChecked(true);
-        } else if(binding.get().typeOption3.getText().toString().equals(typeId)) {
+        } else if(binding.get().typeOption3.getText().toString().equals(itemType)) {
             binding.get().typeOption3.setChecked(true);
-        } else if(binding.get().typeOption4.getText().toString().equals(typeId)) {
+        } else if(binding.get().typeOption4.getText().toString().equals(itemType)) {
             binding.get().typeOption4.setChecked(true);
-        } else if(binding.get().typeOption5.getText().toString().equals(typeId)) {
+        } else if(binding.get().typeOption5.getText().toString().equals(itemType)) {
             binding.get().typeOption5.setChecked(true);
         }
-        Log.d("확인 type",typeId);
+        Log.d("확인 type",itemType);
 
-        if(binding.get().conditionOption1.getText().toString().equals(conditionId)){
+        if(binding.get().conditionOption1.getText().toString().equals(itemCondition)){
             binding.get().conditionOption1.setChecked(true);
-        } else if(binding.get().conditionOption2.getText().toString().equals(conditionId)) {
+        } else if(binding.get().conditionOption2.getText().toString().equals(itemCondition)) {
             binding.get().conditionOption2.setChecked(true);
-        } else if(binding.get().conditionOption3.getText().toString().equals(conditionId)) {
+        } else if(binding.get().conditionOption3.getText().toString().equals(itemCondition)) {
             binding.get().conditionOption3.setChecked(true);
-        } else if(binding.get().conditionOption4.getText().toString().equals(conditionId)) {
+        } else if(binding.get().conditionOption4.getText().toString().equals(itemCondition)) {
             binding.get().conditionOption4.setChecked(true);
         }
 
-        Log.d("확인 condition",conditionId);
+        Log.d("확인 condition",itemCondition);
 
-        String cut[] = dealOptionId.split(" / ");
+        String cut[] = itemDealOption.split(" / ");
         for(int i=0; i<cut.length; i++){
-            if(binding.get().dealOption1.toString().equals(cut[i])) {
+            if(binding.get().dealOption1.getText().toString().equals(cut[i])) {
                 binding.get().dealOption1.setChecked(true);
-            } else if(binding.get().dealOption2.toString().equals(cut[i])) {
+            } else if(binding.get().dealOption2.getText().toString().equals(cut[i])) {
                 binding.get().dealOption2.setChecked(true);
-            } else if(binding.get().dealOption3.toString().equals(cut[i])) {
+            } else if(binding.get().dealOption3.getText().toString().equals(cut[i])) {
                 binding.get().dealOption3.setChecked(true);
             }
             Log.d("확인 dealoption"+" "+i,cut[i]);
@@ -790,8 +790,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             ButtonSheetClick(Constants.EIGHT);
         });
 
-
-        initButton(); // added
     }
 
     private void getImagePathList() {
@@ -1299,6 +1297,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 //        binding.get().remarkEditText.setText(item.dealOptionRemark);
         bindingIsShop(item.businessMode);
         binding.get().addressEditText.setText(item.address);
+
+        initButton(item.itemTypeId, item.conditionOfItem, item.dealOptionId); // added
 
     }
 
