@@ -19,6 +19,12 @@ public class PaymentActivity extends Activity {
     private final int PAY_FOR_ACCOUNT=0;
     private final int PAY_FOR_KAKAO=1;
 
+    @Override
+    public void onBackPressed() {
+        setResult(1);
+        finish();
+    }
+
     //region Override Methods
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,7 @@ public class PaymentActivity extends Activity {
         Intent intent = getIntent();
 
         String iName=intent.getStringExtra(Constants.ITEM_NAME);
-        //String iPrice=intent.getStringExtra(Constants.ITEM_PRICE);
+        String iPrice=intent.getStringExtra(Constants.ITEM_PRICE);
         String rName=intent.getStringExtra(Constants.RECEIVE_USER_NAME);
 
         Log.d("확인 페이먼트 iName",intent.getStringExtra(Constants.ITEM_NAME));
@@ -42,6 +48,8 @@ public class PaymentActivity extends Activity {
         Button btnKakaopay=findViewById(R.id.btn_kakaopay);
 
         EditText editPrice=findViewById(R.id.edit_price);
+
+        editPrice.setText(iPrice);
 
         textItem.setText("상품 : "+iName);
         textPrice.setText("가격 :");

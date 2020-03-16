@@ -113,6 +113,8 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if(resultCode==1) return;
+
         if (requestCode == Constants.RESULT_CODE__IMAGE_CATEGORY && resultCode == Constants.RESULT_OK && null != data) {
 
             Uri selectedImage = data.getData();
