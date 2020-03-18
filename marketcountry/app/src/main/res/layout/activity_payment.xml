@@ -39,7 +39,7 @@
                     android:layout_width="120dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="60dp"
-                    android:layout_marginTop="180dp"
+                    android:layout_marginTop="20dp"
                     android:text="계좌이체"
                     android:textColor="@color/md_white_1000"
                     android:textSize="20dp"
@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="100dp"
-                    android:layout_marginTop="80dp"
+                    android:layout_marginTop="40dp"
                     android:text="상품"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -70,28 +70,180 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/text_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="수량"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="@+id/text_item"
+                    app:layout_constraintTop_toBottomOf="@+id/text_item" />
+
+                <TextView
+                    android:id="@+id/countTextView"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_corner_shape_for_login"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="@color/text__primary"
+                    android:textSize="@dimen/font_h7_size"
+                    app:font='@{"bold"}'
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/text_count"
+                    app:layout_constraintStart_toEndOf="@+id/text_count"
+                    tools:text="1" />
+
+                <Button
+                    android:id="@+id/countBtnPlus"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/global__primary"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="@color/text__white"
+                    android:textSize="@dimen/font_h6_size"
+                    app:font='@{"bold"}'
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/countTextView"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/text_count"
+                    tools:text="+" />
+
+                <Button
+                    android:id="@+id/countBtnMinus"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/global__primary"
+                    android:inputType="numberDecimal"
+                    android:textAlignment="center"
+                    android:textColor="@color/text__white"
+                    android:textSize="@dimen/font_h6_size"
+                    app:font='@{"bold"}'
+                    app:layout_constraintEnd_toStartOf="@+id/backCurrencyTextView"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/countBtnPlus"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/text_count"
+                    tools:text="-" />
+
+                <TextView
                     android:id="@+id/text_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="30dp"
                     android:text="가격"
                     android:textColor="#000000"
                     android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="@id/text_count"
+                    app:layout_constraintTop_toBottomOf="@+id/text_count" />
+
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="판매자 정보"
+                    android:textColor="#000000"
+                   android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_item" />
+                    app:layout_constraintTop_toBottomOf="@+id/text_price" />
+
+
+                <TextView
+                    android:id="@+id/text_accountName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="은행명"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="@id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <EditText
+                    android:id="@+id/edit_accountName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="6"
+                    android:hint="한국은행"
+                    android:inputType="text"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/text_accountNumber"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/text_accountName"/>
+
+                <TextView
+                    android:id="@+id/text_accountNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="계좌번호"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="@id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/text_accountName" />
+
+                <EditText
+                    android:id="@+id/edit_accountNumber"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="6"
+                    android:hint="- 없이"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/text_accountNumber"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/text_accountNumber" />
+
+                <TextView
+                    android:id="@+id/text_accountHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="예금주"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="@id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/text_accountNumber" />
+
+                <EditText
+                    android:id="@+id/edit_accountHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ems="6"
+                    android:hint="홍길동"
+                    android:inputType="text"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/text_accountNumber"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/text_accountHolder"/>
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="170dp"
                     android:text="결제수단을 골라주세요."
                     android:textColor="#000000"
                     android:textSize="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_price" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                 <EditText
                     android:id="@+id/edit_price"
@@ -99,10 +251,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:ems="6"
+                    android:enabled="false"
+                    android:hint="ex) 55000"
                     android:inputType="number"
+                    android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="20dp"
-                    android:hint="ex) 55000"
                     app:layout_constraintBaseline_toBaselineOf="@+id/text_price"
                     app:layout_constraintStart_toEndOf="@+id/text_price" />
 
