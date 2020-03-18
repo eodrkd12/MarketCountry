@@ -426,7 +426,8 @@
                                     app:layout_constraintBottom_toBottomOf="@+id/phoneImage"
                                     app:layout_constraintStart_toEndOf="@+id/phoneImage"
                                     app:layout_constraintTop_toTopOf="@+id/phoneImage"
-                                    app:srcCompat="@drawable/googleg_standard_color_18" />
+                                    app:srcCompat="@drawable/googleg_standard_color_18"
+                                    tools:visibility="gone" />
 
                                 <TextView
                                     android:id="@+id/ratingCountTextView"

@@ -81,12 +81,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
     private EditText itemOfferPriceEditText;
     private PSDialogMsg psDialogRatingMsg, psDialogMsg;
 
-    private int countProduct;
-    private String countString;
-
-    private int priceCount;
-    private int priceByCount;
-
 
     @VisibleForTesting
     private AutoClearedValue<FragmentChatBinding> binding;
@@ -352,46 +346,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 itemOfferPriceEditText = dialog.findViewById(R.id.offerPriceEditText);
                 TextView makeOfferButton = dialog.findViewById(R.id.offerButton);
 
-                TextView countTextView = dialog.findViewById(R.id.countTextView);
-                Button plusBtn = dialog.findViewById(R.id.countBtnPlus);
-                Button minusBtn = dialog.findViewById(R.id.countBtnMinus); //added
-                countProduct = 1; //init
-                countTextView.setText("1");
-                plusBtn.setText("+");
-                minusBtn.setText("-");
-                priceByCount = priceCount;
-
-
-                plusBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        countProduct++;
-                        countString = Integer.toString(countProduct);
-                        countTextView.setText(countString);
-
-                        priceByCount = priceCount * countProduct;
-
-                        itemOfferPriceEditText.setText(Integer.toString(priceByCount));
-                    }
-                });
-
-                minusBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(1 < countProduct)
-                        {
-                            countProduct--;
-                            countString = Integer.toString(countProduct);
-                            countTextView.setText(countString);
-
-                            priceByCount = priceCount * countProduct;
-
-                            itemOfferPriceEditText.setText(Integer.toString(priceByCount));
-                        }
-                    }
-                });
-
-
                 itemName.setText(chatViewModel.itemName);
                 String currencySymbol = chatViewModel.itemCurrency;
                 String price;
@@ -417,7 +371,6 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 itemBackCurrencyTextView.setText(chatViewModel.itemCurrency);
                 itemOfferPriceEditText.setText(chatViewModel.itemPrice);
 
-                priceCount = Integer.parseInt(itemOfferPriceEditText.getText().toString());
 
                 dataBindingComponent.getFragmentBindingAdapters().bindFullImage(itemImagePath, chatViewModel.itemImagePath);
 
