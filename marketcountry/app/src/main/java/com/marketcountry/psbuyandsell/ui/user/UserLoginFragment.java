@@ -257,8 +257,8 @@ public class UserLoginFragment extends PSFragment {
             } else {
 
                 checkFlag = false;
-                binding.get().googleSignInView.setVisibility(View.VISIBLE);
-                binding.get().facebookSignInView.setVisibility(View.VISIBLE);
+                binding.get().googleSignInView.setVisibility(View.GONE);
+                binding.get().facebookSignInView.setVisibility(View.GONE);
                 binding.get().phoneSignInView.setVisibility(View.VISIBLE);
                 binding.get().kakaoSinginView.setVisibility(View.VISIBLE);
                 binding.get().fbLoginButton.setEnabled(false);
@@ -270,8 +270,8 @@ public class UserLoginFragment extends PSFragment {
 
         // For First Time Loading
         if (!checkFlag) {
-            binding.get().googleSignInView.setVisibility(View.VISIBLE);
-            binding.get().facebookSignInView.setVisibility(View.VISIBLE);
+            binding.get().googleSignInView.setVisibility(View.GONE);
+            binding.get().facebookSignInView.setVisibility(View.GONE);
             binding.get().phoneSignInView.setVisibility(View.VISIBLE);
             binding.get().kakaoSinginView.setVisibility(View.VISIBLE);
             binding.get().fbLoginButton.setEnabled(false);
@@ -351,12 +351,12 @@ public class UserLoginFragment extends PSFragment {
                 Utils.navigateAfterForgotPassword(UserLoginFragment.this.getActivity(), navigationController));
 
         if (Config.ENABLE_FACEBOOK_LOGIN) {
-            binding.get().fbLoginButton.setVisibility(View.VISIBLE);
+            binding.get().fbLoginButton.setVisibility(View.GONE);
         } else {
             binding.get().fbLoginButton.setVisibility(View.GONE);
         }
         if (Config.ENABLE_GOOGLE_LOGIN) {
-            binding.get().googleLoginButton.setVisibility(View.VISIBLE);
+            binding.get().googleLoginButton.setVisibility(View.GONE);
         } else {
             binding.get().googleLoginButton.setVisibility(View.GONE);
         }

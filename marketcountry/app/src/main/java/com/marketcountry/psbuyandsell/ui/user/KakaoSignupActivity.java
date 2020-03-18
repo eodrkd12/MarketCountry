@@ -86,7 +86,7 @@ public class KakaoSignupActivity extends Activity{
                 Log.d("카카오",talkProfile.toString());
                 Log.d("카카오",String.valueOf(talkProfile.describeContents()));
 
-                redirectMainActivity(profileImageURL,nickName);
+                redirectMainActivity(nickName,profileImageURL,"eodrkd12@naver.com");
             }
         },true);*/
     }
